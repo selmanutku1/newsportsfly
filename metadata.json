@@ -1,0 +1,6 @@
+{
+  "name": "SportsFly - Spor Okulları ve Akademi Yönetim Sistemi",
+  "description": "Spor okulları ve kulüpler için yeni nesil yönetim yazılımı. Eğitmen ve veli panelleri, devamlılık odaklı Sporpuan ödül sistemi ve otomatik dijital sporcu karneleri.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
