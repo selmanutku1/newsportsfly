@@ -12,7 +12,6 @@ import {
   Send,
   Share2,
   Sliders,
-  Sparkles,
   Users,
   XCircle,
   Zap,
@@ -20,6 +19,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { ReportCardModal } from './ReportCardModal';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface CoachPanelProps {
   athletes: Athlete[];
@@ -38,6 +38,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
   onUpdateReportCard,
   onAwardBonusPoints,
 }) => {
+  const { language } = useLanguage();
   const [activeTab, setActiveTab] = useState<'attendance' | 'report_editor' | 'athletes'>('attendance');
   const [selectedBranch, setSelectedBranch] = useState<string>('all');
   const [attendanceState, setAttendanceState] = useState<Record<string, 'present' | 'absent' | 'excused'>>({
@@ -149,6 +150,18 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
     setBonusModalAthlete(null);
   };
 
+  const localizeBranch = (branchName: string) => {
+    if (language === 'tr') return branchName;
+    switch (branchName) {
+      case 'Basketbol': return 'Basketball';
+      case 'Voleybol': return 'Volleyball';
+      case 'Yüzme': return 'Swimming';
+      case 'Futbol': return 'Football';
+      case 'Cimnastik': return 'Gymnastics';
+      default: return branchName;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       {/* Coach Top Navigation */}
@@ -157,12 +170,15 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
             <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">
-              Antrenör & Eğitmen Paneli
+              {language === 'tr' ? 'Antrenör & Eğitmen Paneli' : 'Coach & Instructor Panel'}
             </span>
           </div>
           <span className="text-slate-600 hidden sm:inline">|</span>
           <div className="text-xs text-slate-300 font-semibold hidden md:flex items-center gap-2">
-            <span>Giriş Yapan: <strong>Kadir Canpolat</strong> (Başantrenör)</span>
+            <span>
+              {language === 'tr' ? 'Giriş Yapan: ' : 'Logged in: '}
+              <strong>Kadir Canpolat</strong> ({language === 'tr' ? 'Başantrenör' : 'Head Coach'})
+            </span>
           </div>
         </div>
 
@@ -172,14 +188,14 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
             onClick={onSwitchToParent}
             className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 border border-slate-700 transition"
           >
-            Veli Paneline Geç
+            {language === 'tr' ? 'Veli Paneline Geç' : 'Switch to Parent Panel'}
           </button>
           <button
             id="btn-coach-back-to-site"
             onClick={onBackToSite}
             className="px-3.5 py-1.5 rounded-lg bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/40 text-xs font-bold transition"
           >
-            ← Ana Sayfaya Dön
+            {language === 'tr' ? '← Ana Sayfaya Dön' : '← Back to Home'}
           </button>
         </div>
       </header>
@@ -197,7 +213,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
             }`}
           >
             <CheckCircle className="w-4 h-4" />
-            <span>Hızlı Yoklama & Sporpuan Dağıtımı</span>
+            <span>{language === 'tr' ? 'Hızlı Yoklama & Sporpuan Dağıtımı' : 'Quick Attendance & Sporpuan'}</span>
           </button>
 
           <button
@@ -210,9 +226,9 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
             }`}
           >
             <Award className="w-4 h-4" />
-            <span>Dijital Karne Hazırlama & Veliye Gönderim</span>
+            <span>{language === 'tr' ? 'Dijital Karne Hazırlama & Veliye Gönderim' : 'Digital Report Card & Parent Dispatch'}</span>
             <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded-full">
-              Canlı
+              {language === 'tr' ? 'Canlı' : 'Live'}
             </span>
           </button>
 
@@ -226,7 +242,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
             }`}
           >
             <Users className="w-4 h-4" />
-            <span>Sporcu Listesi & Sporpuan Ödülleri</span>
+            <span>{language === 'tr' ? 'Sporcu Listesi & Sporpuan Ödülleri' : 'Athletes & Sporpuan Status'}</span>
           </button>
         </div>
       </div>
@@ -239,9 +255,15 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
             <div className="flex items-center gap-3">
               <CheckCircle2 className="w-6 h-6 text-emerald-400 flex-shrink-0" />
               <div>
-                <h4 className="font-bold text-sm">Yoklama Başarıyla Sisteme İşlendi!</h4>
+                <h4 className="font-bold text-sm">
+                  {language === 'tr' ? 'Yoklama Başarıyla Sisteme İşlendi!' : 'Roll Call Successfully Recorded!'}
+                </h4>
                 <p className="text-xs text-emerald-400/90">
-                  Katılan tüm sporcuların hesaplarına <strong>+25 Sporpuan</strong> yüklendi ve velilerine "Antrenmana Katıldı" bildirimi otomatik iletildi.
+                  {language === 'tr' ? (
+                    <>Katılan tüm sporcuların hesaplarına <strong>+25 Sporpuan</strong> yüklendi ve velilerine "Antrenmana Katıldı" bildirimi otomatik iletildi.</>
+                  ) : (
+                    <><strong>+25 Sporpuan</strong> credited to all attending athletes and automated "Attended Practice" notifications sent to parents.</>
+                  )}
                 </p>
               </div>
             </div>
@@ -253,9 +275,15 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
             <div className="flex items-center gap-3">
               <Send className="w-6 h-6 text-emerald-400 flex-shrink-0" />
               <div>
-                <h4 className="font-bold text-sm">Dijital Karne Başarıyla Yayınlandı & Paylaşıldı!</h4>
+                <h4 className="font-bold text-sm">
+                  {language === 'tr' ? 'Dijital Karne Başarıyla Yayınlandı & Paylaşıldı!' : 'Digital Report Card Successfully Published & Shared!'}
+                </h4>
                 <p className="text-xs text-emerald-400/90">
-                  {currentAthlete.name} için hazırlanan karne velinin portalında anlık olarak aktif edildi ve WhatsApp/SMS onay bağlantısı gönderildi.
+                  {language === 'tr' ? (
+                    <>{currentAthlete.name} için hazırlanan karne velinin portalında anlık olarak aktif edildi ve WhatsApp/SMS onay bağlantısı gönderildi.</>
+                  ) : (
+                    <>Report card prepared for {currentAthlete.name} is now live in the parent portal with instant WhatsApp/SMS notification link dispatched.</>
+                  )}
                 </p>
               </div>
             </div>
@@ -267,10 +295,16 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-900 border border-slate-800 p-5 rounded-3xl">
               <div>
-                <div className="text-xs text-cyan-400 font-bold uppercase">Bugünkü Seans</div>
-                <h2 className="text-xl font-black text-white">Basketbol U12 Gelişim Yoklaması</h2>
+                <div className="text-xs text-cyan-400 font-bold uppercase">
+                  {language === 'tr' ? 'Bugünkü Seans' : "Today's Session"}
+                </div>
+                <h2 className="text-xl font-black text-white">
+                  {language === 'tr' ? 'Basketbol U12 Gelişim Yoklaması' : 'Basketball U12 Development Roll Call'}
+                </h2>
                 <p className="text-xs text-slate-400 mt-0.5">
-                  18 Ocak 2026 • 17:30 - 19:00 • Atatürk Spor Salonu (14 Sporcu Kayıtlı)
+                  {language === 'tr'
+                    ? '18 Ocak 2026 • 17:30 - 19:00 • Atatürk Spor Salonu (14 Sporcu Kayıtlı)'
+                    : 'Jan 18, 2026 • 17:30 - 19:00 • Atatürk Sports Arena (14 Athletes Enrolled)'}
                 </p>
               </div>
 
@@ -284,7 +318,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                   }}
                   className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition"
                 >
-                  Tümünü Geldi İşaretle
+                  {language === 'tr' ? 'Tümünü Geldi İşaretle' : 'Mark All Present'}
                 </button>
                 <button
                   id="btn-submit-attendance-save"
@@ -292,7 +326,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                   className="px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-bold shadow-lg shadow-cyan-500/25 flex items-center gap-2 transition"
                 >
                   <Zap className="w-4 h-4 fill-current text-amber-300" />
-                  <span>Yoklamayı Onayla (+Sporpuan Yükle)</span>
+                  <span>{language === 'tr' ? 'Yoklamayı Onayla (+Sporpuan Yükle)' : 'Confirm Roll Call (+Award Sporpuan)'}</span>
                 </button>
               </div>
             </div>
@@ -300,9 +334,9 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
             {/* Attendance Roster Table */}
             <div className="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
               <div className="p-4 border-b border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                <span>Sporcu Bilgisi & Kategori</span>
-                <span className="hidden sm:inline">Mevcut Sporpuan & Seri</span>
-                <span>Katılım Durumu</span>
+                <span>{language === 'tr' ? 'Sporcu Bilgisi & Kategori' : 'Athlete Info & Category'}</span>
+                <span className="hidden sm:inline">{language === 'tr' ? 'Mevcut Sporpuan & Seri' : 'Current Sporpuan & Streak'}</span>
+                <span>{language === 'tr' ? 'Katılım Durumu' : 'Attendance Status'}</span>
               </div>
 
               <div className="divide-y divide-slate-800">
@@ -322,7 +356,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                         <div>
                           <h4 className="font-bold text-sm text-white">{ath.name}</h4>
                           <p className="text-xs text-slate-400">
-                            {ath.branch} • {ath.category} • Veli: {ath.parentName}
+                            {localizeBranch(ath.branch)} • {ath.category} • {language === 'tr' ? 'Veli:' : 'Parent:'} {ath.parentName}
                           </p>
                         </div>
                       </div>
@@ -333,7 +367,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                           <span>{ath.sporpuan} SP</span>
                         </div>
                         <div className="text-slate-400">
-                          Devam: <strong className="text-cyan-400">%{ath.attendanceRate}</strong>
+                          {language === 'tr' ? 'Devam:' : 'Attendance:'} <strong className="text-cyan-400">%{ath.attendanceRate}</strong>
                         </div>
                       </div>
 
@@ -348,7 +382,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                           }`}
                         >
                           <CheckCircle2 className="w-3.5 h-3.5" />
-                          <span>Geldi (+25 SP)</span>
+                          <span>{language === 'tr' ? 'Geldi (+25 SP)' : 'Present (+25 SP)'}</span>
                         </button>
 
                         <button
@@ -360,7 +394,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                           }`}
                         >
                           <XCircle className="w-3.5 h-3.5" />
-                          <span>Gelmedi</span>
+                          <span>{language === 'tr' ? 'Gelmedi' : 'Absent'}</span>
                         </button>
 
                         <button
@@ -371,7 +405,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                               : 'bg-slate-800 text-slate-400 hover:text-white'
                           }`}
                         >
-                          <span>Mazeretli</span>
+                          <span>{language === 'tr' ? 'Mazeretli' : 'Excused'}</span>
                         </button>
                       </div>
                     </div>
@@ -388,7 +422,9 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
             {/* Athlete selector sidebar */}
             <div className="space-y-4">
               <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800">
-                <h3 className="text-sm font-bold text-white mb-3">Karne Hazırlanacak Sporcu</h3>
+                <h3 className="text-sm font-bold text-white mb-3">
+                  {language === 'tr' ? 'Karne Hazırlanacak Sporcu' : 'Select Athlete for Report Card'}
+                </h3>
                 <div className="space-y-2">
                   {athletes.map((ath) => (
                     <button
@@ -412,10 +448,10 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                       />
                       <div className="min-w-0 flex-1">
                         <div className="text-xs font-bold text-white truncate">{ath.name}</div>
-                        <div className="text-[10px] text-slate-400">{ath.branch} • {ath.category}</div>
+                        <div className="text-[10px] text-slate-400">{localizeBranch(ath.branch)} • {ath.category}</div>
                       </div>
                       {reportCards[ath.id]?.sharedWithParent && (
-                        <span className="w-2 h-2 rounded-full bg-emerald-400" title="Karne Yayınlandı" />
+                        <span className="w-2 h-2 rounded-full bg-emerald-400" title={language === 'tr' ? 'Karne Yayınlandı' : 'Report Published'} />
                       )}
                     </button>
                   ))}
@@ -428,9 +464,11 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
               <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-6">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
                   <div>
-                    <span className="text-xs font-bold text-cyan-400 uppercase">Dönemsel Performans Modülü</span>
+                    <span className="text-xs font-bold text-cyan-400 uppercase">
+                      {language === 'tr' ? 'Dönemsel Performans Modülü' : 'Term Performance Module'}
+                    </span>
                     <h2 className="text-xl font-bold text-white">
-                      {currentAthlete.name} - Gelişim Karnesi Düzenle
+                      {currentAthlete.name} - {language === 'tr' ? 'Gelişim Karnesi Düzenle' : 'Edit Progress Report'}
                     </h2>
                   </div>
 
@@ -440,7 +478,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                       onClick={() => setPreviewModalOpen(true)}
                       className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition"
                     >
-                      Önizle
+                      {language === 'tr' ? 'Önizle' : 'Preview'}
                     </button>
                     <button
                       id="btn-publish-report-card"
@@ -448,7 +486,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                       className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-xs shadow-lg shadow-emerald-500/20 flex items-center gap-1.5 transition"
                     >
                       <Send className="w-3.5 h-3.5" />
-                      <span>Yayınla & Veliye Gönder</span>
+                      <span>{language === 'tr' ? 'Yayınla & Veliye Gönder' : 'Publish & Dispatch to Parent'}</span>
                     </button>
                   </div>
                 </div>
@@ -456,19 +494,25 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                 {/* General Score & Info */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800">
-                    <span className="text-xs text-slate-400">Hesaplanan Ortalama Not</span>
+                    <span className="text-xs text-slate-400">
+                      {language === 'tr' ? 'Hesaplanan Ortalama Not' : 'Calculated Average Grade'}
+                    </span>
                     <div className="text-3xl font-black text-emerald-400 mt-1">
                       {cardForm.generalScore} <span className="text-sm text-slate-500 font-normal">/100</span>
                     </div>
                   </div>
                   <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800">
-                    <span className="text-xs text-slate-400">Antrenman Devam Sayısı</span>
+                    <span className="text-xs text-slate-400">
+                      {language === 'tr' ? 'Antrenman Devam Sayısı' : 'Workout Attendance Count'}
+                    </span>
                     <div className="text-2xl font-bold text-white mt-1">
                       {cardForm.attendanceCount} / {cardForm.totalTrainings}
                     </div>
                   </div>
                   <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800">
-                    <span className="text-xs text-slate-400">Kazanılan Sporpuan</span>
+                    <span className="text-xs text-slate-400">
+                      {language === 'tr' ? 'Kazanılan Sporpuan' : 'Earned Sporpuan'}
+                    </span>
                     <div className="text-2xl font-bold text-amber-400 mt-1">
                       +{cardForm.sporpuanEarnedTotal} SP
                     </div>
@@ -479,7 +523,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                 <div className="space-y-4">
                   <h3 className="text-sm font-bold text-white flex items-center gap-2">
                     <Sliders className="w-4 h-4 text-cyan-400" />
-                    <span>Temel Kriter Değerlendirmeleri (0 - 100)</span>
+                    <span>{language === 'tr' ? 'Temel Kriter Değerlendirmeleri (0 - 100)' : 'Core Skill Evaluations (0 - 100)'}</span>
                   </h3>
 
                   <div className="space-y-4">
@@ -505,7 +549,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                             updated[idx].notes = e.target.value;
                             setCardForm({ ...cardForm, metrics: updated });
                           }}
-                          placeholder="Kısa koç notu ekleyin..."
+                          placeholder={language === 'tr' ? 'Kısa koç notu ekleyin...' : 'Add brief coach observation...'}
                           className="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1 text-xs text-slate-300 focus:outline-none focus:border-cyan-500"
                         />
                       </div>
@@ -516,14 +560,18 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                 {/* Coach Detailed Text Evaluation */}
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-white block">
-                    Antrenör Değerlendirme & Tavsiye Mektubu:
+                    {language === 'tr' ? 'Antrenör Değerlendirme & Tavsiye Mektubu:' : 'Head Coach Evaluation & Advisory Letter:'}
                   </label>
                   <textarea
                     rows={4}
                     value={cardForm.coachNotes}
                     onChange={(e) => setCardForm({ ...cardForm, coachNotes: e.target.value })}
                     className="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-cyan-500 leading-relaxed"
-                    placeholder="Sporcunun sahadaki gelişimi, karakteri ve sonraki dönem hedefleri..."
+                    placeholder={
+                      language === 'tr'
+                        ? 'Sporcunun sahadaki gelişimi, karakteri ve sonraki dönem hedefleri...'
+                        : "Athlete's on-court growth, dedication, sportsmanship and next term targets..."
+                    }
                   />
                 </div>
               </div>
@@ -536,9 +584,13 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
-                <h2 className="text-xl font-bold text-white">Tüm Sporcular & Sporpuan Durumları</h2>
+                <h2 className="text-xl font-bold text-white">
+                  {language === 'tr' ? 'Tüm Sporcular & Sporpuan Durumları' : 'All Athletes & Sporpuan Standing'}
+                </h2>
                 <p className="text-xs text-slate-400 mt-0.5">
-                  Özel başarılar için anlık puan tanımlayın veya sporcu karnelerini görüntüleyin.
+                  {language === 'tr'
+                    ? 'Özel başarılar için anlık puan tanımlayın veya sporcu karnelerini görüntüleyin.'
+                    : 'Award instant points for sportsmanship or manage term digital report cards.'}
                 </p>
               </div>
 
@@ -548,12 +600,12 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                   onChange={(e) => setSelectedBranch(e.target.value)}
                   className="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-semibold text-white focus:outline-none"
                 >
-                  <option value="all">Tüm Branşlar</option>
-                  <option value="Basketbol">Basketbol</option>
-                  <option value="Voleybol">Voleybol</option>
-                  <option value="Yüzme">Yüzme</option>
-                  <option value="Futbol">Futbol</option>
-                  <option value="Cimnastik">Cimnastik</option>
+                  <option value="all">{language === 'tr' ? 'Tüm Branşlar' : 'All Disciplines'}</option>
+                  <option value="Basketbol">{language === 'tr' ? 'Basketbol' : 'Basketball'}</option>
+                  <option value="Voleybol">{language === 'tr' ? 'Voleybol' : 'Volleyball'}</option>
+                  <option value="Yüzme">{language === 'tr' ? 'Yüzme' : 'Swimming'}</option>
+                  <option value="Futbol">{language === 'tr' ? 'Futbol' : 'Football'}</option>
+                  <option value="Cimnastik">{language === 'tr' ? 'Cimnastik' : 'Gymnastics'}</option>
                 </select>
               </div>
             </div>
@@ -572,9 +624,9 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                     />
                     <div>
                       <h4 className="font-bold text-white text-base">{ath.name}</h4>
-                      <p className="text-xs text-slate-400">{ath.branch} • {ath.category}</p>
+                      <p className="text-xs text-slate-400">{localizeBranch(ath.branch)} • {ath.category}</p>
                       <span className="inline-flex items-center gap-1 text-[11px] text-amber-400 font-bold mt-1">
-                        <Sparkles className="w-3 h-3" />
+                        <Award className="w-3 h-3" />
                         {ath.rankBadge}
                       </span>
                     </div>
@@ -586,7 +638,9 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                       <span className="text-amber-400 font-black text-sm">{ath.sporpuan} SP</span>
                     </div>
                     <div>
-                      <span className="text-slate-400 block text-[10px]">Devamlılık</span>
+                      <span className="text-slate-400 block text-[10px]">
+                        {language === 'tr' ? 'Devamlılık' : 'Attendance'}
+                      </span>
                       <span className="text-cyan-400 font-bold text-sm">%{ath.attendanceRate}</span>
                     </div>
                   </div>
@@ -598,7 +652,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                       className="flex-1 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold transition flex items-center justify-center gap-1.5"
                     >
                       <Zap className="w-3.5 h-3.5 fill-current" />
-                      <span>+Puan Ver</span>
+                      <span>{language === 'tr' ? '+Puan Ver' : '+Award Points'}</span>
                     </button>
                     <button
                       onClick={() => {
@@ -607,7 +661,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                       }}
                       className="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition"
                     >
-                      Karne
+                      {language === 'tr' ? 'Karne' : 'Report'}
                     </button>
                   </div>
                 </div>
@@ -626,15 +680,17 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                 <Zap className="w-5 h-5 fill-current" />
               </div>
               <div>
-                <h3 className="font-bold text-base text-white">Sporpuan Bonusu Tanımla</h3>
-                <p className="text-xs text-slate-400">{bonusModalAthlete.name} ({bonusModalAthlete.branch})</p>
+                <h3 className="font-bold text-base text-white">
+                  {language === 'tr' ? 'Sporpuan Bonusu Tanımla' : 'Award Sporpuan Bonus'}
+                </h3>
+                <p className="text-xs text-slate-400">{bonusModalAthlete.name} ({localizeBranch(bonusModalAthlete.branch)})</p>
               </div>
             </div>
 
             <div className="space-y-3">
               <div>
                 <label className="text-xs font-semibold text-slate-300 block mb-1">
-                  Ödül Miktarı (SP):
+                  {language === 'tr' ? 'Ödül Miktarı (SP):' : 'Reward Amount (SP):'}
                 </label>
                 <div className="grid grid-cols-4 gap-2">
                   {[25, 50, 100, 200].map((pts) => (
@@ -655,17 +711,25 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
 
               <div>
                 <label className="text-xs font-semibold text-slate-300 block mb-1">
-                  Ödüllendirme Sebebi:
+                  {language === 'tr' ? 'Ödüllendirme Sebebi:' : 'Reason for Award:'}
                 </label>
                 <select
                   value={bonusReason}
                   onChange={(e) => setBonusReason(e.target.value)}
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none"
                 >
-                  <option value="Fair-Play & Yardımlaşma">Fair-Play & Saha İçi Centilmenlik</option>
-                  <option value="Maçın Yıldızı / En İyi Performans">Maçın Yıldızı / En İyi Performans</option>
-                  <option value="Üstün Antrenman Gayreti">Üstün Antrenman Gayreti</option>
-                  <option value="Ev Ödevi / Drills Tamamlama">Ev Ödevi & Bireysel Drills</option>
+                  <option value="Fair-Play & Yardımlaşma">
+                    {language === 'tr' ? 'Fair-Play & Saha İçi Centilmenlik' : 'Fair Play & Court Sportsmanship'}
+                  </option>
+                  <option value="Maçın Yıldızı / En İyi Performans">
+                    {language === 'tr' ? 'Maçın Yıldızı / En İyi Performans' : 'Star of the Match / MVP'}
+                  </option>
+                  <option value="Üstün Antrenman Gayreti">
+                    {language === 'tr' ? 'Üstün Antrenman Gayreti' : 'Outstanding Workout Dedication'}
+                  </option>
+                  <option value="Ev Ödevi / Drills Tamamlama">
+                    {language === 'tr' ? 'Ev Ödevi & Bireysel Drills' : 'Home Drills & Individual Practice'}
+                  </option>
                 </select>
               </div>
             </div>
@@ -675,13 +739,13 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
                 onClick={() => setBonusModalAthlete(null)}
                 className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold"
               >
-                Vazgeç
+                {language === 'tr' ? 'Vazgeç' : 'Cancel'}
               </button>
               <button
                 onClick={handleAwardBonus}
                 className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-xs font-bold shadow"
               >
-                Puanı Sporcuya Gönder
+                {language === 'tr' ? 'Puanı Sporcuya Gönder' : 'Send Points to Athlete'}
               </button>
             </div>
           </div>

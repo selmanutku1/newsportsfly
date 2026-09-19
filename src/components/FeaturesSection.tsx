@@ -1,86 +1,51 @@
 import React, { useState } from 'react';
 import {
-  Activity,
   Award,
-  Calendar,
   CheckCircle2,
-  Clock,
   CreditCard,
-  Flame,
-  Gift,
-  MessageSquare,
-  QrCode,
-  ShieldCheck,
-  Smartphone,
-  Sparkles,
-  Users,
   Zap
 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const FeaturesSection: React.FC = () => {
+  const { language, t } = useLanguage();
   const [activePillar, setActivePillar] = useState<number>(0);
 
-  const pillars = [
+  const pillarVisuals = [
     {
-      title: 'Devamlılık Odaklı Sporpuan™',
-      subtitle: 'Antrenmanı kaçırmayan sporcular puan ve ödül kazanır',
       icon: Zap,
       color: 'from-amber-500 to-amber-600',
       badgeBg: 'bg-amber-50 text-amber-700 border-amber-200',
-      desc: 'Spor okullarının en büyük sorunu olan devamsızlığı oyunlaştırma (gamification) ile çözüyoruz. Her antrenmana katılım, zamanında geliş ve antrenörün verdiği fair-play ödülleriyle sporcular puan biriktirir, kulüp mağazasından ödüller seçer.',
-      points: [
-        'Yoklama alındığı an sporcunun hesabına otomatik puan yükleme',
-        '3, 5 ve 10 antrenmanlık peş peşe devam serisi çarpanları',
-        'Kulübün kendi ekipman ve deneyim ödüllerini ekleyebileceği esnek katalog',
-        'Devamsızlık oranında kanıtlanmış %70 net azalma'
-      ]
+      defaultBadge: 'Devamlılık Çözümü',
+      defaultBadgeEn: 'Attendance Solution',
     },
     {
-      title: 'Dijital Sporcu Gelişim Karnesi',
-      subtitle: 'Teknik, fiziksel ve mental gelişimi velilerle otomatik paylaşın',
       icon: Award,
       color: 'from-emerald-500 to-teal-600',
       badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-      badge: 'Otomatik Paylaşım',
-      desc: 'Dönem sonlarında kağıt karnelerle uğraşmayın. Antrenörler mobil cihazlarından sporcunun yeteneklerini (şut, pas, kondisyon, disiplin) puanlar; sistem görsel gelişim grafiklerini ve koç mektubunu saniyeler içinde velinin cebine gönderir.',
-      points: [
-        'Branşa özel yetenek normları ve radar gelişim grafikleri',
-        'Antrenör sesli veya yazılı değerlendirme mektubu',
-        'WhatsApp, SMS ve Veli Portalı üzerinden anlık paylaşım',
-        'QR kodlu ve doğrulanabilir dijital PDF formatı'
-      ]
+      defaultBadge: 'Otomatik Paylaşım',
+      defaultBadgeEn: 'Auto Dispatch',
     },
     {
-      title: 'Mobil Eğitmen & Hızlı Yoklama',
-      subtitle: '15 saniyede antrenman yoklamasını tamamlayın',
       icon: CheckCircle2,
       color: 'from-blue-500 to-indigo-600',
       badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
-      badge: 'Zaman Tasarrufu',
-      desc: 'Antrenörlerinizin kıymetli vaktini evrak işlerine değil, sahada çocuklara ayırmasını sağlayın. Hızlı liste yoklaması veya QR kod tarayıcı ile grup yoklaması anında alınır, gelmeyen sporcuların velilerine otomatik bildirim düşer.',
-      points: [
-        'Tek tıkla "Tümünü Geldi İşaretle" ve anında Sporpuan dağıtımı',
-        'Gelmedi / Mazeretli durumlarında veliye otomatik bilgilendirme',
-        'Antrenör performans ve seans doluluk raporlaması',
-        'İnternet çekmeyen spor salonlarında dahi çevrimdışı çalışma desteği'
-      ]
+      defaultBadge: 'Zaman Tasarrufu',
+      defaultBadgeEn: 'Time Saver',
     },
     {
-      title: 'Şeffaf Veli Portalı & Aidat Takibi',
-      subtitle: 'Geciken ödemeleri önleyin, veli memnuniyetini zirveye çıkarın',
       icon: CreditCard,
       color: 'from-violet-500 to-purple-600',
       badgeBg: 'bg-violet-50 text-violet-700 border-violet-200',
-      badge: 'Finansal Güç',
-      desc: 'Veliler kendi portalları üzerinden çocuklarının devamlılığını, biriken Sporpuanlarını, karnesini ve aidat durumunu takip eder. Otomatik hatırlatıcılar ve sanal POS entegrasyonu ile aidat kaçakları sıfıra iner.',
-      points: [
-        'Veliler için kullanıcı adı/şifre derdi olmadan güvenli giriş',
-        'Vade tarihi gelen aidatlar için nazik otomatik WhatsApp hatırlatmaları',
-        'Kredi kartıyla tek tıkla veya taksitli online ödeme imkanı',
-        'Resmi e-makbuz ve faturaların otomatik veliye iletilmesi'
-      ]
+      defaultBadge: 'Finansal Güç',
+      defaultBadgeEn: 'Financial Control',
     }
   ];
+
+  const pillars = (t.featuresPillars || []).map((pillar, idx) => ({
+    ...pillar,
+    ...pillarVisuals[idx]
+  }));
 
   return (
     <section id="features" className="py-24 bg-white border-t border-slate-200 relative">
@@ -88,16 +53,16 @@ export const FeaturesSection: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider">
-            Kapsamlı Modüller
+            {t.featuresBadge}
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-            Spor Okulunuzun İhtiyaç Duyduğu <br />
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-500 bg-clip-text text-transparent">
-              Tüm Araçlar Tek Bir Platformda
+            {t.featuresTitle} <br />
+            <span className="text-blue-600">
+              {t.featuresTitleHighlight}
             </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Geleneksel ve hantal yazılımların eksik kaldığı noktaları, sporcu psikolojisini motive eden Sporpuan ve şeffaf dijital karne ekosistemiyle tamamladık.
+            {t.featuresDesc}
           </p>
         </div>
 
@@ -132,7 +97,7 @@ export const FeaturesSection: React.FC = () => {
                           {pillar.title}
                         </h3>
                         <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full border ${pillar.badgeBg || 'bg-slate-100 text-slate-700 border-slate-200'}`}>
-                          {pillar.badge || 'Öne Çıkan'}
+                          {pillar.badge || (language === 'tr' ? pillar.defaultBadge : pillar.defaultBadgeEn)}
                         </span>
                       </div>
                       <p className="text-xs text-slate-500 mt-1 line-clamp-1">
@@ -152,9 +117,11 @@ export const FeaturesSection: React.FC = () => {
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
                     <span className={`px-3 py-1 rounded-full text-xs font-bold border ${pillars[activePillar].badgeBg || 'bg-blue-50 text-blue-700 border-blue-200'}`}>
-                      {pillars[activePillar].badge || 'Spor Dünyasında İlk'}
+                      {pillars[activePillar].badge || (language === 'tr' ? 'Spor Dünyasında İlk' : 'First in Sports')}
                     </span>
-                    <span className="text-xs font-semibold text-slate-500">SportsFly Özel Modülü</span>
+                    <span className="text-xs font-semibold text-slate-500">
+                      {language === 'tr' ? 'SportsFly Özel Modülü' : 'SportsFly Exclusive Module'}
+                    </span>
                   </div>
 
                   <h3 className="text-2xl sm:text-3xl font-black text-slate-950">
@@ -167,7 +134,7 @@ export const FeaturesSection: React.FC = () => {
 
                   <div className="space-y-3 pt-2 border-t border-slate-100">
                     <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                      Temel Kazanımlar:
+                      {language === 'tr' ? 'Temel Kazanımlar:' : 'Key Outcomes:'}
                     </div>
                     {pillars[activePillar].points.map((pt, i) => (
                       <div key={i} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
@@ -179,7 +146,9 @@ export const FeaturesSection: React.FC = () => {
 
                   <div className="pt-4 flex items-center justify-between border-t border-slate-100">
                     <div className="text-xs text-slate-500">
-                      Tüm branşlar için geçerli: Basketbol, Voleybol, Yüzme, Cimnastik, Futbol.
+                      {language === 'tr'
+                        ? 'Tüm branşlar için geçerli: Basketbol, Voleybol, Yüzme, Cimnastik, Futbol.'
+                        : 'Applicable to all disciplines: Basketball, Volleyball, Swimming, Gymnastics, Football.'}
                     </div>
                   </div>
                 </div>

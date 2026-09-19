@@ -1,6 +1,7 @@
 import React from 'react';
-import { Award, CheckCircle2, Download, QrCode, Send, Share2, Sparkles, TrendingUp, Users } from 'lucide-react';
+import { Award, CheckCircle2, Download, QrCode, Send, Share2, TrendingUp, Users } from 'lucide-react';
 import { INITIAL_REPORT_CARDS, INITIAL_ATHLETES } from '../data/mockData';
+import { useLanguage } from '../context/LanguageContext';
 
 interface DigitalReportSectionProps {
   onOpenSampleCard: () => void;
@@ -9,8 +10,26 @@ interface DigitalReportSectionProps {
 export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
   onOpenSampleCard,
 }) => {
+  const { language, t } = useLanguage();
   const sampleCard = INITIAL_REPORT_CARDS['ath-1'];
   const sampleAthlete = INITIAL_ATHLETES[0];
+
+  const getMetricName = (name: string) => {
+    if (language === 'tr') return name;
+    if (name.includes('Şut')) return 'Shooting Technique';
+    if (name.includes('Pas')) return 'Passing & Vision';
+    if (name.includes('Top Sürme') || name.includes('Dribbling')) return 'Ball Control & Dribbling';
+    if (name.includes('Savunma')) return 'Defensive Positioning';
+    if (name.includes('Kondisyon')) return 'Physical Conditioning';
+    if (name.includes('Disiplin')) return 'Team Play & Discipline';
+    return name;
+  };
+
+  const athleteBranch = language === 'tr' ? sampleAthlete.branch : 'Basketball';
+  const periodText = language === 'tr' ? sampleCard.period : '2025-2026 Spring Term';
+  const coachNoteText = language === 'tr'
+    ? sampleCard.coachNotes
+    : 'Arda has shown tremendous progress this season, especially in team defense and transition play. His high training attendance is reflected in his game discipline.';
 
   return (
     <section id="digital-report" className="py-24 bg-white border-t border-slate-200 relative">
@@ -19,16 +38,16 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase tracking-wider inline-flex items-center gap-1.5">
             <Award className="w-3.5 h-3.5" />
-            Yeni Nesil Ölçme & Değerlendirme
+            {t.reportBadge}
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-            Kağıt Karneler Tarih Oldu: <br />
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent">
-              Velilerle Otomatik Paylaşılan Dijital Karneler
+            {t.reportTitle} <br />
+            <span className="text-emerald-600">
+              {t.reportTitleHighlight}
             </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Sporcunun gelişimini, yetenek skorlarını ve antrenör notlarını modern grafiklerle belgeleyin. Tek tıkla velinin WhatsApp ve veli portalına otomatik gönderilsin.
+            {t.reportDesc}
           </p>
         </div>
 
@@ -42,9 +61,9 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
                   1
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 text-base">Antrenör 2 Dakikada Puanlar</h4>
+                  <h4 className="font-bold text-slate-900 text-base">{t.reportStep1Title}</h4>
                   <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                    Şut, pas, taktik anlayış, kondisyon ve mental dayanıklılık gibi branşa özel kriterleri telefon üzerinden kolayca değerlendirir.
+                    {t.reportStep1Desc}
                   </p>
                 </div>
               </div>
@@ -54,9 +73,9 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
                   2
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 text-base">Otomatik Veli Bildirimi & WhatsApp</h4>
+                  <h4 className="font-bold text-slate-900 text-base">{t.reportStep2Title}</h4>
                   <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                    Karne onaylandığında veliye push bildirim ve istenirse doğrudan WhatsApp üzerinden güvenli bağlantı gider. Veli telefonundan anında inceler.
+                    {t.reportStep2Desc}
                   </p>
                 </div>
               </div>
@@ -66,22 +85,22 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
                   3
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 text-base">QR Doğrulamalı ve PDF İndirilebilir</h4>
+                  <h4 className="font-bold text-slate-900 text-base">{t.reportStep3Title}</h4>
                   <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                    Veliler hatıra olarak saklayabilir, sosyal medyada paylaşabilir veya PDF olarak indirip yazdırabilir. Kulübünüzün kurumsal kimliği yücelir.
+                    {t.reportStep3Desc}
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-slate-700 flex items-center justify-between">
-              <span>Velilerin %98'i dijital karne sistemini kulüp tercihinde belirleyici buluyor.</span>
+              <span>{t.reportSurveyFact}</span>
               <button
                 id="btn-trigger-sample-card"
                 onClick={onOpenSampleCard}
                 className="text-xs font-bold text-emerald-700 hover:underline flex items-center gap-1 flex-shrink-0"
               >
-                <span>Örnek Karneyi İncele</span>
+                <span>{t.reportInspectSample}</span>
                 <span>→</span>
               </button>
             </div>
@@ -100,15 +119,15 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
                   />
                   <div>
                     <span className="text-[10px] uppercase font-bold text-blue-600 tracking-wider">
-                      {sampleAthlete.branch} • {sampleAthlete.category}
+                      {athleteBranch} • {sampleAthlete.category}
                     </span>
                     <h3 className="text-xl font-bold text-slate-900">{sampleAthlete.name}</h3>
-                    <p className="text-xs text-slate-500">Dönem: {sampleCard.period}</p>
+                    <p className="text-xs text-slate-500">{t.reportPeriod}: {periodText}</p>
                   </div>
                 </div>
 
                 <div className="text-right">
-                  <span className="text-[10px] uppercase text-slate-400 font-bold">Genel Not</span>
+                  <span className="text-[10px] uppercase text-slate-400 font-bold">{t.reportOverallScore}</span>
                   <div className="text-3xl font-black text-emerald-600">
                     {sampleCard.generalScore}<span className="text-sm text-slate-400 font-normal">/100</span>
                   </div>
@@ -120,7 +139,7 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
                 {sampleCard.metrics.slice(0, 3).map((m, idx) => (
                   <div key={idx} className="space-y-1">
                     <div className="flex justify-between text-xs font-semibold">
-                      <span className="text-slate-800">{m.name}</span>
+                      <span className="text-slate-800">{getMetricName(m.name)}</span>
                       <span className="text-emerald-600 font-bold">{m.score}/100</span>
                     </div>
                     <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200/50">
@@ -135,7 +154,7 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
 
               {/* Coach note snippet */}
               <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 text-xs text-slate-700 italic">
-                "{sampleCard.coachNotes}"
+                "{coachNoteText}"
               </div>
 
               {/* Interactive Modal Opener Button */}
@@ -145,7 +164,7 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
                 className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-emerald-600/20 transition flex items-center justify-center gap-2"
               >
                 <Award className="w-4 h-4" />
-                <span>Örnek Dijital Karneyi Görüntüle</span>
+                <span>{t.reportViewSampleBtn}</span>
               </button>
             </div>
           </div>

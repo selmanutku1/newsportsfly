@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Sparkles, X, Zap } from 'lucide-react';
+import { CheckCircle2, X, Zap } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { ActiveView } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 
 interface DemoModalProps {
   isOpen: boolean;
@@ -16,11 +17,12 @@ export const DemoModal: React.FC<DemoModalProps> = ({
   selectedPlan = 'Kulüp & Akademi',
   onNavigateView,
 }) => {
+  const { language, t } = useLanguage();
   const [clubName, setClubName] = useState('');
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
-  const [branch, setBranch] = useState('Basketbol');
-  const [studentEstimate, setStudentEstimate] = useState('150 - 300 Sporcu');
+  const [branch, setBranch] = useState(language === 'tr' ? 'Basketbol' : 'Basketball');
+  const [studentEstimate, setStudentEstimate] = useState(language === 'tr' ? '150 - 300 Sporcu' : '150 - 300 Athletes');
   const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
@@ -49,25 +51,25 @@ export const DemoModal: React.FC<DemoModalProps> = ({
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
-                14 Gün Ücretsiz Deneme • Kredi Kartsız
+                {t.demoModalBadge}
               </span>
               <h3 className="text-2xl font-black text-slate-950 mt-2">
-                Kulübünüzü SportsFly ile Güçlendirin
+                {t.demoModalTitle}
               </h3>
               <p className="text-xs text-slate-500 mt-1">
-                Seçilen Plan: <strong className="text-blue-600">{selectedPlan}</strong>
+                {t.demoModalPlanPrefix}: <strong className="text-blue-600">{selectedPlan}</strong>
               </p>
             </div>
 
             <div className="space-y-3 pt-2 text-xs">
               <div>
                 <label className="block text-slate-700 font-semibold mb-1">
-                  Kulüp veya Spor Okulu Adı *
+                  {t.demoModalClubLabel} *
                 </label>
                 <input
                   required
                   type="text"
-                  placeholder="Örn: Anadolu Yıldızları Basketbol Akademisi"
+                  placeholder={t.demoModalClubPlaceholder}
                   value={clubName}
                   onChange={(e) => setClubName(e.target.value)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
@@ -77,12 +79,12 @@ export const DemoModal: React.FC<DemoModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-slate-700 font-semibold mb-1">
-                    Yetkili Adı Soyadı *
+                    {t.demoModalNameLabel} *
                   </label>
                   <input
                     required
                     type="text"
-                    placeholder="Adınız Soyadınız"
+                    placeholder={t.demoModalNamePlaceholder}
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
@@ -91,12 +93,12 @@ export const DemoModal: React.FC<DemoModalProps> = ({
 
                 <div>
                   <label className="block text-slate-700 font-semibold mb-1">
-                    Telefon (WhatsApp) *
+                    {t.demoModalPhoneLabel} *
                   </label>
                   <input
                     required
                     type="tel"
-                    placeholder="+90 5XX XXX XX XX"
+                    placeholder={t.demoModalPhonePlaceholder}
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
@@ -106,32 +108,56 @@ export const DemoModal: React.FC<DemoModalProps> = ({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-700 font-semibold mb-1">Ana Branş</label>
+                  <label className="block text-slate-700 font-semibold mb-1">{t.demoModalBranchLabel}</label>
                   <select
                     value={branch}
                     onChange={(e) => setBranch(e.target.value)}
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none shadow-xs"
                   >
-                    <option value="Basketbol">Basketbol</option>
-                    <option value="Voleybol">Voleybol</option>
-                    <option value="Yüzme">Yüzme</option>
-                    <option value="Futbol">Futbol</option>
-                    <option value="Cimnastik">Cimnastik</option>
-                    <option value="Çoklu Branş">Çoklu Branş / Karma</option>
+                    {language === 'tr' ? (
+                      <>
+                        <option value="Basketbol">Basketbol</option>
+                        <option value="Voleybol">Voleybol</option>
+                        <option value="Yüzme">Yüzme</option>
+                        <option value="Futbol">Futbol</option>
+                        <option value="Cimnastik">Cimnastik</option>
+                        <option value="Çoklu Branş">Çoklu Branş / Karma</option>
+                      </>
+                    ) : (
+                      <>
+                        <option value="Basketball">Basketball</option>
+                        <option value="Volleyball">Volleyball</option>
+                        <option value="Swimming">Swimming</option>
+                        <option value="Football">Football / Soccer</option>
+                        <option value="Gymnastics">Gymnastics</option>
+                        <option value="Multi-Sport">Multi-Sport / Mixed</option>
+                      </>
+                    )}
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-slate-700 font-semibold mb-1">Sporcu Sayısı</label>
+                  <label className="block text-slate-700 font-semibold mb-1">{t.demoModalAthletesLabel}</label>
                   <select
                     value={studentEstimate}
                     onChange={(e) => setStudentEstimate(e.target.value)}
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none shadow-xs"
                   >
-                    <option value="50 - 100 Sporcu">50 - 100 Sporcu</option>
-                    <option value="100 - 300 Sporcu">100 - 300 Sporcu</option>
-                    <option value="300 - 600 Sporcu">300 - 600 Sporcu</option>
-                    <option value="600+ Sporcu">600+ Sporcu</option>
+                    {language === 'tr' ? (
+                      <>
+                        <option value="50 - 100 Sporcu">50 - 100 Sporcu</option>
+                        <option value="100 - 300 Sporcu">100 - 300 Sporcu</option>
+                        <option value="300 - 600 Sporcu">300 - 600 Sporcu</option>
+                        <option value="600+ Sporcu">600+ Sporcu</option>
+                      </>
+                    ) : (
+                      <>
+                        <option value="50 - 100 Athletes">50 - 100 Athletes</option>
+                        <option value="100 - 300 Athletes">100 - 300 Athletes</option>
+                        <option value="300 - 600 Athletes">300 - 600 Athletes</option>
+                        <option value="600+ Athletes">600+ Athletes</option>
+                      </>
+                    )}
                   </select>
                 </div>
               </div>
@@ -142,7 +168,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
                 type="submit"
                 className="w-full py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-blue-500/25 transition"
               >
-                Ücretsiz Denemeyi Hemen Başlat
+                {t.demoModalSubmit}
               </button>
             </div>
           </form>
@@ -152,10 +178,19 @@ export const DemoModal: React.FC<DemoModalProps> = ({
               <CheckCircle2 className="w-8 h-8" />
             </div>
 
-            <h3 className="text-2xl font-black text-slate-950">Kaydınız Başarıyla Alındı!</h3>
+            <h3 className="text-2xl font-black text-slate-950">{t.demoModalSuccessTitle}</h3>
             <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
-              Teşekkürler Sayın <strong>{fullName || 'Kulüp Yöneticimiz'}</strong>! {clubName ? `"${clubName}"` : 'Kulübünüz'} için SportsFly deneme hesabı hazırlanıyor.
-              Müşteri temsilcimiz WhatsApp üzerinden 15 dakika içinde aktivasyon bağlantınızı iletecektir.
+              {language === 'tr' ? (
+                <>
+                  Teşekkürler Sayın <strong>{fullName || 'Kulüp Yöneticimiz'}</strong>! {clubName ? `"${clubName}"` : 'Kulübünüz'} için SportsFly deneme hesabı hazırlanıyor.
+                  Müşteri temsilcimiz WhatsApp üzerinden 15 dakika içinde aktivasyon bağlantınızı iletecektir.
+                </>
+              ) : (
+                <>
+                  Thank you, <strong>{fullName || 'Club Director'}</strong>! Your SportsFly trial environment for {clubName ? `"${clubName}"` : 'your club'} is being provisioned.
+                  Our club specialist will message your activation link via WhatsApp within 15 minutes.
+                </>
+              )}
             </p>
 
             <div className="pt-2">
@@ -163,7 +198,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
                 onClick={onClose}
                 className="w-full py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase shadow-md transition"
               >
-                Harika, Teşekkürler (Kapat)
+                {t.demoModalClose}
               </button>
             </div>
           </div>

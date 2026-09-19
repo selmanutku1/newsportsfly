@@ -199,7 +199,7 @@ export const BRANCHES_DATA: ClubBranch[] = [
   { id: 'b-2', name: 'Voleybol Okulu', icon: 'Activity', studentCount: 142, coachCount: 5, monthlyRevenue: 198000 },
   { id: 'b-3', name: 'Yüzme İhtisas', icon: 'Waves', studentCount: 210, coachCount: 8, monthlyRevenue: 315000 },
   { id: 'b-4', name: 'Altyapı Futbol Okulu', icon: 'Target', studentCount: 165, coachCount: 6, monthlyRevenue: 230000 },
-  { id: 'b-5', name: 'Ritmik & Artistik Cimnastik', icon: 'Sparkles', studentCount: 98, coachCount: 4, monthlyRevenue: 156000 }
+  { id: 'b-5', name: 'Ritmik & Artistik Cimnastik', icon: 'Award', studentCount: 98, coachCount: 4, monthlyRevenue: 156000 }
 ];
 
 export const TESTIMONIALS = [

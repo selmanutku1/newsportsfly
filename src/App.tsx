@@ -6,11 +6,15 @@
 import React, { useState } from 'react';
 import { ActiveView, Athlete, ReportCard, RewardItem } from './types';
 import { INITIAL_ATHLETES, INITIAL_REPORT_CARDS, REWARD_CATALOG } from './data/mockData';
+import { LanguageProvider } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
+import { PaymentAutomationSection } from './components/PaymentAutomationSection';
 import { FeaturesSection } from './components/FeaturesSection';
 import { SporpuanSection } from './components/SporpuanSection';
 import { DigitalReportSection } from './components/DigitalReportSection';
+import { AllSportsBanner } from './components/AllSportsBanner';
+import { HumanSupportSection } from './components/HumanSupportSection';
 import { RoiCalculator } from './components/RoiCalculator';
 import { PricingSection } from './components/PricingSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
@@ -22,7 +26,7 @@ import { CoachPanel } from './components/panels/CoachPanel';
 import { AdminPanel } from './components/panels/AdminPanel';
 import { ReportCardModal } from './components/panels/ReportCardModal';
 
-export default function App() {
+function MainApp() {
   const [currentView, setCurrentView] = useState<ActiveView>('marketing');
   const [athletes, setAthletes] = useState<Athlete[]>(INITIAL_ATHLETES);
   const [reportCards, setReportCards] = useState<Record<string, ReportCard>>(INITIAL_REPORT_CARDS);
@@ -82,6 +86,8 @@ export default function App() {
               onOpenDemoModal={() => setDemoModalOpen(true)}
             />
 
+            <PaymentAutomationSection />
+
             <FeaturesSection />
 
             <SporpuanSection />
@@ -89,6 +95,12 @@ export default function App() {
             <DigitalReportSection
               onOpenSampleCard={() => setSampleCardModalOpen(true)}
             />
+
+            <AllSportsBanner
+              onOpenDemoModal={() => setDemoModalOpen(true)}
+            />
+
+            <HumanSupportSection />
 
             <RoiCalculator />
 
@@ -164,5 +176,13 @@ export default function App() {
         }}
       />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <MainApp />
+    </LanguageProvider>
   );
 }

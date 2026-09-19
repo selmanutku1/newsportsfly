@@ -6,18 +6,20 @@ import {
   Flame,
   Gift,
   Lock,
-  Sparkles,
   TrendingUp,
   Unlock,
   Zap
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { useLanguage } from '../context/LanguageContext';
 
 interface SporpuanSectionProps {
   onOpenParentStore?: () => void;
 }
 
 export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
+  const { language, t } = useLanguage();
+
   // Interactive Simulator State
   const [trainingCount, setTrainingCount] = useState<number>(10);
   const [punctualBonus, setPunctualBonus] = useState<boolean>(true);
@@ -40,6 +42,15 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
     });
   };
 
+  const getRewardTitle = (title: string) => {
+    if (language === 'tr') return title;
+    if (title.includes('Şapka')) return 'Club Cap & Wristband';
+    if (title.includes('Çanta')) return 'Sports Duffel Bag & Water Bottle';
+    if (title.includes('Topu')) return 'Professional Match Ball';
+    if (title.includes('Forması')) return 'Custom Name Club Jersey';
+    return title;
+  };
+
   return (
     <section id="sporpuan" className="py-24 bg-slate-50/70 border-t border-slate-200 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-16">
@@ -47,16 +58,16 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 uppercase tracking-wider inline-flex items-center gap-1.5">
             <Zap className="w-3.5 h-3.5 fill-current text-amber-500" />
-            Sporpuan™ Oyunlaştırma & Ödül Ekosistemi
+            {t.sporpuanBadge}
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-            Sporcuların Devamlılığı Puan Kazandırır, <br />
-            <span className="bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 bg-clip-text text-transparent">
-              Puanlar Hayalleri Süsleyen Ödüllere Dönüşür
+            {t.sporpuanTitle} <br />
+            <span className="text-amber-600">
+              {t.sporpuanTitleHighlight}
             </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Spor okullarında devamsızlık sorununu cezayla değil, çocukların bayıldığı oyunlaştırma mekanikleriyle çözüyoruz. Devam eden kazanır!
+            {t.sporpuanDesc}
           </p>
         </div>
 
@@ -67,11 +78,11 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div>
                 <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-amber-500" />
-                  <span>Canlı Sporpuan Hesaplama Simülatörü</span>
+                  <Zap className="w-5 h-5 text-amber-500 fill-amber-500" />
+                  <span>{t.sporpuanCalcTitle}</span>
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Sporcunun antrenman katılımına göre kazanacağı puanı canlı test edin.
+                  {t.sporpuanCalcDesc}
                 </p>
               </div>
             </div>
@@ -79,8 +90,8 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
             {/* Slider: Training count */}
             <div className="space-y-2">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-slate-700">Aylık Katılınan Antrenman Sayısı:</span>
-                <span className="text-amber-600 font-black text-sm">{trainingCount} Antrenman</span>
+                <span className="text-slate-700">{t.sporpuanAttendanceCount}</span>
+                <span className="text-amber-600 font-black text-sm">{trainingCount} {t.sporpuanTrainingUnit}</span>
               </div>
               <input
                 type="range"
@@ -91,16 +102,16 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-500"
               />
               <div className="flex justify-between text-[11px] text-slate-500 font-medium">
-                <span>1 Antrenman</span>
-                <span>8 Antrenman</span>
-                <span>16 Antrenman</span>
+                <span>1 {t.sporpuanTrainingUnit}</span>
+                <span>8 {t.sporpuanTrainingUnit}</span>
+                <span>16 {t.sporpuanTrainingUnit}</span>
               </div>
             </div>
 
             {/* Toggles */}
             <div className="space-y-3 pt-2">
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                Ek Devamlılık & Başarı Bonusları:
+                {t.sporpuanBonusHeading}
               </div>
 
               <label className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 border border-slate-200 cursor-pointer hover:border-amber-300 transition">
@@ -112,8 +123,8 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
                     className="w-4 h-4 rounded accent-amber-500"
                   />
                   <div>
-                    <div className="text-xs font-bold text-slate-900">Zamanında Varış Bonusu</div>
-                    <div className="text-[11px] text-slate-500">Her seans için +10 SP ek puan</div>
+                    <div className="text-xs font-bold text-slate-900">{t.sporpuanPunctualTitle}</div>
+                    <div className="text-[11px] text-slate-500">{t.sporpuanPunctualDesc}</div>
                   </div>
                 </div>
                 <span className="text-xs font-bold text-amber-600">+{trainingCount * 10} SP</span>
@@ -130,9 +141,9 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
                   <div>
                     <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
                       <Flame className="w-3.5 h-3.5 text-amber-500 fill-current" />
-                      <span>4'lü Kesintisiz Devam Serisi Bonusu</span>
+                      <span>{t.sporpuanStreakTitle}</span>
                     </div>
-                    <div className="text-[11px] text-slate-500">Her 4 antrenmanlık seriye +50 SP</div>
+                    <div className="text-[11px] text-slate-500">{t.sporpuanStreakDesc}</div>
                   </div>
                 </div>
                 <span className="text-xs font-bold text-amber-600">
@@ -149,8 +160,8 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
                     className="w-4 h-4 rounded accent-amber-500"
                   />
                   <div>
-                    <div className="text-xs font-bold text-slate-900">Koç Fair-Play & Disiplin Ödülü</div>
-                    <div className="text-[11px] text-slate-500">Antrenör takdir puanı</div>
+                    <div className="text-xs font-bold text-slate-900">{t.sporpuanFairPlayTitle}</div>
+                    <div className="text-[11px] text-slate-500">{t.sporpuanFairPlayDesc}</div>
                   </div>
                 </div>
                 <span className="text-xs font-bold text-emerald-600">+100 SP</span>
@@ -160,7 +171,7 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
             {/* Total Result Card */}
             <div className="p-5 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 flex items-center justify-between">
               <div>
-                <div className="text-xs font-bold text-amber-900/80 uppercase">Tahmini Kazanılan Puan</div>
+                <div className="text-xs font-bold text-amber-900/80 uppercase">{t.sporpuanEstimated}</div>
                 <div className="text-3xl sm:text-4xl font-black text-amber-600 mt-1 flex items-center gap-2">
                   <Zap className="w-7 h-7 fill-current" />
                   {totalCalculatedPoints} <span className="text-base text-amber-800 font-bold">SP</span>
@@ -171,7 +182,7 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
                 onClick={triggerConfetti}
                 className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold shadow-md transition"
               >
-                Kutla 🎉
+                {t.sporpuanCelebrate}
               </button>
             </div>
           </div>
@@ -181,10 +192,10 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 <Gift className="w-5 h-5 text-amber-500" />
-                <span>Bu Puanla Açılan Kulüp Ödülleri</span>
+                <span>{t.sporpuanRewardsTitle}</span>
               </h3>
               <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
-                Kulübe Özel Ödüller
+                {t.sporpuanCustomRewards}
               </span>
             </div>
 
@@ -204,13 +215,13 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
                   >
                     <img
                       src={reward.image}
-                      alt={reward.title}
+                      alt={getRewardTitle(reward.title)}
                       className="w-14 h-14 rounded-xl object-cover flex-shrink-0"
                     />
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
-                        <h4 className="font-bold text-sm text-slate-900 truncate">{reward.title}</h4>
+                        <h4 className="font-bold text-sm text-slate-900 truncate">{getRewardTitle(reward.title)}</h4>
                         <span
                           className={`text-xs font-black flex items-center gap-1 ${
                             isUnlocked ? 'text-amber-600' : 'text-slate-400'
@@ -236,11 +247,11 @@ export const SporpuanSection: React.FC<SporpuanSectionProps> = () => {
                         <span className="text-slate-500">
                           {isUnlocked ? (
                             <span className="text-emerald-700 font-bold flex items-center gap-1">
-                              <Unlock className="w-3 h-3 text-emerald-600" /> Ödül Açıldı!
+                              <Unlock className="w-3 h-3 text-emerald-600" /> {t.sporpuanRewardUnlocked}
                             </span>
                           ) : (
                             <span className="text-slate-500 flex items-center gap-1">
-                              <Lock className="w-3 h-3" /> {reward.pointsRequired - totalCalculatedPoints} SP daha gerekiyor
+                              <Lock className="w-3 h-3" /> {reward.pointsRequired - totalCalculatedPoints} {t.sporpuanRewardNeeded}
                             </span>
                           )}
                         </span>

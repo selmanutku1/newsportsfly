@@ -1,330 +1,477 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { ActiveView } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 import {
   Award,
   Calendar,
   CheckCircle2,
   ChevronRight,
+  CreditCard,
   Flame,
   Gift,
+  Hand,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Navigation,
+  Phone,
   Play,
+  Send,
   ShieldCheck,
-  Sparkles,
-  TrendingUp,
+  Trophy,
   UserCheck,
   Users,
-  Zap
+  Wallet,
+  Zap,
+  AlertCircle,
+  Bell,
+  Clock,
+  Car,
+  UserPlus
 } from 'lucide-react';
 
 interface HeroSectionProps {
-  onNavigateView?: (view: ActiveView) => void;
   onOpenDemoModal: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenDemoModal,
 }) => {
-  const [activeTabPreview, setActiveTabPreview] = useState<'parent' | 'coach' | 'report'>('parent');
+  const { language, t } = useLanguage();
+  const [activeLeaderTeam, setActiveLeaderTeam] = useState<string>('U14 BASKETBOL');
+  const [activeScreenTab, setActiveScreenTab] = useState<'leader' | 'parent' | 'report'>('leader');
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-white via-slate-50/50 to-white">
-      {/* Dynamic Subtle Background Gradients */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-gradient-to-tr from-blue-100/60 via-indigo-100/40 to-rose-100/30 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute top-1/3 right-10 w-96 h-96 bg-emerald-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+    <section className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-b from-white via-[#fafcfb] to-white">
+      {/* Background glow effects */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-tr from-emerald-100/40 via-blue-100/30 to-lime-100/30 rounded-full blur-3xl pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Top Announcement Pill */}
-        <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-xs font-semibold text-blue-700 shadow-sm">
-            <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-ping" />
-            <span className="font-bold text-slate-900">Yeni:</span>
-            <span>Sporcuların Devamlılığını Ödüllendiren Sporpuan™ Yayında</span>
-            <ChevronRight className="w-3.5 h-3.5 text-blue-600" />
+        <div className="flex justify-center mb-5 sm:mb-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-[11px] sm:text-xs font-semibold shadow-md max-w-full">
+            <span className="flex h-2 w-2 rounded-full bg-[#bbf246] animate-ping flex-shrink-0" />
+            <span className="font-bold text-[#bbf246] flex-shrink-0">{language === 'tr' ? 'YENİ:' : 'NEW:'}</span>
+            <span className="truncate">{language === 'tr' ? 'Devamlılığı Artıran Sporpuan & Otomatik Tahsilat' : 'Boost Retention with Sporpuan & Auto-Billing'}</span>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400 flex-shrink-0 hidden sm:inline-block" />
           </div>
         </div>
 
         {/* Hero Copywriting */}
-        <div className="text-center max-w-4xl mx-auto space-y-6">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-950 tracking-tight leading-[1.1]">
-            Spor Okulları İçin <br />
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-500 bg-clip-text text-transparent">
-              Yeni Nesil Yönetim
+        <div className="text-center max-w-4xl mx-auto space-y-5 sm:space-y-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-slate-950 tracking-tight leading-[1.12] sm:leading-[1.08]">
+            {t.heroTitle1} <br />
+            <span className="text-blue-600">
+              {t.heroTitleHighlight}
             </span>{' '}
-            & Sadakat Ekosistemi
+            {t.heroTitle2}
           </h1>
 
-          <p className="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed">
-            Kağıt yoklamaları ve dağınık WhatsApp gruplarını tarihe gömün. Devamlılığı ödüllendiren{' '}
-            <strong className="text-amber-600 font-bold">Sporpuan</strong>, yapay zeka destekli{' '}
-            <strong className="text-emerald-600 font-bold">Dijital Sporcu Karneleri</strong>, veli ve eğitmen panelleriyle spor kulübünüzü geleceğe taşıyın.
+          <p className="text-sm sm:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed px-2">
+            {t.heroSubtitle}
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 w-full max-w-md sm:max-w-none mx-auto">
             <button
               id="btn-hero-start-trial"
               onClick={onOpenDemoModal}
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm uppercase tracking-wider shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-7 py-3.5 sm:px-8 sm:py-4 rounded-2xl bg-[#bbf246] hover:bg-[#a3e635] text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-lime-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
             >
-              <span>14 Gün Ücretsiz Başla</span>
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition" />
+              <span>{t.heroCtaReserve}</span>
+              <ChevronRight className="w-4 h-4 stroke-[3]" />
             </button>
 
             <button
               id="btn-hero-explore-features"
               onClick={() => {
-                const el = document.getElementById('features');
+                const el = document.getElementById('automation');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm border border-slate-300 shadow-sm flex items-center justify-center gap-2.5 transition hover:border-slate-400"
+              className="w-full sm:w-auto px-6 py-3.5 sm:px-7 sm:py-4 rounded-2xl bg-white hover:bg-slate-50 text-slate-900 font-bold text-xs sm:text-sm border border-slate-200 shadow-sm flex items-center justify-center gap-2.5 transition hover:border-slate-300"
             >
               <Play className="w-4 h-4 text-blue-600 fill-blue-600" />
-              <span>Özellikleri Keşfet</span>
+              <span>{language === 'tr' ? 'Nasıl Çalışır?' : 'How It Works'}</span>
             </button>
           </div>
 
-          {/* Micro trust indicators */}
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500 font-medium">
+          {/* Micro trust points */}
+          <div className="pt-2 sm:pt-3 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] sm:text-xs text-slate-500 font-medium">
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              Kredi kartı gerekmez
+              {language === 'tr' ? 'Kredi kartı gerekmez' : 'No credit card required'}
             </span>
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              3 dakikada Excel'den aktarım
+              {language === 'tr' ? "3 dakikada Excel'den aktarım" : 'Import from Excel in 3 mins'}
             </span>
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              %100 Mobil uyumlu (PWA)
+              {language === 'tr' ? '%100 Mobil uyumlu web app' : '100% Mobile responsive'}
             </span>
           </div>
         </div>
 
-        {/* Interactive Device Preview Mockup */}
-        <div className="mt-14 relative max-w-5xl mx-auto">
-          {/* Elegant White Mockup Frame */}
-          <div className="p-2 sm:p-4 rounded-3xl bg-white border border-slate-200 shadow-2xl shadow-slate-300/50 relative">
-            {/* Top Device Bar & Panel Switcher */}
-            <div className="flex flex-wrap items-center justify-between gap-3 p-3 sm:p-4 bg-slate-50/90 rounded-2xl border border-slate-200 mb-4">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-rose-400" />
-                <span className="w-3 h-3 rounded-full bg-amber-400" />
-                <span className="w-3 h-3 rounded-full bg-emerald-400" />
-                <span className="text-xs text-slate-500 font-mono ml-2 hidden sm:inline">
-                  sportsfly.app/demo-preview
-                </span>
+        {/* ------------------------------------------------------------- */}
+        {/* SHOWCASE WITH CENTERED PHONE & 8 FLOATING NOTIFICATIONS (Image 1) */}
+        {/* ------------------------------------------------------------- */}
+        <div className="mt-16 relative">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-center">
+            
+            {/* LEFT FLOATING NOTIFICATION PILLS (4 items) */}
+            <div className="hidden lg:flex lg:col-span-3 flex-col gap-4">
+              
+              {/* 1. Hatırlatma gönderildi */}
+              <div className="p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/90 shadow-md shadow-slate-200/50 flex items-start gap-3 transform hover:-translate-y-1 transition duration-200">
+                <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center flex-shrink-0 text-purple-600">
+                  <Send className="w-5 h-5 -rotate-12" />
+                </div>
+                <div className="text-xs">
+                  <div className="font-extrabold text-slate-900 text-sm">{t.heroNotifReminderTitle}</div>
+                  <div className="text-slate-500 leading-snug mt-0.5">{t.heroNotifReminderDesc}</div>
+                </div>
               </div>
 
-              {/* View Switchers inside the mockup */}
-              <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200 text-xs font-semibold shadow-xs">
-                <button
-                  onClick={() => setActiveTabPreview('parent')}
-                  className={`px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 ${
-                    activeTabPreview === 'parent'
-                      ? 'bg-blue-600 text-white font-bold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <Users className="w-3.5 h-3.5" />
-                  <span>Veli Arayüzü</span>
-                </button>
-                <button
-                  onClick={() => setActiveTabPreview('coach')}
-                  className={`px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 ${
-                    activeTabPreview === 'coach'
-                      ? 'bg-blue-600 text-white font-bold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <UserCheck className="w-3.5 h-3.5" />
-                  <span>Eğitmen Yoklaması</span>
-                </button>
-                <button
-                  onClick={() => setActiveTabPreview('report')}
-                  className={`px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 ${
-                    activeTabPreview === 'report'
-                      ? 'bg-emerald-600 text-white font-bold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  <Award className="w-3.5 h-3.5" />
-                  <span>Dijital Karne</span>
-                </button>
+              {/* 2. 14 kişiden 12'si kayıt oldu */}
+              <div className="p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/90 shadow-md shadow-slate-200/50 flex items-start gap-3 transform hover:-translate-y-1 transition duration-200">
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center flex-shrink-0 text-emerald-600">
+                  <CheckCircle2 className="w-5 h-5" />
+                </div>
+                <div className="text-xs">
+                  <div className="font-extrabold text-slate-900 text-sm">{t.heroNotifRegisteredTitle}</div>
+                  <div className="text-slate-500 leading-snug mt-0.5">{t.heroNotifRegisteredDesc}</div>
+                </div>
               </div>
 
-              <span className="text-[11px] font-semibold text-slate-500 bg-white px-2.5 py-1 rounded-lg border border-slate-200 hidden sm:inline shadow-2xs">
-                Arayüz Önizlemesi
-              </span>
+              {/* 3. Antrenman güncellemesi */}
+              <div className="p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/90 shadow-md shadow-slate-200/50 flex items-start gap-3 transform hover:-translate-y-1 transition duration-200">
+                <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center flex-shrink-0 text-amber-600">
+                  <AlertCircle className="w-5 h-5" />
+                </div>
+                <div className="text-xs">
+                  <div className="font-extrabold text-slate-900 text-sm">{t.heroNotifRestTitle}</div>
+                  <div className="text-slate-500 leading-snug mt-0.5">{t.heroNotifRestDesc}</div>
+                </div>
+              </div>
+
+              {/* 4. Takım fonu */}
+              <div className="p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/90 shadow-md shadow-slate-200/50 flex items-start gap-3 transform hover:-translate-y-1 transition duration-200">
+                <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center flex-shrink-0 text-slate-700">
+                  <Wallet className="w-5 h-5" />
+                </div>
+                <div className="text-xs">
+                  <div className="font-extrabold text-slate-900 text-sm">{t.heroNotifFundTitle}</div>
+                  <div className="text-slate-500 leading-snug mt-0.5">{t.heroNotifFundDesc}</div>
+                </div>
+              </div>
+
             </div>
 
-            {/* Mockup Screen Content */}
-            <div className="p-4 sm:p-6 bg-slate-50/70 rounded-2xl border border-slate-200 min-h-[360px] flex flex-col justify-between">
-              {activeTabPreview === 'parent' && (
-                <div className="space-y-4 animate-in fade-in duration-300">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 border border-blue-200 flex items-center justify-center font-bold">
-                        AY
+            {/* CENTER PHONE SHOWCASE (matching Image 1) */}
+            <div className="lg:col-span-6 flex justify-center">
+              <div className="w-full max-w-[375px] sm:max-w-[400px]">
+                
+                {/* Phone Outer Chassis */}
+                <div className="rounded-[48px] bg-slate-950 p-4 shadow-2xl shadow-slate-400/40 border-4 border-slate-800 relative">
+                  
+                  {/* Dynamic Island */}
+                  <div className="absolute top-7 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-full z-30 flex items-center justify-between px-3">
+                    <span className="w-2.5 h-2.5 rounded-full bg-slate-900" />
+                    <span className="w-2 h-2 rounded-full bg-blue-900/60" />
+                  </div>
+
+                  {/* Phone Screen Container */}
+                  <div className="rounded-[36px] overflow-hidden bg-slate-100 text-slate-900 relative">
+                    
+                    {/* Top Navy Header Banner */}
+                    <div className="bg-[#102a43] text-white pt-9 pb-5 px-5">
+                      <div className="flex items-center justify-between text-[11px] text-slate-300 mb-2">
+                        <span>09:41</span>
+                        <div className="flex items-center gap-1">
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
+                          <span className="text-[10px] font-mono">5G</span>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-bold text-slate-900 text-base">Arda Yılmaz • U12 Basketbol</h4>
-                        <p className="text-xs text-emerald-600 font-semibold flex items-center gap-1">
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                          Devamlılık Oranı: %96 (14 Günlük Seri)
-                        </p>
+
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="text-2xl font-black text-white tracking-tight">
+                            {activeLeaderTeam}
+                          </div>
+                        </div>
+
+                        <button
+                          onClick={() => setActiveLeaderTeam(activeLeaderTeam.startsWith('U14') ? (language === 'tr' ? 'U12 FUTBOL' : 'U12 FOOTBALL') : (language === 'tr' ? 'U14 BASKETBOL' : 'U14 BASKETBALL'))}
+                          className="px-3 py-1.5 rounded-xl bg-slate-700/80 hover:bg-slate-700 text-xs font-semibold text-white transition border border-slate-600/60"
+                        >
+                          {t.heroPhoneChangeView}
+                        </button>
                       </div>
                     </div>
 
-                    <div className="text-right">
-                      <div className="text-[10px] uppercase text-slate-500 font-bold">Mevcut Sporpuan</div>
-                      <div className="text-2xl font-black text-amber-500 flex items-center gap-1 justify-end">
-                        <Zap className="w-5 h-5 fill-current" />
-                        1.420 SP
+                    {/* Notification Alert Cards inside Phone */}
+                    <div className="px-4 -mt-2 space-y-2">
+                      
+                      {/* Alert 1 */}
+                      <div className="p-3 bg-white rounded-2xl border border-slate-200/90 shadow-xs flex items-center justify-between text-xs">
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center font-bold">
+                            ✕
+                          </div>
+                          <div>
+                            <div className="text-[10px] text-slate-400 font-bold uppercase">{t.heroPhoneImportant}</div>
+                            <div className="font-extrabold text-slate-900">{t.heroPhoneUnloggedActivities}</div>
+                          </div>
+                        </div>
+                        <ChevronRight className="w-4 h-4 text-slate-400" />
                       </div>
+
+                      {/* Alert 2 */}
+                      <div className="p-3 bg-white rounded-2xl border border-slate-200/90 shadow-xs flex items-center justify-between text-xs">
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
+                            <Bell className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-[10px] text-slate-400 font-bold uppercase">{t.heroPhoneFee}</div>
+                            <div className="font-extrabold text-slate-900">{t.heroPhoneMissingSchedule}</div>
+                          </div>
+                        </div>
+                        <ChevronRight className="w-4 h-4 text-slate-400" />
+                      </div>
+
                     </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs">
-                      <span className="text-[11px] text-slate-500 block">Sıradaki Antrenman</span>
-                      <span className="font-bold text-slate-900 text-sm mt-0.5 block">Yarın 17:30 - Atatürk Spor Salonu</span>
-                      <span className="text-[10px] text-blue-600 font-semibold">+25 Sporpuan Kazanacak</span>
+                    {/* Upcoming Activities Calendar Timeline */}
+                    <div className="px-4 py-4 space-y-3">
+                      <div className="text-sm font-extrabold text-slate-900 tracking-tight">
+                        {t.heroPhoneUpcoming}
+                      </div>
+
+                      {/* Event 1 */}
+                      <div className="flex items-start gap-3">
+                        <div className="text-center w-14 flex-shrink-0 pt-1">
+                          <div className="text-[9px] font-bold text-blue-600 uppercase">{t.heroPhoneMon}</div>
+                          <div className="text-xl font-black text-slate-900 leading-none">6</div>
+                          <div className="text-[9px] text-slate-400 font-medium">{t.heroPhoneAug}</div>
+                        </div>
+
+                        <div className="flex-1 p-3 bg-white rounded-2xl border border-slate-200/90 shadow-xs space-y-2">
+                          <div className="flex items-center justify-between">
+                            <div className="font-extrabold text-slate-900 text-xs">{t.heroPhoneTraining}</div>
+                            <span className="text-[10px] font-bold text-blue-600 flex items-center gap-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                              {t.heroPhoneInProgress}
+                            </span>
+                          </div>
+                          <div className="text-[11px] text-slate-500 flex items-center gap-1">
+                            <span>17:00 - 18:30</span>
+                            <span>|</span>
+                            <span>{t.heroPhoneMainHall}</span>
+                          </div>
+                          <div className="flex items-center gap-1.5 pt-1">
+                            <span className="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-[10px]">
+                              {t.heroPhoneAttending}
+                            </span>
+                            <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-bold">
+                              🛡️ {activeLeaderTeam}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Event 2 */}
+                      <div className="flex items-start gap-3">
+                        <div className="text-center w-14 flex-shrink-0 pt-1">
+                          <div className="text-[9px] font-bold text-blue-600 uppercase">{t.heroPhoneWed}</div>
+                          <div className="text-xl font-black text-slate-900 leading-none">8</div>
+                          <div className="text-[9px] text-slate-400 font-medium">{t.heroPhoneAug}</div>
+                        </div>
+
+                        <div className="flex-1 p-3 bg-white rounded-2xl border border-slate-200/90 shadow-xs space-y-2">
+                          <div className="font-extrabold text-slate-900 text-xs">{t.heroPhoneTraining}</div>
+                          <div className="text-[11px] text-slate-500">
+                            17:00 - 18:30 | {t.heroPhoneMainHall}
+                          </div>
+                          <div className="flex items-center gap-1.5 pt-1">
+                            <span className="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-[10px]">
+                              {t.heroPhoneAttending}
+                            </span>
+                            <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-bold">
+                              🛡️ {activeLeaderTeam}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Event 3 */}
+                      <div className="flex items-start gap-3">
+                        <div className="text-center w-14 flex-shrink-0 pt-1">
+                          <div className="text-[9px] font-bold text-blue-600 uppercase">{t.heroPhoneThu}</div>
+                          <div className="text-xl font-black text-slate-900 leading-none">9</div>
+                          <div className="text-[9px] text-slate-400 font-medium">{t.heroPhoneAug}</div>
+                        </div>
+
+                        <div className="flex-1 p-3 bg-white rounded-2xl border border-slate-200/90 shadow-xs space-y-2">
+                          <div className="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
+                            <span>{t.heroPhoneAwayMatchTitle}</span>
+                          </div>
+                          <div className="text-[11px] text-slate-500">
+                            17:00 - 18:30 | {t.heroPhoneAwayPitch}
+                          </div>
+                          
+                          <div className="p-2 bg-slate-50 rounded-xl text-[10px] text-slate-700 flex items-center gap-1.5 border border-slate-200/60">
+                            <span>✋</span>
+                            <span className="italic">{t.heroPhoneAwayMatchRequest}</span>
+                          </div>
+
+                          <div className="flex items-center gap-1.5 pt-1">
+                            <span className="px-2 py-0.5 rounded-md bg-blue-900 text-white font-bold text-[10px]">
+                              Emir
+                            </span>
+                            <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-bold">
+                              🛡️ {activeLeaderTeam}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs">
-                      <span className="text-[11px] text-slate-500 block">Ödül Talebi</span>
-                      <span className="font-bold text-amber-600 text-sm mt-0.5 block">SportsFly Kulüp Suluğu</span>
-                      <span className="text-[10px] text-slate-500">450 SP ile Alındı • Hazırlanıyor</span>
-                    </div>
-
-                    <div className="p-3.5 rounded-xl bg-white border border-emerald-300 shadow-xs">
-                      <span className="text-[11px] text-slate-500 block">Dönem Sonu Karnesi</span>
-                      <span className="font-bold text-emerald-600 text-sm mt-0.5 block">92 / 100 Genel Puan</span>
-                      <span className="text-[10px] text-slate-500">Koç Notu: "Harika gelişim!"</span>
-                    </div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-600 flex items-center justify-between shadow-xs">
-                    <span>Veliler tek tıkla aidat ödeyebilir, antrenman yoklamasını anlık takip eder.</span>
-                    <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg">
-                      Anlık Bildirim
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {activeTabPreview === 'coach' && (
-                <div className="space-y-4 animate-in fade-in duration-300">
-                  <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                    <div>
-                      <h4 className="font-bold text-slate-900 text-base">Hızlı Seans Yoklaması (Basketbol U12)</h4>
-                      <p className="text-xs text-slate-500">Tek tıkla tüm sporculara Sporpuan yükleyin ve velilere bildirim iletin.</p>
-                    </div>
-                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 border border-blue-200">
-                      15 Saniyede Tamamla
-                    </span>
-                  </div>
-
-                  <div className="space-y-2">
-                    {[
-                      { name: 'Arda Yılmaz', status: 'Geldi (+25 SP)', streak: '14 Seri', color: 'text-emerald-700 bg-emerald-100' },
-                      { name: 'Elif Sare Kaya', status: 'Geldi (+25 SP)', streak: '8 Seri', color: 'text-emerald-700 bg-emerald-100' },
-                      { name: 'Kaan Demir', status: 'Geldi (+25 SP)', streak: '21 Seri', color: 'text-emerald-700 bg-emerald-100' },
-                    ].map((row, i) => (
-                      <div key={i} className="p-2.5 rounded-xl bg-white border border-slate-200 flex items-center justify-between text-xs shadow-xs">
-                        <span className="font-bold text-slate-900">{row.name}</span>
-                        <span className="text-slate-500 text-[11px]">{row.streak}</span>
-                        <span className={`px-2.5 py-0.5 rounded-md font-bold ${row.color}`}>
-                          {row.status}
+                    {/* Bottom Navigation Tab Bar on Phone */}
+                    <div className="bg-white border-t border-slate-200 py-2.5 px-4 flex items-center justify-around text-slate-500 text-[10px]">
+                      <div className="flex flex-col items-center gap-0.5 text-blue-600 font-bold">
+                        <span className="text-sm">🏠</span>
+                        <span>{t.heroPhoneHome}</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-0.5 relative">
+                        <span className="text-sm">🗓️</span>
+                        <span>{t.heroPhoneEvents}</span>
+                        <span className="absolute -top-1 right-2 w-4 h-4 rounded-full bg-rose-500 text-white text-[9px] flex items-center justify-center font-bold">
+                          8
                         </span>
                       </div>
-                    ))}
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-600 flex items-center justify-between shadow-xs">
-                    <span>Eğitmenler telefon veya tabletten antrenman başında saniyeler içinde yoklama alır.</span>
-                    <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg">
-                      Mobil Uyumlu
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {activeTabPreview === 'report' && (
-                <div className="space-y-4 animate-in fade-in duration-300">
-                  <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                    <div>
-                      <h4 className="font-bold text-slate-900 text-base">Dijital Sporcu Gelişim Karnesi</h4>
-                      <p className="text-xs text-slate-500">Teknik, fiziksel, taktik ve mental gelişim radar analizi</p>
+                      <div className="flex flex-col items-center gap-0.5">
+                        <span className="text-sm">✉️</span>
+                        <span>{t.heroPhoneInbox}</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-0.5">
+                        <span className="text-sm">🐖</span>
+                        <span>{t.heroPhoneTeamFund}</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-0.5">
+                        <span className="text-sm">☰</span>
+                        <span>{t.heroPhoneMore}</span>
+                      </div>
                     </div>
-                    <span className="text-sm font-black text-emerald-700 bg-emerald-100 px-3 py-1 rounded-xl">
-                      92 / 100
-                    </span>
-                  </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-                    <div className="p-2.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
-                      <span className="text-slate-500 block text-[10px]">Top Hâkimiyeti</span>
-                      <span className="font-black text-blue-600 text-sm">94/100</span>
-                    </div>
-                    <div className="p-2.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
-                      <span className="text-slate-500 block text-[10px]">Şut İsabeti</span>
-                      <span className="font-black text-blue-600 text-sm">88/100</span>
-                    </div>
-                    <div className="p-2.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
-                      <span className="text-slate-500 block text-[10px]">Ayak Çabukluğu</span>
-                      <span className="font-black text-blue-600 text-sm">90/100</span>
-                    </div>
-                    <div className="p-2.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
-                      <span className="text-slate-500 block text-[10px]">Fair-Play</span>
-                      <span className="font-black text-emerald-600 text-sm">96/100</span>
-                    </div>
-                  </div>
-
-                  <p className="text-xs text-slate-700 italic bg-white p-3 rounded-xl border border-slate-200 shadow-xs">
-                    "Arda bu dönem pas dağıtımında ve dış şut stabilitesinde müthiş sıçrama yaptı. Sporpuan serisini sürdürmesi motivasyonunu zirvede tuttu."
-                  </p>
-
-                  <div className="flex items-center justify-between text-xs text-slate-600">
-                    <span>WhatsApp ve SMS ile veliye tek tıkla otomatik gönderilir.</span>
-                    <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">
-                      Otomatik Paylaşım
-                    </span>
                   </div>
                 </div>
-              )}
+
+              </div>
+            </div>
+
+            {/* RIGHT FLOATING NOTIFICATION PILLS (4 items) */}
+            <div className="hidden lg:flex lg:col-span-3 flex-col gap-4">
+              
+              {/* 5. Araç paylaşımı */}
+              <div className="p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/90 shadow-md shadow-slate-200/50 flex items-start gap-3 transform hover:-translate-y-1 transition duration-200">
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center flex-shrink-0 text-emerald-600">
+                  <Car className="w-5 h-5" />
+                </div>
+                <div className="text-xs">
+                  <div className="font-extrabold text-slate-900 text-sm">{t.heroNotifCarpoolTitle}</div>
+                  <div className="text-slate-500 leading-snug mt-0.5">{t.heroNotifCarpoolDesc}</div>
+                </div>
+              </div>
+
+              {/* 6. Katılım onayı */}
+              <div className="p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/90 shadow-md shadow-slate-200/50 flex items-start gap-3 transform hover:-translate-y-1 transition duration-200">
+                <div className="w-10 h-10 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center flex-shrink-0 text-teal-600">
+                  <UserPlus className="w-5 h-5" />
+                </div>
+                <div className="text-xs">
+                  <div className="font-extrabold text-slate-900 text-sm">{t.heroNotifAcceptedTitle}</div>
+                  <div className="text-slate-500 leading-snug mt-0.5">{t.heroNotifAcceptedDesc}</div>
+                </div>
+              </div>
+
+              {/* 7. Yeni eğitim */}
+              <div className="p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/90 shadow-md shadow-slate-200/50 flex items-start gap-3 transform hover:-translate-y-1 transition duration-200">
+                <div className="w-10 h-10 rounded-xl bg-pink-50 border border-pink-200 flex items-center justify-center flex-shrink-0 text-pink-600">
+                  <Calendar className="w-5 h-5" />
+                </div>
+                <div className="text-xs">
+                  <div className="font-extrabold text-slate-900 text-sm">{t.heroNotifTrainingTitle}</div>
+                  <div className="text-slate-500 leading-snug mt-0.5">{t.heroNotifTrainingDesc}</div>
+                </div>
+              </div>
+
+              {/* 8. Üyelik ücreti ödendi */}
+              <div className="p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/90 shadow-md shadow-slate-200/50 flex items-start gap-3 transform hover:-translate-y-1 transition duration-200">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center flex-shrink-0 text-blue-600">
+                  <CreditCard className="w-5 h-5" />
+                </div>
+                <div className="text-xs">
+                  <div className="font-extrabold text-slate-900 text-sm">{t.heroNotifDuesPaidTitle}</div>
+                  <div className="text-slate-500 leading-snug mt-0.5">{t.heroNotifDuesPaidDesc}</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Mobile responsive floating cards list (visible only on small screens) */}
+          <div className="lg:hidden mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="p-3 bg-white rounded-2xl border border-slate-200 flex items-center gap-3">
+              <span className="text-lg">🟣</span>
+              <div className="text-xs">
+                <span className="font-bold block text-slate-900">{t.heroNotifReminderTitle}</span>
+                <span className="text-slate-500">{t.heroNotifReminderDesc}</span>
+              </div>
+            </div>
+            <div className="p-3 bg-white rounded-2xl border border-slate-200 flex items-center gap-3">
+              <span className="text-lg">💳</span>
+              <div className="text-xs">
+                <span className="font-bold block text-slate-900">{t.heroNotifDuesPaidTitle}</span>
+                <span className="text-slate-500">{t.heroNotifDuesPaidDesc}</span>
+              </div>
             </div>
           </div>
+
         </div>
 
-        {/* Live Social Proof Numbers Bar */}
+        {/* Live Metrics Proof Bar */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-slate-200">
           <div className="text-center space-y-1">
             <div className="text-3xl sm:text-4xl font-black text-slate-950">140+</div>
             <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-              Aktif Spor Kulübü & Akademi
+              {t.heroStatClubs}
             </div>
           </div>
           <div className="text-center space-y-1">
             <div className="text-3xl sm:text-4xl font-black text-blue-600">%94.6</div>
             <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-              Ortalama Antrenman Devamlılığı
+              {language === 'tr' ? 'Ortalama Antrenman Devamlılığı' : 'Average Workout Attendance'}
             </div>
           </div>
           <div className="text-center space-y-1">
-            <div className="text-3xl sm:text-4xl font-black text-amber-500">1.8 Milyon+</div>
+            <div className="text-3xl sm:text-4xl font-black text-[#84cc16]">1.8 M+</div>
             <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-              Kazanılan Sporpuan™
+              {language === 'tr' ? 'Kazanılan Sporpuan' : 'Earned Sporpuan'}
             </div>
           </div>
           <div className="text-center space-y-1">
             <div className="text-3xl sm:text-4xl font-black text-emerald-600">%98.8</div>
             <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-              Veli Memnuniyet Oranı
+              {t.heroStatCollection}
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

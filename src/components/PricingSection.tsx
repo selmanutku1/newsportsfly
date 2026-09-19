@@ -1,13 +1,77 @@
 import React, { useState } from 'react';
 import { PRICING_PLANS } from '../data/mockData';
-import { Check, Sparkles, Zap } from 'lucide-react';
+import { Check, Zap } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface PricingSectionProps {
   onSelectPlan: (planName: string) => void;
 }
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) => {
+  const { language, t } = useLanguage();
   const [annualBilling, setAnnualBilling] = useState<boolean>(true);
+
+  const englishPlans = [
+    {
+      id: 'starter',
+      name: 'Starter Club',
+      desc: 'Ideal for single-branch, growing boutique sports academies and studios.',
+      monthlyPrice: 1490,
+      annualPrice: 1190,
+      badge: null,
+      popular: false,
+      features: [
+        'Up to 100 Active Athletes',
+        'Mobile-Optimized Fast Roll Call',
+        'Core Parent Notifications (SMS & Email)',
+        'Digital Athlete Report Card (2 Terms/Year)',
+        'Standard Sporpuan Loyalty Integration',
+        '2 Coach & 1 Administrator Account',
+        'Email Technical Support'
+      ],
+      cta: 'Start 14-Day Free Trial'
+    },
+    {
+      id: 'growth',
+      name: 'Club & Academy',
+      desc: 'For clubs looking to incentivize attendance, professionalize parent communication, and run multi-branch operations.',
+      monthlyPrice: 2890,
+      annualPrice: 2290,
+      badge: 'Most Popular',
+      popular: true,
+      features: [
+        'Up to 350 Active Athletes',
+        'Automated Attendance & WhatsApp Alerts',
+        'Unlimited Digital Report Cards & QR Verification',
+        'Customizable Sporpuan Gamification & Reward Store',
+        'Direct POS & Virtual Credit Card Collection',
+        'Up to 10 Coach & Admin Accounts',
+        'Priority Phone & WhatsApp Support'
+      ],
+      cta: 'Start 14-Day Free Trial'
+    },
+    {
+      id: 'elite',
+      name: 'Elite & Multi-Branch',
+      desc: 'High-volume federations, nationwide sports schools, and multi-franchise academies.',
+      monthlyPrice: 4990,
+      annualPrice: 3990,
+      badge: 'Enterprise',
+      popular: false,
+      features: [
+        'Unlimited Athletes & Locations',
+        'Dedicated Account Manager & Training',
+        'Full Accounting & E-Invoice Integration',
+        'Custom Branded Mobile Portal for Parents',
+        'Custom Development & Data Migration',
+        '99.9% Uptime Service Level Agreement (SLA)',
+        '24/7 Dedicated Support Hotline'
+      ],
+      cta: 'Contact Sales'
+    }
+  ];
+
+  const plans = language === 'tr' ? PRICING_PLANS : englishPlans;
 
   return (
     <section id="pricing" className="py-24 bg-white border-t border-slate-200 relative">
@@ -15,16 +79,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider">
-            Şeffaf Fiyatlandırma
+            {t.pricingBadge}
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-            Kulübünüzün Büyüklüğüne Uygun, <br />
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-500 bg-clip-text text-transparent">
-              Sürpriz Maliyetsiz Planlar
+            {t.pricingTitle} <br />
+            <span className="text-blue-600">
+              {t.pricingTitleHighlight}
             </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            14 gün boyunca kredi kartsız, tüm özellikleriyle ücretsiz deneyin.
+            {t.pricingDesc}
           </p>
 
           {/* Billing Frequency Toggle */}
@@ -37,7 +101,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) 
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Aylık Ödeme
+              {t.pricingMonthly}
             </button>
             <button
               onClick={() => setAnnualBilling(true)}
@@ -47,9 +111,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) 
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <span>Yıllık Ödeme</span>
+              <span>{t.pricingAnnual}</span>
               <span className={`px-1.5 py-0.5 rounded-md text-[10px] font-black ${annualBilling ? 'bg-amber-400 text-slate-950' : 'bg-amber-100 text-amber-800'}`}>
-                %20 İndirim
+                {t.pricingDiscountBadge}
               </span>
             </button>
           </div>
@@ -57,7 +121,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) 
 
         {/* Pricing Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          {PRICING_PLANS.map((plan) => {
+          {plans.map((plan) => {
             const price = annualBilling ? plan.annualPrice : plan.monthlyPrice;
             const isPopular = plan.popular;
 
@@ -85,15 +149,17 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) 
                   {/* Price display */}
                   <div className="flex items-baseline gap-1">
                     <span className="text-4xl sm:text-5xl font-black text-slate-950">
-                      {price.toLocaleString('tr-TR')}
+                      {price.toLocaleString(language === 'tr' ? 'tr-TR' : 'en-US')}
                     </span>
-                    <span className="text-slate-500 text-sm font-semibold">₺ / ay</span>
+                    <span className="text-slate-500 text-sm font-semibold">
+                      {language === 'tr' ? '₺ / ay' : '₺ / mo'}
+                    </span>
                   </div>
 
                   {/* Features list */}
                   <div className="space-y-3 pt-4 border-t border-slate-100">
                     <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                      Dahil Olan Özellikler:
+                      {t.pricingIncludedFeatures}
                     </div>
                     {plan.features.map((feat, idx) => (
                       <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">

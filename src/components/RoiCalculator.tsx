@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Calculator, CheckCircle2, DollarSign, Sparkles, TrendingUp, Users } from 'lucide-react';
+import { Calculator, CheckCircle2, DollarSign, TrendingUp, Users } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const RoiCalculator: React.FC = () => {
+  const { language, t } = useLanguage();
   const [studentCount, setStudentCount] = useState<number>(250);
   const [monthlyFee, setMonthlyFee] = useState<number>(2200);
 
@@ -15,6 +17,9 @@ export const RoiCalculator: React.FC = () => {
   // Coach & Admin hours saved per week:
   const hoursSavedWeekly = Math.round(studentCount * 0.06);
 
+  const studentUnit = language === 'tr' ? 'Öğrenci' : 'Students';
+  const hoursUnit = language === 'tr' ? 'Saat' : 'Hours';
+
   return (
     <section id="roi-calc" className="py-24 bg-slate-50/70 border-t border-slate-200 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-16">
@@ -22,16 +27,16 @@ export const RoiCalculator: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider inline-flex items-center gap-1.5">
             <Calculator className="w-3.5 h-3.5 text-blue-600" />
-            Kulüp Tasarruf & Kazanç Hesaplayıcısı
+            {t.roiBadge}
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-            SportsFly Kulübünüze Ne Kadar <br />
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-600 bg-clip-text text-transparent">
-              Zaman ve Para Kazandırır?
+            {t.roiTitle} <br />
+            <span className="text-blue-600">
+              {t.roiTitleHighlight}
             </span>
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Sporcu sayınızı ve aidatınızı belirleyin; otomasyon ve Sporpuan sadakat sisteminin kulübünüze katacağı net değeri anında hesaplayın.
+            {t.roiDesc}
           </p>
         </div>
 
@@ -41,8 +46,8 @@ export const RoiCalculator: React.FC = () => {
             {/* Input 1: Student Count */}
             <div className="space-y-3">
               <div className="flex items-center justify-between text-sm font-semibold">
-                <span className="text-slate-700">Aktif Sporcu Sayısı:</span>
-                <span className="text-blue-600 font-black text-lg">{studentCount} Öğrenci</span>
+                <span className="text-slate-700">{t.roiAthletesLabel}:</span>
+                <span className="text-blue-600 font-black text-lg">{studentCount} {studentUnit}</span>
               </div>
               <input
                 type="range"
@@ -56,16 +61,16 @@ export const RoiCalculator: React.FC = () => {
               <div className="flex justify-between text-xs text-slate-500 font-medium">
                 <span>50</span>
                 <span>500</span>
-                <span>1.000+ Sporcu</span>
+                <span>1.000+ {studentUnit}</span>
               </div>
             </div>
 
             {/* Input 2: Monthly Fee */}
             <div className="space-y-3">
               <div className="flex items-center justify-between text-sm font-semibold">
-                <span className="text-slate-700">Ortalama Aylık Aidat Tutarı:</span>
+                <span className="text-slate-700">{t.roiDuesLabel}:</span>
                 <span className="text-emerald-600 font-black text-lg">
-                  {monthlyFee.toLocaleString('tr-TR')} ₺
+                  {monthlyFee.toLocaleString(language === 'tr' ? 'tr-TR' : 'en-US')} ₺
                 </span>
               </div>
               <input
@@ -88,27 +93,27 @@ export const RoiCalculator: React.FC = () => {
           {/* Results Display */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-100">
             <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-              <span className="text-xs text-slate-500 font-medium">Kurtarılan Yıllık Aidat Kaçağı</span>
+              <span className="text-xs text-slate-500 font-medium">{t.roiAnnualSaved}</span>
               <div className="text-2xl sm:text-3xl font-black text-emerald-600">
-                {annualRecovered.toLocaleString('tr-TR')} ₺
+                {annualRecovered.toLocaleString(language === 'tr' ? 'tr-TR' : 'en-US')} ₺
               </div>
-              <p className="text-[11px] text-slate-500">Otomatik WhatsApp & POS tahsilatıyla</p>
+              <p className="text-[11px] text-slate-500">{t.roiAnnualSavedNote}</p>
             </div>
 
             <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-              <span className="text-xs text-slate-500 font-medium">Haftalık Kazanılan Zaman</span>
+              <span className="text-xs text-slate-500 font-medium">{t.roiTimeSaved}</span>
               <div className="text-2xl sm:text-3xl font-black text-blue-600">
-                ~{hoursSavedWeekly} Saat
+                ~{hoursSavedWeekly} {hoursUnit}
               </div>
-              <p className="text-[11px] text-slate-500">Yoklama ve raporlama iş yükünden</p>
+              <p className="text-[11px] text-slate-500">{t.roiTimeSavedNote}</p>
             </div>
 
             <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-              <span className="text-xs text-slate-500 font-medium">Tahmini Devam Artışı</span>
+              <span className="text-xs text-slate-500 font-medium">{t.roiAttendanceIncrease}</span>
               <div className="text-2xl sm:text-3xl font-black text-amber-500">
                 +%24
               </div>
-              <p className="text-[11px] text-slate-500">Sporpuan sadakat çarpanıyla</p>
+              <p className="text-[11px] text-slate-500">{t.roiAttendanceIncreaseNote}</p>
             </div>
           </div>
         </div>
