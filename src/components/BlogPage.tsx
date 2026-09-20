@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { ActiveView, BlogPost } from '../types';
-import { BLOG_POSTS, BLOG_SEO_CONFIG, AUTHOR_SELMAN } from '../data/blogData';
+import { BLOG_POSTS, BLOG_SEO_CONFIG } from '../data/blogData';
 import { useLanguage } from '../context/LanguageContext';
 import { SportsFlyLogo } from './SportsFlyLogo';
 import { setPageSeo, buildArticleJsonLd, buildBlogHubJsonLd } from '../utils/seoHelper';
@@ -22,7 +22,6 @@ import {
   PhoneCall,
   Link2,
   Linkedin,
-  UserCheck,
 } from 'lucide-react';
 
 interface BlogPageProps {
@@ -413,27 +412,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({
                 )}
               </section>
             ))}
-          </div>
-
-          {/* Full Author Profile Card */}
-          <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-6 shadow-xs flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <AuthorAvatar
-              src={AUTHOR_SELMAN.avatar}
-              alt={AUTHOR_SELMAN.name}
-              className="w-14 h-14 sm:w-16 sm:h-16 border-2 border-slate-200 shadow-sm flex-shrink-0"
-            />
-            <div className="space-y-1.5 flex-1 min-w-0">
-              <div className="flex flex-wrap items-center gap-2">
-                <h3 className="text-sm sm:text-base font-bold text-slate-900">{AUTHOR_SELMAN.name}</h3>
-                <span className="text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded border border-slate-200 flex items-center gap-1">
-                  <UserCheck className="w-3 h-3 text-blue-600" />
-                  <span>{AUTHOR_SELMAN.role[language]}</span>
-                </span>
-              </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                {AUTHOR_SELMAN.bio[language]}
-              </p>
-            </div>
           </div>
 
           {/* In-article CTA Box */}

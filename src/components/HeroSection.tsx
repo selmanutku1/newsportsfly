@@ -173,21 +173,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="lg:col-span-6 flex justify-center">
               <div className="w-full max-w-[375px] sm:max-w-[400px]">
                 
-                {/* Phone Outer Chassis */}
-                <div className="rounded-[48px] bg-slate-950 p-4 shadow-2xl shadow-slate-400/40 border-4 border-slate-800 relative">
+                {/* Phone Outer Chassis - Sleek Minimalist Mockup */}
+                <div className="rounded-[40px] bg-slate-900 p-2 sm:p-2.5 shadow-2xl shadow-slate-900/25 border border-slate-800 ring-1 ring-white/10 relative">
                   
-                  {/* Dynamic Island */}
-                  <div className="absolute top-7 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-full z-30 flex items-center justify-between px-3">
-                    <span className="w-2.5 h-2.5 rounded-full bg-slate-900" />
-                    <span className="w-2 h-2 rounded-full bg-blue-900/60" />
+                  {/* Minimal Dynamic Island / Camera */}
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-black rounded-full z-30 flex items-center justify-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-800" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-950/80" />
                   </div>
 
                   {/* Phone Screen Container */}
-                  <div className="rounded-[36px] overflow-hidden bg-slate-100 text-slate-900 relative">
+                  <div className="rounded-[32px] overflow-hidden bg-slate-100 text-slate-900 relative">
                     
                     {/* Top Navy Header Banner */}
-                    <div className="bg-[#102a43] text-white pt-9 pb-5 px-5">
-                      <div className="flex items-center justify-between text-[11px] text-slate-300 mb-2">
+                    <div className="bg-[#102a43] text-white pt-7 pb-4 px-4 sm:px-5">
+                      <div className="flex items-center justify-between text-[11px] text-slate-300 mb-1.5">
                         <span>09:41</span>
                         <div className="flex items-center gap-1">
                           <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
@@ -196,18 +196,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <div>
-                          <div className="text-2xl font-black text-white tracking-tight">
-                            {activeLeaderTeam}
-                          </div>
+                        <div className="text-xl sm:text-2xl font-black text-white tracking-tight">
+                          {activeLeaderTeam}
                         </div>
-
-                        <button
-                          onClick={() => setActiveLeaderTeam(activeLeaderTeam.startsWith('U14') ? (language === 'tr' ? 'U12 FUTBOL' : 'U12 FOOTBALL') : (language === 'tr' ? 'U14 BASKETBOL' : 'U14 BASKETBALL'))}
-                          className="px-3 py-1.5 rounded-xl bg-slate-700/80 hover:bg-slate-700 text-xs font-semibold text-white transition border border-slate-600/60"
-                        >
-                          {t.heroPhoneChangeView}
-                        </button>
                       </div>
                     </div>
 

@@ -1,15 +1,13 @@
 import React from 'react';
-import { Award, CheckCircle2, Download, QrCode, Send, Share2, TrendingUp, Users } from 'lucide-react';
+import { Award } from 'lucide-react';
 import { INITIAL_REPORT_CARDS, INITIAL_ATHLETES } from '../data/mockData';
 import { useLanguage } from '../context/LanguageContext';
 
 interface DigitalReportSectionProps {
-  onOpenSampleCard: () => void;
+  onOpenSampleCard?: () => void;
 }
 
-export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
-  onOpenSampleCard,
-}) => {
+export const DigitalReportSection: React.FC<DigitalReportSectionProps> = () => {
   const { language, t } = useLanguage();
   const sampleCard = INITIAL_REPORT_CARDS['ath-1'];
   const sampleAthlete = INITIAL_ATHLETES[0];
@@ -93,16 +91,8 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-slate-700 flex items-center justify-between">
+            <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-slate-700">
               <span>{t.reportSurveyFact}</span>
-              <button
-                id="btn-trigger-sample-card"
-                onClick={onOpenSampleCard}
-                className="text-xs font-bold text-emerald-700 hover:underline flex items-center gap-1 flex-shrink-0"
-              >
-                <span>{t.reportInspectSample}</span>
-                <span>→</span>
-              </button>
             </div>
           </div>
 
@@ -156,16 +146,6 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = ({
               <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 text-xs text-slate-700 italic">
                 "{coachNoteText}"
               </div>
-
-              {/* Interactive Modal Opener Button */}
-              <button
-                id="btn-open-interactive-report"
-                onClick={onOpenSampleCard}
-                className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-emerald-600/20 transition flex items-center justify-center gap-2"
-              >
-                <Award className="w-4 h-4" />
-                <span>{t.reportViewSampleBtn}</span>
-              </button>
             </div>
           </div>
         </div>

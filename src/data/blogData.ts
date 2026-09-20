@@ -119,10 +119,6 @@ export const AUTHOR_SELMAN = {
   },
   avatar: '/selman-utku.png',
   fallbackAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
-  bio: {
-    tr: 'SportsFly kurucusu & spor okulu yönetim danışmanı. Spor kulüplerinde aidat otomasyonu, sporcu devamlılık oyunlaştırması ve 360° dijital karne sistemleri üzerine rehberler yayınlamaktadır.',
-    en: 'Founder of SportsFly & sports academy consultant researching tuition automation, athlete retention gamification, and 360° digital scorecard architectures.',
-  },
   linkedin: 'https://www.linkedin.com/company/sportsfly',
 };
 
