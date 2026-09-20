@@ -117,8 +117,8 @@ export const AUTHOR_SELMAN = {
     tr: 'Spor Teknolojileri & Akademi Yönetimi',
     en: 'Sports Tech & Academy Operations',
   },
-  avatar: '/selman-utku.png',
-  fallbackAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+  avatar: '/selman-utku.svg',
+  fallbackAvatar: '/selman-utku.svg',
   linkedin: 'https://www.linkedin.com/company/sportsfly',
 };
 

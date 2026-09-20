@@ -29,15 +29,14 @@ interface BlogPageProps {
   onOpenDemoModal: () => void;
 }
 
-// Resilient Author Avatar with automatic fallback
+// Resilient Author Avatar
 const AuthorAvatar: React.FC<{
   src?: string;
   alt?: string;
   className?: string;
 }> = ({ src, alt = 'Selman UTKU', className = 'w-10 h-10' }) => {
-  const [imgSrc, setImgSrc] = useState<string>(src || '/selman-utku.png');
-  const fallback =
-    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80';
+  const [imgSrc, setImgSrc] = useState<string>(src || '/selman-utku.svg');
+  const fallback = '/selman-utku.svg';
 
   useEffect(() => {
     if (src) setImgSrc(src);
