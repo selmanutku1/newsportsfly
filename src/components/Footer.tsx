@@ -10,6 +10,7 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({
+  onNavigateView,
   onOpenDemoModal,
 }) => {
   const { language, t } = useLanguage();
@@ -90,6 +91,15 @@ export const Footer: React.FC<FooterProps> = ({
                   className="hover:text-blue-600 transition text-left"
                 >
                   {t.footerModFinance}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigateView('blog')}
+                  className="text-blue-600 font-semibold hover:underline transition text-left flex items-center gap-1"
+                >
+                  <span>{language === 'tr' ? 'Blog & Rehberler' : 'Blog & Guides'}</span>
+                  <span className="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full font-bold">Yeni</span>
                 </button>
               </li>
             </ul>

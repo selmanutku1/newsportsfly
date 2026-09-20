@@ -1,0 +1,8 @@
+# SportsFly Robots.txt
+User-agent: *
+Allow: /
+
+# Disallow internal API or preview parameters if any
+Disallow: /api/
+
+Sitemap: https://sportsfly.app/sitemap.xml

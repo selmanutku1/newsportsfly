@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage -->
+  <url>
+    <loc>https://sportsfly.app/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://sportsfly.app/?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sportsfly.app/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sportsfly.app/"/>
+  </url>
+  
+  <!-- Main Platform Modules -->
+  <url>
+    <loc>https://sportsfly.app/#automation</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sportsfly.app/#features</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sportsfly.app/#sporpuan</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sportsfly.app/#digital-report</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sportsfly.app/#pricing</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sportsfly.app/#faqs</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog Main Index -->
+  <url>
+    <loc>https://sportsfly.app/#blog</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://sportsfly.app/#blog?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sportsfly.app/#blog?lang=en"/>
+  </url>
+
+  <!-- Blog Article 1: Aidat Tahsilatı -->
+  <url>
+    <loc>https://sportsfly.app/#blog-spor-okullarinda-aidat-tahsilatinda-yuzde-98-basari</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Article 2: Sporpuan Oyunlaştırma -->
+  <url>
+    <loc>https://sportsfly.app/#blog-sporcu-devamliligini-artiran-oyunlastirma-sporpuan</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Article 3: Dijital Sporcu Karnesi -->
+  <url>
+    <loc>https://sportsfly.app/#blog-geleneksel-yoklamadan-360-dijital-sporcu-karnesine</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Article 4: Antrenör Verimliliği -->
+  <url>
+    <loc>https://sportsfly.app/#blog-antrenorlerin-haftalik-14-saatini-kurtarmak-modern-yonetim</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Article 5: 14+ Spor Branşı Yazılımı -->
+  <url>
+    <loc>https://sportsfly.app/#blog-basketboldan-yuzmeye-farkli-branslar-icin-spor-yazilimi</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Article 6: Veli İletişimi & Güven -->
+  <url>
+    <loc>https://sportsfly.app/#blog-yeni-nesil-veli-iletisimi-sikayetleri-sifirlayan-5-strateji</loc>
+    <lastmod>2026-02-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

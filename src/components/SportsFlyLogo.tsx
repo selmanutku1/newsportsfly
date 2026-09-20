@@ -5,6 +5,7 @@ interface LogoProps {
   showText?: boolean;
   lightMode?: boolean;
   iconClassName?: string;
+  textClassName?: string;
   className?: string;
 }
 
@@ -93,6 +94,7 @@ export const SportsFlyLogo: React.FC<LogoProps> = ({
   showText = true,
   lightMode = true,
   iconClassName,
+  textClassName,
   className = '',
 }) => {
   const iconSizes = {
@@ -103,7 +105,7 @@ export const SportsFlyLogo: React.FC<LogoProps> = ({
   };
 
   const textSizes = {
-    sm: 'text-xl',
+    sm: 'text-lg sm:text-xl',
     md: 'text-2xl',
     lg: 'text-2xl sm:text-3xl',
     xl: 'text-3xl sm:text-4xl',
@@ -199,7 +201,7 @@ export const SportsFlyLogo: React.FC<LogoProps> = ({
 
       {showText && (
         <div className="flex items-center">
-          <div className={`tracking-tight flex items-baseline leading-none ${textSizes[size]}`}>
+          <div className={`tracking-tight flex items-baseline leading-none ${textClassName || textSizes[size]}`}>
             <span className={`font-black tracking-tight ${lightMode ? 'text-slate-900' : 'text-white'}`}>
               Sports
             </span>

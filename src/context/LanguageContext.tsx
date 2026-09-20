@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 export type Language = 'tr' | 'en';
 
@@ -1506,6 +1506,53 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>('tr');
+
+  useEffect(() => {
+    // Update HTML lang attribute
+    document.documentElement.lang = language;
+
+    if (language === 'en') {
+      document.title = 'SportsFly - Sports Academy & Club Management Platform';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute(
+          'content',
+          'Next-generation sports academy management software. Attendance-based Sporpuan reward system, automated tuition collection, and digital report cards.'
+        );
+      }
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) {
+        ogTitle.setAttribute('content', 'SportsFly - Sports Academy & Club Management Platform');
+      }
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) {
+        ogDesc.setAttribute(
+          'content',
+          'Next-generation sports academy management software. Attendance-based Sporpuan reward system, automated tuition collection, and digital report cards.'
+        );
+      }
+    } else {
+      document.title = 'SportsFly - Spor Okulları ve Akademi Yönetim Sistemi';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute(
+          'content',
+          'Spor okulları ve kulüpler için yeni nesil yönetim yazılımı. Eğitmen ve veli panelleri, devamlılık odaklı Sporpuan ödül sistemi ve otomatik dijital sporcu karneleri.'
+        );
+      }
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) {
+        ogTitle.setAttribute('content', 'SportsFly - Spor Okulları ve Akademi Yönetim Sistemi');
+      }
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) {
+        ogDesc.setAttribute(
+          'content',
+          'Spor okulları ve kulüpler için yeni nesil yönetim yazılımı. Eğitmen ve veli panelleri, devamlılık odaklı Sporpuan ödül sistemi ve otomatik dijital sporcu karneleri.'
+        );
+      }
+    }
+  }, [language]);
 
   return (
     <LanguageContext.Provider

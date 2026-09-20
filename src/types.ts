@@ -1,4 +1,74 @@
-export type ActiveView = 'marketing' | 'parent_panel' | 'coach_panel' | 'admin_panel';
+export type ActiveView = 'marketing' | 'parent_panel' | 'coach_panel' | 'admin_panel' | 'blog';
+
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: {
+    tr: string;
+    en: string;
+  };
+  excerpt: {
+    tr: string;
+    en: string;
+  };
+  category: 'otomasyon' | 'sporpuan' | 'karne' | 'yonetim' | 'iletisim';
+  categoryLabel: {
+    tr: string;
+    en: string;
+  };
+  readTime: {
+    tr: string;
+    en: string;
+  };
+  publishedAt: string;
+  author: {
+    name: string;
+    role: {
+      tr: string;
+      en: string;
+    };
+    avatar: string;
+  };
+  coverBadge: string;
+  tags: string[];
+  featured?: boolean;
+  seo?: {
+    metaTitle: {
+      tr: string;
+      en: string;
+    };
+    metaDescription: {
+      tr: string;
+      en: string;
+    };
+    focusKeywords: string[];
+    canonicalSlug: string;
+  };
+  content: {
+    tr: {
+      lead: string;
+      sections: {
+        heading: string;
+        body: string;
+        quote?: string;
+        bulletPoints?: string[];
+      }[];
+      keyTakeaways: string[];
+      callToActionText: string;
+    };
+    en: {
+      lead: string;
+      sections: {
+        heading: string;
+        body: string;
+        quote?: string;
+        bulletPoints?: string[];
+      }[];
+      keyTakeaways: string[];
+      callToActionText: string;
+    };
+  };
+}
 
 export interface Athlete {
   id: string;
