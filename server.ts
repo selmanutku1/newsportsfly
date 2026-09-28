@@ -32,6 +32,11 @@ const TARGET_EMAIL = 'selmanutkumarmara@gmail.com';
 const DEFAULT_PANEL_WEBHOOK = 'https://webapp.sportsfly.com.tr/api/demo-requests';
 
 // Express API route for Demo Reservation Requests
+// Google Search Console Verification File
+app.get('/google31cb5e99cc74c68a.html', (_req, res) => {
+  res.status(200).type('text/html').send('google-site-verification: google31cb5e99cc74c68a.html');
+});
+
 app.post('/api/demo-request', async (req, res) => {
   try {
     const { fullName, clubName, phone, email, branch, studentEstimate, selectedPlan, customWebhookUrl } = req.body;

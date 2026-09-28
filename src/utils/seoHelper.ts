@@ -22,7 +22,7 @@ export function setPageSeo({
   keywords,
   canonicalUrl,
   ogType = 'website',
-  ogImage = 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200&h=630&auto=format&fit=crop&q=80',
+  ogImage = 'https://www.sportsfly.com.tr/og-image.png?v=2',
   publishedTime,
   authorName = 'SportsFly Teknolojileri',
   jsonLd,
@@ -106,8 +106,8 @@ export function setPageSeo({
  */
 export function buildArticleJsonLd(post: BlogPost, language: 'tr' | 'en') {
   const currentLang = language === 'tr' ? 'tr' : 'en';
-  const postUrl = `https://sportsfly.app/#blog-${post.slug}`;
-  const canonicalUrl = `https://sportsfly.app/blog/${post.slug}`;
+  const postUrl = `https://www.sportsfly.com.tr/#blog-${post.slug}`;
+  const canonicalUrl = `https://www.sportsfly.com.tr/#blog-${post.slug}`;
   const title = post.seo?.metaTitle[currentLang] || post.title[currentLang];
   const description = post.seo?.metaDescription[currentLang] || post.excerpt[currentLang];
 
@@ -118,8 +118,8 @@ export function buildArticleJsonLd(post: BlogPost, language: 'tr' | 'en') {
     headline: title,
     description: description,
     image: [
-      post.author.avatar,
-      'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200&auto=format&fit=crop&q=80',
+      'https://www.sportsfly.com.tr/og-image.png?v=2',
+      'https://www.sportsfly.com.tr/logo.png?v=2',
     ],
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
@@ -138,16 +138,16 @@ export function buildArticleJsonLd(post: BlogPost, language: 'tr' | 'en') {
       worksFor: {
         '@type': 'Organization',
         name: 'SportsFly',
-        url: 'https://sportsfly.app',
+        url: 'https://www.sportsfly.com.tr',
       },
     },
     publisher: {
       '@type': 'Organization',
       name: 'SportsFly',
-      url: 'https://sportsfly.app',
+      url: 'https://www.sportsfly.com.tr',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://sportsfly.app/favicon.ico',
+        url: 'https://www.sportsfly.com.tr/logo.png?v=2',
       },
     },
     isAccessibleForFree: 'True',
@@ -164,22 +164,22 @@ export function buildBlogHubJsonLd(posts: BlogPost[], language: 'tr' | 'en') {
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    '@id': 'https://sportsfly.app/blog#collection',
+    '@id': 'https://www.sportsfly.com.tr/#blog',
     name: hubConfig.title[currentLang],
     description: hubConfig.description[currentLang],
-    url: 'https://sportsfly.app/#blog',
+    url: 'https://www.sportsfly.com.tr/#blog',
     inLanguage: currentLang === 'tr' ? 'tr-TR' : 'en-US',
     publisher: {
       '@type': 'Organization',
       name: 'SportsFly',
-      url: 'https://sportsfly.app',
+      url: 'https://www.sportsfly.com.tr',
     },
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: posts.map((post, index) => ({
         '@type': 'ListItem',
         position: index + 1,
-        url: `https://sportsfly.app/#blog-${post.slug}`,
+        url: `https://www.sportsfly.com.tr/#blog-${post.slug}`,
         name: post.title[currentLang],
       })),
     },
@@ -190,13 +190,13 @@ export function buildBlogHubJsonLd(posts: BlogPost[], language: 'tr' | 'en') {
           '@type': 'ListItem',
           position: 1,
           name: currentLang === 'tr' ? 'Ana Sayfa' : 'Home',
-          item: 'https://sportsfly.app/',
+          item: 'https://www.sportsfly.com.tr/',
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: currentLang === 'tr' ? 'Akademi Blogu' : 'Academy Blog',
-          item: 'https://sportsfly.app/#blog',
+          item: 'https://www.sportsfly.com.tr/#blog',
         },
       ],
     },

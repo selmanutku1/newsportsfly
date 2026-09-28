@@ -24,6 +24,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { ActiveView } from '../types';
 import { SportsFlyLogo } from './SportsFlyLogo';
 import { TrFlag, EnFlag } from './Navbar';
+import { setPageSeo } from '../utils/seoHelper';
 import heroShowcaseImg from '../assets/images/sporpuan_hero_showcase_1790200431577.jpg';
 
 interface SporpuanSystemPageProps {
@@ -39,6 +40,19 @@ export const SporpuanSystemPage: React.FC<SporpuanSystemPageProps> = ({
 }) => {
   const { language, setLanguage } = useLanguage();
   const isTr = language === 'tr';
+
+  React.useEffect(() => {
+    setPageSeo({
+      title: isTr
+        ? 'Sporpuan Ödül & Sadakat Sistemi | SportsFly Spor Okulu Yönetimi'
+        : 'Sporpuan Reward & Loyalty System | SportsFly Academy Management',
+      description: isTr
+        ? 'Spor okullarında antrenman devamlılığını %42 artıran Sporpuan oyunlaştırma, dijital karne entegrasyonu ve ödül kataloğu sistemi.'
+        : 'Boost athlete attendance by 42% with Sporpuan gamification, digital report card integration, and academy reward catalogs.',
+      canonicalUrl: 'https://www.sportsfly.com.tr/#sporpuan-sistemi',
+      keywords: ['sporpuan', 'spor okulu ödül sistemi', 'sporcu devamlılığı', 'dijital sporcu karnesi', 'sportsfly'],
+    });
+  }, [isTr]);
 
   // Interactive Simulator State
   const [selectedSport, setSelectedSport] = useState<'basket' | 'football' | 'voley' | 'swim'>('basket');

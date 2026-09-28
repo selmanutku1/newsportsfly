@@ -70,15 +70,16 @@ function MainApp() {
           ? 'SportsFly - Spor Okulları ve Akademi Yönetim Sistemi'
           : 'SportsFly - Sports Academy & Club Management System',
         description: isTr
-          ? 'Spor okulları ve kulüpler için yeni nesil yönetim yazılımı. Eğitmen ve veli panelleri, devamlılık odaklı Sporpuan ödül sistemi ve otomatik sporcu karneleri.'
-          : 'Next-generation sports academy management platform. Coach & parent portals, Sporpuan gamification retention system, and 360° digital athlete report cards.',
-        canonicalUrl: 'https://sportsfly.app/',
+          ? 'Spor okulları ve kulüpler için yeni nesil yönetim yazılımı. Otomatik aidat tahsilatı, eğitmen ve veli panelleri, Sporpuan ödül sistemi ve dijital sporcu karneleri.'
+          : 'Next-generation sports academy management platform. Automated tuition billing, coach & parent portals, Sporpuan retention rewards, and 360° digital athlete report cards.',
+        canonicalUrl: 'https://www.sportsfly.com.tr/',
         keywords: [
           'spor okulu yönetim sistemi',
           'spor okulu otomasyonu',
           'aidat tahsilat sistemi',
           'sporpuan',
-          'sporcu karnesi',
+          'dijital sporcu karnesi',
+          'sportsfly',
         ],
       });
     }

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512" fill="none">
+  <rect width="64" height="64" rx="16" fill="#ffffff"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" stroke="#e2e8f0" stroke-width="1.5"/>
+  <defs>
+    <linearGradient id="sf-blue-top" x1="32" y1="28" x2="52" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#29B6F6" />
+      <stop offset="60%" stop-color="#0288D1" />
+      <stop offset="100%" stop-color="#01579B" />
+    </linearGradient>
+    <linearGradient id="sf-blue-base" x1="30" y1="44" x2="48" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0277BD" />
+      <stop offset="50%" stop-color="#1565C0" />
+      <stop offset="100%" stop-color="#0D47A1" />
+    </linearGradient>
+    <linearGradient id="sf-pink-top" x1="52" y1="44" x2="70" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF4081" />
+      <stop offset="60%" stop-color="#E91E63" />
+      <stop offset="100%" stop-color="#C2185B" />
+    </linearGradient>
+    <linearGradient id="sf-orange-mid" x1="54" y1="52" x2="68" y2="68" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF5252" />
+      <stop offset="60%" stop-color="#FF7043" />
+      <stop offset="100%" stop-color="#FF9800" />
+    </linearGradient>
+    <linearGradient id="sf-yellow-tail" x1="50" y1="62" x2="66" y2="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFA726" />
+      <stop offset="100%" stop-color="#FFCA28" />
+    </linearGradient>
+  </defs>
+  <g transform="translate(32, 32) scale(1.15) translate(-50.5, -52)">
+    <path d="M 50.5 29 C 43 32, 33 42, 32 50 C 37 43, 43 38, 50.5 29 Z" fill="#4FC3F7" opacity="0.95" />
+    <path d="M 50.5 29 C 42 36, 32 46, 32 50 C 32 56, 38 58, 43 58 C 45 54, 47.5 49, 50.5 29 Z" fill="url(#sf-blue-top)" />
+    <path d="M 32 50 C 32 56, 37.5 58, 43 58 C 47.5 58, 48 55, 47 52 C 43 47.5, 38 48, 32 50 Z" fill="url(#sf-blue-base)" />
+    <path d="M 54 46 C 58 45.5, 66 47, 68 53 C 69 57, 65 60.5, 60 62.5 C 57 58, 55 52, 54 46 Z" fill="url(#sf-pink-top)" />
+    <path d="M 68 53 C 70 58, 67 63, 62 67 C 58 64, 57 59, 60 62.5 C 65 60.5, 69 57, 68 53 Z" fill="url(#sf-orange-mid)" />
+    <path d="M 62 67 C 58 71, 52 75, 50.5 75 C 55 70, 58 65, 62 67 Z" fill="url(#sf-yellow-tail)" />
+    <path d="M 60 62.5 C 56 65, 52 70, 50.5 75 C 55 74, 60 70, 64 65.5 C 66 63, 64 61, 60 62.5 Z" fill="url(#sf-orange-mid)" opacity="0.9" />
+  </g>
+</svg>

@@ -50,7 +50,7 @@ export const BLOG_SEO_CONFIG: BlogSeoConfig = {
       'sports academy management',
       'tuition collection software',
     ],
-    canonicalUrl: 'https://sportsfly.app/blog',
+    canonicalUrl: 'https://www.sportsfly.com.tr/#blog',
   },
   categories: {
     otomasyon: {

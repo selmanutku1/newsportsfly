@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
+  <defs>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="50%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#eff6ff" />
+    </linearGradient>
+    <radialGradient id="blue-glow" cx="600" cy="240" r="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#2563eb" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="sf-og-blue-top" x1="32" y1="28" x2="52" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#29B6F6" />
+      <stop offset="60%" stop-color="#0288D1" />
+      <stop offset="100%" stop-color="#01579B" />
+    </linearGradient>
+    <linearGradient id="sf-og-blue-base" x1="30" y1="44" x2="48" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0277BD" />
+      <stop offset="50%" stop-color="#1565C0" />
+      <stop offset="100%" stop-color="#0D47A1" />
+    </linearGradient>
+    <linearGradient id="sf-og-pink-top" x1="52" y1="44" x2="70" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF4081" />
+      <stop offset="60%" stop-color="#E91E63" />
+      <stop offset="100%" stop-color="#C2185B" />
+    </linearGradient>
+    <linearGradient id="sf-og-orange-mid" x1="54" y1="52" x2="68" y2="68" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF5252" />
+      <stop offset="60%" stop-color="#FF7043" />
+      <stop offset="100%" stop-color="#FF9800" />
+    </linearGradient>
+    <linearGradient id="sf-og-yellow-tail" x1="50" y1="62" x2="66" y2="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFA726" />
+      <stop offset="100%" stop-color="#FFCA28" />
+    </linearGradient>
+    <linearGradient id="top-accent-bar" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="50%" stop-color="#0288d1" />
+      <stop offset="100%" stop-color="#ff4081" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main Background -->
+  <rect width="1200" height="630" fill="url(#bg-grad)" />
+  <circle cx="600" cy="240" r="360" fill="url(#blue-glow)" />
+
+  <!-- Subtle Corporate Grid Ring inside Center Safe Zone -->
+  <circle cx="600" cy="210" r="145" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="6 6" />
+  <circle cx="600" cy="210" r="210" stroke="#f1f5f9" stroke-width="1.5" />
+
+  <!-- Top Brand Accent Line -->
+  <rect x="0" y="0" width="1200" height="10" fill="url(#top-accent-bar)" />
+
+  <!-- Elevated White Emblem Container (Centered at x=600, y=205) -->
+  <rect x="502" y="111" width="196" height="196" rx="46" fill="#e2e8f0" opacity="0.45" />
+  <rect x="504" y="107" width="192" height="192" rx="44" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
+
+  <!-- SportsFly Emblem Scaled & Centered at (600, 203) -->
+  <g transform="translate(600, 203) scale(3.1) translate(-50.5, -52)">
+    <path d="M 50.5 29 C 43 32, 33 42, 32 50 C 37 43, 43 38, 50.5 29 Z" fill="#4FC3F7" opacity="0.95" />
+    <path d="M 50.5 29 C 42 36, 32 46, 32 50 C 32 56, 38 58, 43 58 C 45 54, 47.5 49, 50.5 29 Z" fill="url(#sf-og-blue-top)" />
+    <path d="M 32 50 C 32 56, 37.5 58, 43 58 C 47.5 58, 48 55, 47 52 C 43 47.5, 38 48, 32 50 Z" fill="url(#sf-og-blue-base)" />
+    <path d="M 54 46 C 58 45.5, 66 47, 68 53 C 69 57, 65 60.5, 60 62.5 C 57 58, 55 52, 54 46 Z" fill="url(#sf-og-pink-top)" />
+    <path d="M 68 53 C 70 58, 67 63, 62 67 C 58 64, 57 59, 60 62.5 C 65 60.5, 69 57, 68 53 Z" fill="url(#sf-og-orange-mid)" />
+    <path d="M 62 67 C 58 71, 52 75, 50.5 75 C 55 70, 58 65, 62 67 Z" fill="url(#sf-og-yellow-tail)" />
+    <path d="M 60 62.5 C 56 65, 52 70, 50.5 75 C 55 74, 60 70, 64 65.5 C 66 63, 64 61, 60 62.5 Z" fill="url(#sf-og-orange-mid)" opacity="0.9" />
+  </g>
+
+  <!-- SportsFly Wordmark (Centered inside 630x630 safe zone) -->
+  <text x="600" y="398" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="84" letter-spacing="-2">
+    <tspan fill="#0f172a">Sports</tspan><tspan fill="#2563eb">Fly</tspan>
+  </text>
+
+  <!-- Subtitle (Fits inside 630x630 safe zone) -->
+  <text x="600" y="454" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="22" fill="#475569" letter-spacing="1.5">
+    SPOR OKULLARI VE AKADEMİ YÖNETİM SİSTEMİ
+  </text>
+
+  <!-- Domain Pill Badge -->
+  <rect x="445" y="492" width="310" height="48" rx="24" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" />
+  <text x="600" y="523" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="21" fill="#2563eb">
+    www.sportsfly.com.tr
+  </text>
+</svg>

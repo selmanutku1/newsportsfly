@@ -95,7 +95,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
     if (activeArticle) {
       const articleTitle = activeArticle.seo?.metaTitle[language] || activeArticle.title[language];
       const articleDesc = activeArticle.seo?.metaDescription[language] || activeArticle.excerpt[language];
-      const canonicalUrl = `https://sportsfly.app/blog/${activeArticle.slug}`;
+      const canonicalUrl = `https://www.sportsfly.com.tr/#blog-${activeArticle.slug}`;
 
       if (window.location.hash !== `#blog-${activeArticle.slug}`) {
         window.history.replaceState(null, '', `#blog-${activeArticle.slug}`);
@@ -180,7 +180,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   };
 
   const handleCopyCanonical = (slug: string) => {
-    const canonical = `https://sportsfly.app/blog/${slug}`;
+    const canonical = `https://www.sportsfly.com.tr/#blog-${slug}`;
     navigator.clipboard.writeText(canonical);
     setCopiedCanonical(true);
     setTimeout(() => setCopiedCanonical(false), 2500);
@@ -199,7 +199,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   };
 
   const handleShareLinkedIn = (slug: string) => {
-    const url = encodeURIComponent(`https://sportsfly.app/#blog-${slug}`);
+    const url = encodeURIComponent(`https://www.sportsfly.com.tr/#blog-${slug}`);
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
   };
 
@@ -207,7 +207,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   if (activeArticle) {
     const articleData = activeArticle.content[language];
     const relatedArticles = BLOG_POSTS.filter((p) => p.id !== activeArticle.id).slice(0, 3);
-    const canonicalUrl = `https://sportsfly.app/blog/${activeArticle.slug}`;
+    const canonicalUrl = `https://www.sportsfly.com.tr/#blog-${activeArticle.slug}`;
 
     return (
       <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col selection:bg-blue-100">
