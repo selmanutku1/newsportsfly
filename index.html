@@ -20,11 +20,11 @@
     <link rel="alternate" hreflang="en" href="https://sportsfly.app/?lang=en" />
     <link rel="alternate" hreflang="x-default" href="https://sportsfly.app/" />
 
-    <!-- Geographic & Regional SEO (Geotagging) -->
+    <!-- Geographic & Regional SEO (Geotagging & Local SEO) -->
     <meta name="geo.region" content="TR-34" />
-    <meta name="geo.placename" content="İstanbul, Türkiye" />
-    <meta name="geo.position" content="41.0082;28.9784" />
-    <meta name="ICBM" content="41.0082, 28.9784" />
+    <meta name="geo.placename" content="Suadiye, Kadıköy, İstanbul, Türkiye" />
+    <meta name="geo.position" content="40.9612;29.0838" />
+    <meta name="ICBM" content="40.9612, 29.0838" />
     <meta name="country" content="Turkey" />
     <meta name="distribution" content="global" />
     <meta name="rating" content="General" />
@@ -100,22 +100,40 @@
           ]
         },
         {
-          "@type": "SportsOrganization",
+          "@type": ["LocalBusiness", "SportsOrganization"],
           "@id": "https://sportsfly.app/#organization",
           "name": "SportsFly Spor Teknolojileri",
+          "legalName": "SportsFly Yazılım A.Ş.",
           "url": "https://sportsfly.app/",
           "logo": "https://sportsfly.app/assets/logo.svg",
+          "telephone": "+90-216-850-1907",
+          "email": "destek@sportsfly.com.tr",
           "description": "Spor okulları ve akademileri dijitalleştiren yeni nesil teknoloji ekosistemi.",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "İstanbul",
-            "addressRegion": "Marmara",
+            "streetAddress": "Suadiye, Bağdat Cad, Mücahit Sk. Ark399 Plz",
+            "addressLocality": "Kadıköy",
+            "addressRegion": "İstanbul",
+            "postalCode": "34740",
             "addressCountry": "TR"
           },
           "geo": {
             "@type": "GeoCoordinates",
-            "latitude": 41.0082,
-            "longitude": 28.9784
+            "latitude": 40.9612,
+            "longitude": 29.0838
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ],
+            "opens": "09:00",
+            "closes": "19:00"
           },
           "areaServed": [
             {
@@ -123,12 +141,13 @@
               "name": "Turkey"
             },
             {
-              "@type": "GeoShape",
-              "box": "35.8 25.6 42.1 44.8"
+              "@type": "AdministrativeArea",
+              "name": "İstanbul"
             }
           ],
           "contactPoint": {
             "@type": "ContactPoint",
+            "telephone": "+90-216-850-1907",
             "contactType": "customer service",
             "availableLanguage": ["Turkish", "English"]
           }
