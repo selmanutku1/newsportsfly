@@ -7,6 +7,7 @@ export interface SeoUpdateOptions {
   keywords?: string[];
   canonicalUrl?: string;
   ogType?: 'website' | 'article';
+  ogImage?: string;
   publishedTime?: string;
   authorName?: string;
   jsonLd?: object | object[];
@@ -21,8 +22,9 @@ export function setPageSeo({
   keywords,
   canonicalUrl,
   ogType = 'website',
+  ogImage = 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200&h=630&auto=format&fit=crop&q=80',
   publishedTime,
-  authorName = 'Selman UTKU',
+  authorName = 'SportsFly Teknolojileri',
   jsonLd,
 }: SeoUpdateOptions) {
   if (typeof document === 'undefined') return;
@@ -53,6 +55,12 @@ export function setPageSeo({
   setMeta('meta[property="og:title"]', 'property', 'og:title', title);
   setMeta('meta[property="og:description"]', 'property', 'og:description', description);
   setMeta('meta[property="og:type"]', 'property', 'og:type', ogType);
+  if (ogImage) {
+    setMeta('meta[property="og:image"]', 'property', 'og:image', ogImage);
+    setMeta('meta[property="og:image:width"]', 'property', 'og:image:width', '1200');
+    setMeta('meta[property="og:image:height"]', 'property', 'og:image:height', '630');
+    setMeta('meta[property="og:image:alt"]', 'property', 'og:image:alt', title);
+  }
   if (canonicalUrl) {
     setMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
   }
@@ -62,8 +70,12 @@ export function setPageSeo({
   }
 
   // Twitter Cards
+  setMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
   setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', title);
   setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description);
+  if (ogImage) {
+    setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', ogImage);
+  }
 
   // Canonical Link
   if (canonicalUrl) {
