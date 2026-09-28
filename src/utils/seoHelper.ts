@@ -22,7 +22,7 @@ export function setPageSeo({
   keywords,
   canonicalUrl,
   ogType = 'website',
-  ogImage = 'https://www.sportsfly.com.tr/og-image.png?v=2',
+  ogImage = 'https://www.sportsfly.com.tr/sportsfly-og.png',
   publishedTime,
   authorName = 'SportsFly Teknolojileri',
   jsonLd,

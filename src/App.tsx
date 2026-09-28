@@ -73,6 +73,7 @@ function MainApp() {
           ? 'Spor okulları ve kulüpler için yeni nesil yönetim yazılımı. Otomatik aidat tahsilatı, eğitmen ve veli panelleri, Sporpuan ödül sistemi ve dijital sporcu karneleri.'
           : 'Next-generation sports academy management platform. Automated tuition billing, coach & parent portals, Sporpuan retention rewards, and 360° digital athlete report cards.',
         canonicalUrl: 'https://www.sportsfly.com.tr/',
+        ogImage: 'https://www.sportsfly.com.tr/sportsfly-og.png',
         keywords: [
           'spor okulu yönetim sistemi',
           'spor okulu otomasyonu',
