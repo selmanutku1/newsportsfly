@@ -33,7 +33,15 @@ export const DemoModal: React.FC<DemoModalProps> = ({
     e.preventDefault();
     setIsSubmitting(true);
 
+    const webhookUrl =
+      import.meta.env.VITE_PANEL_WEBHOOK_URL ||
+      'https://webapp.sportsfly.com.tr/api/demo-requests';
+
+    const requestId = `DEMO-${Date.now()}`;
+    const submittedAt = new Date().toISOString();
+
     const payload = {
+      id: requestId,
       fullName,
       clubName,
       phone,
@@ -41,16 +49,46 @@ export const DemoModal: React.FC<DemoModalProps> = ({
       branch,
       studentEstimate,
       selectedPlan,
+      source: 'sportsfly.com.tr',
+      submittedAt,
       recipient: 'selmanutkumarmara@gmail.com',
+      customWebhookUrl: webhookUrl,
     };
 
     try {
-      // 1. Send to local backend server
+      // 1. Send to local backend server (which automatically forwards to https://webapp.sportsfly.com.tr/api/demo-requests)
       await fetch('/api/demo-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
+
+      // 2. Direct client-side POST to https://webapp.sportsfly.com.tr/api/demo-requests
+      if (webhookUrl) {
+        try {
+          await fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+              id: requestId,
+              fullName,
+              clubName,
+              phone,
+              email: email || 'Belirtilmedi',
+              branch,
+              studentEstimate,
+              selectedPlan,
+              source: 'sportsfly.com.tr',
+              submittedAt,
+            }),
+          });
+        } catch (directErr) {
+          console.warn('Direct client webhook send note:', directErr);
+        }
+      }
 
       // 2. Send via FormSubmit service directly to target email
       await fetch('https://formsubmit.co/ajax/selmanutkumarmara@gmail.com', {

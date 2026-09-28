@@ -1,7 +1,8 @@
 import React from 'react';
-import { Award } from 'lucide-react';
+import { Award, Sparkles, Trophy, Flame, ShieldCheck, Activity } from 'lucide-react';
 import { INITIAL_REPORT_CARDS, INITIAL_ATHLETES } from '../data/mockData';
 import { useLanguage } from '../context/LanguageContext';
+import showcaseHeroImg from '../assets/images/sporpuan_hero_showcase_1790200431577.jpg';
 
 interface DigitalReportSectionProps {
   onOpenSampleCard?: () => void;
@@ -9,6 +10,7 @@ interface DigitalReportSectionProps {
 
 export const DigitalReportSection: React.FC<DigitalReportSectionProps> = () => {
   const { language, t } = useLanguage();
+  const isTr = language === 'tr';
   const sampleCard = INITIAL_REPORT_CARDS['ath-1'];
   const sampleAthlete = INITIAL_ATHLETES[0];
 
@@ -30,8 +32,8 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = () => {
     : 'Arda has shown tremendous progress this season, especially in team defense and transition play. His high training attendance is reflected in his game discipline.';
 
   return (
-    <section id="digital-report" className="py-10 sm:py-16 md:py-20 bg-white border-t border-slate-200 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8 sm:space-y-12 md:space-y-16">
+    <section id="digital-report" className="py-10 sm:py-16 md:py-24 bg-white border-t border-slate-200 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10 sm:space-y-16">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto gap-4 sm:gap-5">
           <div>

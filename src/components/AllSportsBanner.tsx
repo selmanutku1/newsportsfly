@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
+import { Layers, ShieldCheck, CheckCircle2, Zap } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 interface AllSportsBannerProps {
@@ -10,6 +10,7 @@ export const AllSportsBanner: React.FC<AllSportsBannerProps> = ({
   onOpenDemoModal,
 }) => {
   const { language, t } = useLanguage();
+  const isTr = language === 'tr';
 
   const sportsTr = [
     { name: 'Futbol', icon: '⚽' },
@@ -37,7 +38,7 @@ export const AllSportsBanner: React.FC<AllSportsBannerProps> = ({
 
   return (
     <section className="py-10 sm:py-16 md:py-24 bg-gradient-to-b from-[#f2fdf5] via-[#f7fcf9] to-white relative overflow-hidden border-y border-emerald-100/70">
-      <div className="max-w-5xl mx-auto px-4 sm:px-8 text-center space-y-4 sm:space-y-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 text-center space-y-6 sm:space-y-10">
         
         {/* Eyebrow */}
         <div>
@@ -46,12 +47,12 @@ export const AllSportsBanner: React.FC<AllSportsBannerProps> = ({
           </span>
         </div>
 
-        {/* Main Headline matching Image 4 */}
+        {/* Main Headline */}
         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.15] max-w-4xl mx-auto">
           {t.sportsHeadline}
         </h2>
 
-        {/* Subtext matching Image 4 */}
+        {/* Subtext */}
         <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-normal">
           {language === 'tr' ? (
             <>
@@ -64,7 +65,7 @@ export const AllSportsBanner: React.FC<AllSportsBannerProps> = ({
           )}
         </p>
 
-        {/* Action Buttons matching Image 4 */}
+        {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
           <button
             onClick={onOpenDemoModal}

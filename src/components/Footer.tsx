@@ -1,7 +1,7 @@
 import React from 'react';
 import { SportsFlyLogo } from './SportsFlyLogo';
 import { ActiveView } from '../types';
-import { Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 interface FooterProps {
@@ -26,27 +26,12 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Col 1: Brand */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="space-y-1">
+            <div>
               <SportsFlyLogo size="lg" lightMode={true} />
-              <div className="pl-0.5">
-                <a
-                  href="https://sporsepeti.com.tr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-blue-600 transition group"
-                >
-                  <span className="text-slate-400 font-normal">by</span>
-                  <span className="font-bold text-slate-800 group-hover:text-blue-600 transition">sporsepeti</span>
-                </a>
-              </div>
             </div>
             <p className="text-slate-500 text-xs sm:text-sm max-w-sm leading-relaxed">
               {t.footerDesc}
             </p>
-            <div className="flex items-center gap-2.5 text-[11px] text-emerald-700 font-semibold bg-emerald-50 px-3 py-1.5 rounded-xl w-fit border border-emerald-200/80">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>{t.footerSecurity}</span>
-            </div>
           </div>
 
           {/* Col 2: Ürün & Modüller */}

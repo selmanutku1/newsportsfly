@@ -14,15 +14,27 @@ const PORT = Number(process.env.PORT) || 3000;
 
 app.use(express.json());
 
+// Enabling CORS for cross-domain/subdomain panel access (https://webapp.sportsfly.com.tr)
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 // In-memory store for demo requests
 const demoRequests: any[] = [];
 
 const TARGET_EMAIL = 'selmanutkumarmara@gmail.com';
+const DEFAULT_PANEL_WEBHOOK = 'https://webapp.sportsfly.com.tr/api/demo-requests';
 
 // Express API route for Demo Reservation Requests
 app.post('/api/demo-request', async (req, res) => {
   try {
-    const { fullName, clubName, phone, email, branch, studentEstimate, selectedPlan } = req.body;
+    const { fullName, clubName, phone, email, branch, studentEstimate, selectedPlan, customWebhookUrl } = req.body;
 
     const requestData = {
       id: `DEMO-${Date.now()}`,
@@ -33,14 +45,55 @@ app.post('/api/demo-request', async (req, res) => {
       branch: branch || 'Basketbol',
       studentEstimate: studentEstimate || 'Belirtilmedi',
       selectedPlan: selectedPlan || 'Kulüp & Akademi',
+      source: 'sportsfly.com.tr',
+      targetPanel: 'https://webapp.sportsfly.com.tr',
       targetRecipient: TARGET_EMAIL,
       submittedAt: new Date().toISOString(),
     };
 
     demoRequests.push(requestData);
-    console.log(`[DEMO REZERVED] New reservation for ${TARGET_EMAIL}:`, requestData);
+    console.log(`[DEMO REZERVED] New reservation:`, requestData);
 
-    // If SMTP environment variables exist, attempt to send email via SMTP
+    // 1. Automatic Webhook Forwarding to Subdomain Panel (https://webapp.sportsfly.com.tr)
+    const webhookUrl =
+      customWebhookUrl ||
+      process.env.PANEL_WEBHOOK_URL ||
+      process.env.SUBDOMAIN_PANEL_URL ||
+      DEFAULT_PANEL_WEBHOOK;
+
+    if (webhookUrl) {
+      try {
+        console.log(`[WEBHOOK FORWARDING] Dispatching to webapp.sportsfly.com.tr: ${webhookUrl}`);
+        let response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-Source-Domain': 'sportsfly.com.tr',
+          },
+          body: JSON.stringify(requestData),
+        });
+
+        // If /api/demo-requests returns 404, also try singular /api/demo-request on webapp.sportsfly.com.tr
+        if (response.status === 404 && webhookUrl.endsWith('/api/demo-requests')) {
+          const fallbackUrl = 'https://webapp.sportsfly.com.tr/api/demo-request';
+          response = await fetch(fallbackUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'X-Source-Domain': 'sportsfly.com.tr',
+            },
+            body: JSON.stringify(requestData),
+          });
+        }
+        console.log(`[WEBHOOK RESPONSE] Status: ${response.status}`);
+      } catch (webhookErr) {
+        console.error(`[WEBHOOK ERROR] Could not forward to ${webhookUrl}:`, webhookErr);
+      }
+    }
+
+    // 2. If SMTP environment variables exist, attempt to send email via SMTP
     if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
       try {
         const transporter = nodemailer.createTransport({
@@ -83,7 +136,7 @@ app.post('/api/demo-request', async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: `Demo talebiniz kaydedildi ve ${TARGET_EMAIL} adresine yönlendirildi.`,
+      message: `Demo talebiniz kaydedildi ve alt alan adınızdaki panele iletildi.`,
       data: requestData,
     });
   } catch (error: any) {
@@ -95,7 +148,7 @@ app.post('/api/demo-request', async (req, res) => {
   }
 });
 
-// Admin API to fetch recorded demo requests
+// Admin API to fetch recorded demo requests (Accessible by https://webapp.sportsfly.com.tr)
 app.get('/api/demo-requests', (_req, res) => {
   res.json({
     success: true,
