@@ -440,10 +440,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                       {language === 'tr' ? 'Portallar' : 'Portals'}
                     </span>
-                    <span className="text-[9px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200 flex items-center gap-1">
-                      <Lock className="w-2.5 h-2.5" />
-                      <span>{language === 'tr' ? 'Girişler Kapalı' : 'Logins Closed'}</span>
-                    </span>
                   </div>
 
                   <button
@@ -675,10 +671,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <div className="flex items-center justify-between px-2 mb-2.5">
                     <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
                       {language === 'tr' ? 'Kullanıcı Giriş Portalları' : 'User Portals'}
-                    </span>
-                    <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200/80 flex items-center gap-1">
-                      <Lock className="w-2.5 h-2.5" />
-                      <span>{language === 'tr' ? 'Girişe Kapalı' : 'Logins Closed'}</span>
                     </span>
                   </div>
 

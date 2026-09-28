@@ -21,20 +21,44 @@ export const DemoModal: React.FC<DemoModalProps> = ({
   const [clubName, setClubName] = useState('');
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [branch, setBranch] = useState(language === 'tr' ? 'Basketbol' : 'Basketball');
   const [studentEstimate, setStudentEstimate] = useState(language === 'tr' ? '150 - 300 Sporcu' : '150 - 300 Athletes');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    confetti({
-      particleCount: 90,
-      spread: 70,
-      origin: { y: 0.6 },
-    });
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      await fetch('/api/demo-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName,
+          clubName,
+          phone,
+          email: email || 'Belirtilmedi',
+          branch,
+          studentEstimate,
+          selectedPlan,
+          recipient: 'selmanutkumarmara@gmail.com',
+        }),
+      });
+    } catch (err) {
+      console.error('Demo request API error:', err);
+    } finally {
+      setIsSubmitting(false);
+      confetti({
+        particleCount: 90,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -76,21 +100,21 @@ export const DemoModal: React.FC<DemoModalProps> = ({
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-slate-700 font-semibold mb-1">
-                    {t.demoModalNameLabel} *
-                  </label>
-                  <input
-                    required
-                    type="text"
-                    placeholder={t.demoModalNamePlaceholder}
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
-                  />
-                </div>
+              <div>
+                <label className="block text-slate-700 font-semibold mb-1">
+                  {t.demoModalNameLabel} *
+                </label>
+                <input
+                  required
+                  type="text"
+                  placeholder={t.demoModalNamePlaceholder}
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
+                />
+              </div>
 
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-slate-700 font-semibold mb-1">
                     {t.demoModalPhoneLabel} *
@@ -101,6 +125,19 @@ export const DemoModal: React.FC<DemoModalProps> = ({
                     placeholder={t.demoModalPhonePlaceholder}
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-slate-700 font-semibold mb-1">
+                    {language === 'tr' ? 'E-posta Adresi' : 'Email Address'}
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="ornek@kulup.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
                   />
                 </div>
@@ -182,13 +219,13 @@ export const DemoModal: React.FC<DemoModalProps> = ({
             <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
               {language === 'tr' ? (
                 <>
-                  Teşekkürler Sayın <strong>{fullName || 'Kulüp Yöneticimiz'}</strong>! {clubName ? `"${clubName}"` : 'Kulübünüz'} için SportsFly deneme hesabı hazırlanıyor.
-                  Müşteri temsilcimiz WhatsApp üzerinden 15 dakika içinde aktivasyon bağlantınızı iletecektir.
+                  Teşekkürler Sayın <strong>{fullName || 'Kulüp Yöneticimiz'}</strong>! {clubName ? `"${clubName}"` : 'Kulübünüz'} için demo rezervasyonu kaydedildi ve sistem yöneticimiz <strong>selmanutkumarmara@gmail.com</strong> adresine iletildi.
+                  Ekibimiz 15 dakika içinde WhatsApp / telefon üzerinden aktivasyon bağlantınızı iletecektir.
                 </>
               ) : (
                 <>
-                  Thank you, <strong>{fullName || 'Club Director'}</strong>! Your SportsFly trial environment for {clubName ? `"${clubName}"` : 'your club'} is being provisioned.
-                  Our club specialist will message your activation link via WhatsApp within 15 minutes.
+                  Thank you, <strong>{fullName || 'Club Director'}</strong>! Your demo reservation for {clubName ? `"${clubName}"` : 'your club'} has been recorded and dispatched to <strong>selmanutkumarmara@gmail.com</strong>.
+                  Our club specialist will reach out with your activation link within 15 minutes.
                 </>
               )}
             </p>
