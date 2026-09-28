@@ -36,8 +36,8 @@ export const AllSportsBanner: React.FC<AllSportsBannerProps> = ({
   const sports = language === 'tr' ? sportsTr : sportsEn;
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[#f2fdf5] via-[#f7fcf9] to-white relative overflow-hidden border-y border-emerald-100/70">
-      <div className="max-w-5xl mx-auto px-4 sm:px-8 text-center space-y-8">
+    <section className="py-10 sm:py-16 md:py-24 bg-gradient-to-b from-[#f2fdf5] via-[#f7fcf9] to-white relative overflow-hidden border-y border-emerald-100/70">
+      <div className="max-w-5xl mx-auto px-4 sm:px-8 text-center space-y-4 sm:space-y-8">
         
         {/* Eyebrow */}
         <div>

@@ -24,6 +24,34 @@ import {
   Lock,
 } from 'lucide-react';
 
+// Crisp vector flags for cross-platform rendering (avoids OS emoji fallback showing "TR TR" or "GB EN")
+export const TrFlag = ({ className = 'w-4 h-3' }: { className?: string }) => (
+  <svg viewBox="0 0 1200 800" className={`rounded-[2px] shadow-2xs inline-block object-cover flex-shrink-0 ${className}`}>
+    <rect width="1200" height="800" fill="#E30A17" />
+    <circle cx="425" cy="400" r="200" fill="#ffffff" />
+    <circle cx="475" cy="400" r="160" fill="#E30A17" />
+    <polygon points="583.3,400 686.3,433.4 622.7,345.8 622.7,454.2 686.3,366.6" fill="#ffffff" />
+  </svg>
+);
+
+export const EnFlag = ({ className = 'w-4 h-3' }: { className?: string }) => (
+  <svg viewBox="0 0 60 30" className={`rounded-[2px] shadow-2xs inline-block object-cover flex-shrink-0 ${className}`}>
+    <clipPath id="uk-flag-clip-nav">
+      <path d="M0,0 v30 h60 v-30 z" />
+    </clipPath>
+    <clipPath id="uk-flag-cross-nav">
+      <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
+    </clipPath>
+    <g clipPath="url(#uk-flag-clip-nav)">
+      <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
+      <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#uk-flag-cross-nav)" stroke="#C8102E" strokeWidth="4" />
+      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10" />
+      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6" />
+    </g>
+  </svg>
+);
+
 interface NavbarProps {
   currentView: ActiveView;
   onNavigateView: (view: ActiveView) => void;
@@ -169,12 +197,20 @@ export const Navbar: React.FC<NavbarProps> = ({
       color: 'bg-slate-100 text-slate-700 border-slate-200/60',
     },
     {
+      id: 'sporpuan-system-view',
+      title: language === 'tr' ? 'Sporpuan Sadakat & Karne Sistemi' : 'Sporpuan Loyalty & Report System',
+      subtitle: language === 'tr' ? '8 temel değerlendirme & sadakat modülü detaylı inceleme' : '8 core evaluation & retention pillars deep-dive',
+      icon: Sparkles,
+      color: 'bg-amber-50 text-amber-700 border-amber-200/60',
+      viewName: 'sporpuan_system' as ActiveView,
+    },
+    {
       id: 'blog',
       title: language === 'tr' ? 'Akademi Blogu & Rehberler' : 'Academy Blog & Guides',
       subtitle: language === 'tr' ? 'Finans, sporpuan ve kulüp yönetimi makaleleri' : 'Insights on finance, gamification and club growth',
       icon: BookOpen,
-      color: 'bg-amber-50 text-amber-700 border-amber-200/60',
-      isView: true,
+      color: 'bg-indigo-50 text-indigo-700 border-indigo-200/60',
+      viewName: 'blog' as ActiveView,
     },
   ];
 
@@ -242,6 +278,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                   >
                     <span>{t.navAllModules}</span>
                     <span className="text-[11px] text-slate-400 font-normal">{t.navAllModulesDesc}</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setPlatformDropdownOpen(false);
+                      onNavigateView('sporpuan_system');
+                    }}
+                    className="w-full text-left px-3.5 py-2 rounded-xl hover:bg-amber-50/80 text-amber-800 font-bold flex flex-col transition border-t border-slate-100 mt-1 pt-2"
+                  >
+                    <span className="flex items-center gap-1.5">
+                      <Award className="w-3.5 h-3.5 text-amber-600" />
+                      {language === 'tr' ? 'Sporpuan Modülü (Özel Sayfa)' : 'Sporpuan Loyalty (Special Page)'}
+                    </span>
+                    <span className="text-[11px] text-amber-600/80 font-normal pl-5">
+                      {language === 'tr' ? '8 temel değerlendirme & sadakat sistemi' : '8 core evaluation & retention pillars'}
+                    </span>
                   </button>
                 </div>
               )}
@@ -315,33 +366,45 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="relative" ref={langRef}>
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className="flex items-center gap-1.5 hover:text-slate-950 transition py-1 text-slate-800 font-medium text-xs bg-slate-50 hover:bg-slate-100 px-2.5 rounded-full border border-slate-200/70"
+                className="flex items-center gap-1.5 hover:text-slate-950 transition py-1 text-slate-800 font-bold text-xs bg-slate-100 hover:bg-slate-200/70 px-2.5 rounded-full border border-slate-200/80 shadow-2xs"
+                aria-label={language === 'tr' ? 'Dil seçimi (Türkçe)' : 'Language selection (English)'}
               >
-                <span>{language === 'tr' ? '🇹🇷 TR' : '🇬🇧 EN'}</span>
-                <ChevronDown className="w-3 h-3 text-slate-500" />
+                {language === 'tr' ? <TrFlag className="w-4 h-3" /> : <EnFlag className="w-4 h-3" />}
+                <span className="font-bold tracking-tight">{language === 'tr' ? 'TR' : 'EN'}</span>
+                <ChevronDown className={`w-3 h-3 text-slate-500 transition-transform duration-200 ${langDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {langDropdownOpen && (
-                <div className="absolute top-full right-0 mt-2 w-32 bg-white rounded-xl border border-slate-200/90 shadow-lg p-1 z-50 text-xs animate-in fade-in duration-150">
+                <div className="absolute top-full right-0 mt-2 w-36 bg-white rounded-2xl border border-slate-200/90 shadow-xl p-1.5 z-50 text-xs animate-in fade-in duration-150 space-y-1">
                   <button
                     onClick={() => {
                       setLanguage('tr');
                       setLangDropdownOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 rounded-lg font-medium flex items-center justify-between transition ${language === 'tr' ? 'bg-blue-50 text-blue-700 font-bold' : 'hover:bg-slate-50 text-slate-700'}`}
+                    className={`w-full text-left px-2.5 py-2 rounded-xl font-semibold flex items-center justify-between transition ${
+                      language === 'tr' ? 'bg-blue-50 text-blue-700 font-bold' : 'hover:bg-slate-50 text-slate-700'
+                    }`}
                   >
-                    <span>🇹🇷 Türkçe</span>
-                    {language === 'tr' && <span className="text-blue-600 font-bold">✓</span>}
+                    <div className="flex items-center gap-2">
+                      <TrFlag className="w-4 h-3" />
+                      <span>Türkçe</span>
+                    </div>
+                    {language === 'tr' && <span className="text-blue-600 font-bold text-xs">✓</span>}
                   </button>
                   <button
                     onClick={() => {
                       setLanguage('en');
                       setLangDropdownOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 rounded-lg font-medium flex items-center justify-between transition ${language === 'en' ? 'bg-blue-50 text-blue-700 font-bold' : 'hover:bg-slate-50 text-slate-700'}`}
+                    className={`w-full text-left px-2.5 py-2 rounded-xl font-semibold flex items-center justify-between transition ${
+                      language === 'en' ? 'bg-blue-50 text-blue-700 font-bold' : 'hover:bg-slate-50 text-slate-700'
+                    }`}
                   >
-                    <span>🇬🇧 English</span>
-                    {language === 'en' && <span className="text-blue-600 font-bold">✓</span>}
+                    <div className="flex items-center gap-2">
+                      <EnFlag className="w-4 h-3" />
+                      <span>English</span>
+                    </div>
+                    {language === 'en' && <span className="text-blue-600 font-bold text-xs">✓</span>}
                   </button>
                 </div>
               )}
@@ -455,13 +518,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Mobile Actions: Language + Demo + Menu Trigger (Triggered when window width < 768px) */}
           <div className="md:hidden flex items-center gap-1.5 sm:gap-2">
-            {/* Quick Language Toggle on Mobile Bar */}
+            {/* Quick Language Toggle on Mobile Bar with crisp vector flag */}
             <button
               onClick={() => setLanguage(language === 'tr' ? 'en' : 'tr')}
-              className="px-2 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] border border-slate-200 active:scale-95 transition"
+              className="px-2 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs border border-slate-200/80 shadow-2xs active:scale-95 transition flex items-center gap-1.5"
               title={language === 'tr' ? 'Switch to English' : "Türkçe'ye Geç"}
+              aria-label={language === 'tr' ? 'Dil seçimi: Türkçe' : 'Language selection: English'}
             >
-              {language === 'tr' ? '🇹🇷 TR' : '🇬🇧 EN'}
+              {language === 'tr' ? <TrFlag className="w-4 h-3" /> : <EnFlag className="w-4 h-3" />}
+              <span className="font-bold tracking-tight">{language === 'tr' ? 'TR' : 'EN'}</span>
             </button>
 
             {/* Quick Demo CTA */}
@@ -573,7 +638,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <button
                           key={link.id}
                           onClick={() => {
-                            if ((link as any).isView) {
+                            if ((link as any).viewName) {
+                              setMobileMenuOpen(false);
+                              onNavigateView((link as any).viewName);
+                            } else if ((link as any).isView) {
                               setMobileMenuOpen(false);
                               onNavigateView('blog');
                             } else {
@@ -730,28 +798,30 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Drawer Bottom Bar: Language Switcher */}
               <div className="px-5 py-4 border-t border-slate-100 bg-slate-50/80 flex-shrink-0 flex items-center justify-between">
                 <span className="text-xs font-bold text-slate-600">
-                  {language === 'tr' ? 'Dil / Language' : 'Language / Dil'}
+                  {language === 'tr' ? 'Dil Seçimi' : 'Language'}
                 </span>
-                <div className="flex items-center bg-slate-200/80 p-1 rounded-xl">
+                <div className="flex items-center bg-slate-200/80 p-1 rounded-xl gap-1">
                   <button
                     onClick={() => setLanguage('tr')}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
                       language === 'tr'
                         ? 'bg-white text-blue-700 shadow-xs'
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    🇹🇷 TR
+                    <TrFlag className="w-3.5 h-2.5" />
+                    <span>Türkçe (TR)</span>
                   </button>
                   <button
                     onClick={() => setLanguage('en')}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
                       language === 'en'
                         ? 'bg-white text-blue-700 shadow-xs'
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    🇬🇧 EN
+                    <EnFlag className="w-3.5 h-2.5" />
+                    <span>English (EN)</span>
                   </button>
                 </div>
               </div>

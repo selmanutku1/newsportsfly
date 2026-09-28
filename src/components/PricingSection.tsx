@@ -74,10 +74,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) 
   const plans = language === 'tr' ? PRICING_PLANS : englishPlans;
 
   return (
-    <section id="pricing" className="py-24 bg-white border-t border-slate-200 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-16">
+    <section id="pricing" className="py-10 sm:py-16 md:py-24 bg-white border-t border-slate-200 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8 sm:space-y-12 md:space-y-16">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider">
             {t.pricingBadge}
           </span>

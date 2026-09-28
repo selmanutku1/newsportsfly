@@ -21,9 +21,9 @@ export const PaymentAutomationSection: React.FC = () => {
   const [dueDate, setDueDate] = useState(language === 'tr' ? '30 Eylül' : 'Sep 30');
 
   return (
-    <section id="automation" className="py-24 bg-gradient-to-b from-white via-slate-50/60 to-white relative overflow-hidden">
+    <section id="automation" className="py-10 sm:py-16 md:py-24 bg-gradient-to-b from-white via-slate-50/60 to-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           
           {/* Left Column: Heading, Explanation & Payment Badges */}
           <div className="lg:col-span-5 space-y-6">

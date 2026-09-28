@@ -21,10 +21,10 @@ export const RoiCalculator: React.FC = () => {
   const hoursUnit = language === 'tr' ? 'Saat' : 'Hours';
 
   return (
-    <section id="roi-calc" className="py-24 bg-slate-50/70 border-t border-slate-200 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-16">
+    <section id="roi-calc" className="py-10 sm:py-16 md:py-24 bg-slate-50/70 border-t border-slate-200 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8 sm:space-y-12 md:space-y-16">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider inline-flex items-center gap-1.5">
             <Calculator className="w-3.5 h-3.5 text-blue-600" />
             {t.roiBadge}

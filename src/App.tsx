@@ -26,6 +26,7 @@ import { CoachPanel } from './components/panels/CoachPanel';
 import { AdminPanel } from './components/panels/AdminPanel';
 import { ReportCardModal } from './components/panels/ReportCardModal';
 import { BlogPage } from './components/BlogPage';
+import { SporpuanSystemPage } from './components/SporpuanSystemPage';
 import { setPageSeo } from './utils/seoHelper';
 import { useLanguage } from './context/LanguageContext';
 
@@ -35,6 +36,7 @@ function MainApp() {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.toLowerCase();
       if (hash.startsWith('#blog')) return 'blog';
+      if (hash.startsWith('#sporpuan-sistemi') || hash.startsWith('#sporpuan-system') || hash === '#sporpuan-detay') return 'sporpuan_system';
     }
     return 'marketing';
   });
@@ -48,6 +50,8 @@ function MainApp() {
       const hash = window.location.hash.toLowerCase();
       if (hash.startsWith('#blog')) {
         setCurrentView('blog');
+      } else if (hash.startsWith('#sporpuan-sistemi') || hash.startsWith('#sporpuan-system') || hash === '#sporpuan-detay') {
+        setCurrentView('sporpuan_system');
       } else {
         setCurrentView('marketing');
       }
@@ -66,7 +70,7 @@ function MainApp() {
           ? 'SportsFly - Spor Okulları ve Akademi Yönetim Sistemi'
           : 'SportsFly - Sports Academy & Club Management System',
         description: isTr
-          ? 'Spor okulları ve kulüpler için yeni nesil yönetim yazılımı. Eğitmen ve veli panelleri, devamlılık odaklı Sporpuan ödül sistemi ve otomatik dijital sporcu karneleri.'
+          ? 'Spor okulları ve kulüpler için yeni nesil yönetim yazılımı. Eğitmen ve veli panelleri, devamlılık odaklı Sporpuan ödül sistemi ve otomatik sporcu karneleri.'
           : 'Next-generation sports academy management platform. Coach & parent portals, Sporpuan gamification retention system, and 360° digital athlete report cards.',
         canonicalUrl: 'https://sportsfly.app/',
         keywords: [
@@ -74,7 +78,7 @@ function MainApp() {
           'spor okulu otomasyonu',
           'aidat tahsilat sistemi',
           'sporpuan',
-          'dijital sporcu karnesi',
+          'sporcu karnesi',
         ],
       });
     }
@@ -138,7 +142,13 @@ function MainApp() {
 
             <FeaturesSection />
 
-            <SporpuanSection />
+            <SporpuanSection
+              onNavigateToSystemPage={() => {
+                setCurrentView('sporpuan_system');
+                window.location.hash = '#sporpuan-sistemi';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
 
             <DigitalReportSection
               onOpenSampleCard={() => setSampleCardModalOpen(true)}
@@ -206,9 +216,31 @@ function MainApp() {
         <BlogPage
           onNavigateView={(view) => {
             setCurrentView(view);
+            if (view === 'sporpuan_system') window.location.hash = '#sporpuan-sistemi';
+            else if (view === 'blog') window.location.hash = '#blog';
+            else window.location.hash = '';
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           onOpenDemoModal={() => setDemoModalOpen(true)}
+        />
+      )}
+
+      {/* 6. SPORPUAN SİSTEMİ & SADAKAT MODÜLÜ TANITIM SAYFASI */}
+      {currentView === 'sporpuan_system' && (
+        <SporpuanSystemPage
+          onBackToSite={() => {
+            setCurrentView('marketing');
+            window.location.hash = '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onOpenDemoModal={() => setDemoModalOpen(true)}
+          onNavigateView={(view) => {
+            setCurrentView(view);
+            if (view === 'blog') window.location.hash = '#blog';
+            else if (view === 'sporpuan_system') window.location.hash = '#sporpuan-sistemi';
+            else window.location.hash = '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
         />
       )}
 

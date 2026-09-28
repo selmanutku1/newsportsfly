@@ -42,7 +42,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const [activeScreenTab, setActiveScreenTab] = useState<'leader' | 'parent' | 'report'>('leader');
 
   return (
-    <section className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-b from-white via-[#fafcfb] to-white">
+    <section className="relative pt-24 pb-10 sm:pt-32 sm:pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-b from-white via-[#fafcfb] to-white">
       {/* Background glow effects */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-tr from-emerald-100/40 via-blue-100/30 to-lime-100/30 rounded-full blur-3xl pointer-events-none -z-10" />
 

@@ -212,7 +212,7 @@ export const TESTIMONIALS = [
     stat: '%96 Devamlılık Oranı'
   },
   {
-    quote: 'Oğlumun antrenmana gitmek için sabah erken kalktığına ilk kez şahit oldum. Sporpuan biriktirip kulüp formasını alabilmek için can atıyor. Antrenörün girdiği dijital karnede geliştiği alanları grafiklerle görmek bir veli olarak paha biçilemez.',
+    quote: 'Oğlumun antrenmana gitmek için sabah erken kalktığına ilk kez şahit oldum. Sporpuan biriktirip kulüp formasını alabilmek için can atıyor. Antrenörün girdiği sporcu karnesinde geliştiği alanları grafiklerle görmek bir veli olarak paha biçilemez.',
     name: 'Banu Çetinkaya',
     role: 'Sporcu Velisi (U12 Basketbol)',
     club: 'İstanbul Kartalları Akademi',

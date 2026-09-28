@@ -32,7 +32,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 }) => {
   const { language } = useLanguage();
   const [broadcastSent, setBroadcastSent] = useState(false);
-  const defaultTrSms = 'Değerli Spor Okulu Velimiz; 2026 Güz Dönemi Dijital Sporcu Karneleri ve Sporpuan ödülleri yayınlanmıştır. SportsFly veli portalınızdan inceleyebilirsiniz.';
+  const defaultTrSms = 'Değerli Spor Okulu Velimiz; 2026 Güz Dönemi Sporcu Karneleri ve Sporpuan ödülleri yayınlanmıştır. SportsFly veli portalınızdan inceleyebilirsiniz.';
   const defaultEnSms = 'Dear Sports Academy Parents; 2026 Fall Term Digital Athlete Report Cards and Sporpuan rewards are now live. View them in your SportsFly parent portal.';
   const [smsText, setSmsText] = useState(language === 'tr' ? defaultTrSms : defaultEnSms);
 

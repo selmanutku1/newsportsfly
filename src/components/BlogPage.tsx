@@ -3,6 +3,7 @@ import { ActiveView, BlogPost } from '../types';
 import { BLOG_POSTS, BLOG_SEO_CONFIG } from '../data/blogData';
 import { useLanguage } from '../context/LanguageContext';
 import { SportsFlyLogo } from './SportsFlyLogo';
+import { TrFlag, EnFlag } from './Navbar';
 import { setPageSeo, buildArticleJsonLd, buildBlogHubJsonLd } from '../utils/seoHelper';
 import {
   Search,
@@ -147,7 +148,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       { id: 'all', label: language === 'tr' ? 'Tümü' : 'All' },
       { id: 'otomasyon', label: language === 'tr' ? 'Aidat & Finans' : 'Billing & Finance' },
       { id: 'sporpuan', label: language === 'tr' ? 'Sporpuan & Motivasyon' : 'Sporpuan & Retention' },
-      { id: 'karne', label: language === 'tr' ? 'Dijital Karne' : 'Digital Reports' },
+      { id: 'karne', label: language === 'tr' ? 'Sporcu Karnesi' : 'Digital Reports' },
       { id: 'yonetim', label: language === 'tr' ? 'Kulüp Yönetimi' : 'Club Operations' },
       { id: 'iletisim', label: language === 'tr' ? 'Veli İletişimi' : 'Parent Experience' },
     ];
@@ -227,9 +228,11 @@ export const BlogPage: React.FC<BlogPageProps> = ({
             <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={() => setLanguage(language === 'tr' ? 'en' : 'tr')}
-                className="px-2.5 py-1 text-[11px] sm:text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition"
+                className="px-2.5 py-1 text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-full border border-slate-200 transition flex items-center gap-1.5 shadow-2xs"
+                title={language === 'tr' ? 'Switch to English' : "Türkçe'ye Geç"}
               >
-                {language === 'tr' ? 'EN' : 'TR'}
+                {language === 'tr' ? <TrFlag className="w-3.5 h-2.5" /> : <EnFlag className="w-3.5 h-2.5" />}
+                <span className="font-bold">{language === 'tr' ? 'TR' : 'EN'}</span>
               </button>
               <button
                 onClick={onOpenDemoModal}
@@ -516,9 +519,11 @@ export const BlogPage: React.FC<BlogPageProps> = ({
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => setLanguage(language === 'tr' ? 'en' : 'tr')}
-              className="px-2.5 py-1 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition"
+              className="px-2.5 py-1 text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-full border border-slate-200 transition flex items-center gap-1.5 shadow-2xs"
+              title={language === 'tr' ? 'Switch to English' : "Türkçe'ye Geç"}
             >
-              {language === 'tr' ? 'EN' : 'TR'}
+              {language === 'tr' ? <TrFlag className="w-3.5 h-2.5" /> : <EnFlag className="w-3.5 h-2.5" />}
+              <span className="font-bold">{language === 'tr' ? 'TR' : 'EN'}</span>
             </button>
             <button
               onClick={onOpenDemoModal}
@@ -545,7 +550,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-lg mx-auto">
             {language === 'tr'
-              ? 'Aidat tahsilat otomasyonundan Sporpuan devamlılık sistemine, antrenör verimliliğinden dijital sporcu karnelerine dair kanıtlanmış yöntemler.'
+              ? 'Aidat tahsilat otomasyonundan Sporpuan devamlılık sistemine, antrenör verimliliğinden sporcu karnelerine dair kanıtlanmış yöntemler.'
               : 'Proven tactics from automated tuition collection to Sporpuan gamification, coach productivity, and 360° digital athlete report cards.'}
           </p>
 
@@ -730,7 +735,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
           </h3>
           <p className="text-blue-100 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
             {language === 'tr'
-              ? 'Aidat tahsilatlarını otomatikleştirin, Sporpuan ile sporcularınızı motive edin ve dijital sporcu karneleriyle veli memnuniyetini zirveye çıkarın.'
+              ? 'Aidat tahsilatlarını otomatikleştirin, Sporpuan ile sporcularınızı motive edin ve sporcu karneleriyle veli memnuniyetini zirveye çıkarın.'
               : 'Automate tuition collection, motivate athletes with Sporpuan rewards, and achieve maximum parent satisfaction with digital report cards.'}
           </p>
           <div className="pt-1 flex flex-wrap items-center justify-center gap-2.5">

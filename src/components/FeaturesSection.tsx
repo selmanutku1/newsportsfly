@@ -48,10 +48,10 @@ export const FeaturesSection: React.FC = () => {
   }));
 
   return (
-    <section id="features" className="py-24 bg-white border-t border-slate-200 relative">
+    <section id="features" className="py-10 sm:py-16 md:py-24 bg-white border-t border-slate-200 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4 mb-8 sm:mb-12 md:mb-16">
           <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider">
             {t.featuresBadge}
           </span>

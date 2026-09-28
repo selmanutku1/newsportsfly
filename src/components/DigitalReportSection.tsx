@@ -30,21 +30,21 @@ export const DigitalReportSection: React.FC<DigitalReportSectionProps> = () => {
     : 'Arda has shown tremendous progress this season, especially in team defense and transition play. His high training attendance is reflected in his game discipline.';
 
   return (
-    <section id="digital-report" className="py-24 bg-white border-t border-slate-200 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-16">
+    <section id="digital-report" className="py-10 sm:py-16 md:py-20 bg-white border-t border-slate-200 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8 sm:space-y-12 md:space-y-16">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase tracking-wider inline-flex items-center gap-1.5">
             <Award className="w-3.5 h-3.5" />
             {t.reportBadge}
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight">
             {t.reportTitle} <br />
             <span className="text-emerald-600">
               {t.reportTitleHighlight}
             </span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+          <p className="text-xs sm:text-base text-slate-600 leading-relaxed">
             {t.reportDesc}
           </p>
         </div>

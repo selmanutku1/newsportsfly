@@ -313,7 +313,7 @@ export const ParentPanel: React.FC<ParentPanelProps> = ({
             }`}
           >
             <Award className="w-4 h-4" />
-            <span>{language === 'tr' ? 'Dijital Sporcu Karnesi' : 'Digital Athlete Report Card'}</span>
+            <span>{language === 'tr' ? 'Sporcu Karnesi' : 'Digital Athlete Report Card'}</span>
             <span className="w-2 h-2 rounded-full bg-emerald-400" />
           </button>
           <button
@@ -441,7 +441,7 @@ export const ParentPanel: React.FC<ParentPanelProps> = ({
                       <div className="flex items-center gap-2">
                         <Award className="w-5 h-5 text-emerald-400" />
                         <h3 className="font-bold text-lg text-white">
-                          {language === 'tr' ? 'Dönem Sonu Dijital Sporcu Karnesi' : 'End-of-Term Digital Report Card'}
+                          {language === 'tr' ? 'Dönem Sonu Sporcu Karnesi' : 'End-of-Term Digital Report Card'}
                         </h3>
                       </div>
                       <p className="text-xs text-slate-400 mt-0.5">
@@ -893,7 +893,7 @@ export const ParentPanel: React.FC<ParentPanelProps> = ({
                 </h3>
                 <p className="text-xs text-slate-400 mt-1 max-w-md mx-auto">
                   {language === 'tr'
-                    ? 'Antrenör dönem sonu gelişim puanlarını girdiğinde ve onayladığında dijital karne burada otomatik olarak belirecektir.'
+                    ? 'Antrenör dönem sonu gelişim puanlarını girdiğinde ve onayladığında sporcu karnesi burada otomatik olarak belirecektir.'
                     : 'The digital report card will automatically appear here once the head coach grades and confirms the term development assessment.'}
                 </p>
               </div>

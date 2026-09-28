@@ -20,9 +20,9 @@ export const HumanSupportSection: React.FC = () => {
   const { language, t } = useLanguage();
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-10 sm:py-16 md:py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           
           {/* Left Column: Phone Showcase matching Image 3 with Lime accent */}
           <div className="lg:col-span-6 flex justify-center lg:justify-start">

@@ -427,7 +427,7 @@ const translations: Record<Language, Translations> = {
     navAutomationDesc: 'Otomatik ödeme ve hatırlatıcılar',
     navSporpuan: 'Sporpuan Sadakat',
     navSporpuanDesc: 'Ödüllendirme ve motivasyon',
-    navDigitalReport: 'Dijital Sporcu Karnesi',
+    navDigitalReport: 'Sporcu Karnesi',
     navDigitalReportDesc: 'Gelişim takibi ve karne paylaşımı',
     navAllModules: 'Tüm Modüller',
     navAllModulesDesc: 'Yoklama, takvim, veli iletişimi',
@@ -440,14 +440,14 @@ const translations: Record<Language, Translations> = {
     navLoginCoach: 'Antrenör Girişi',
     navLoginCoachDesc: 'Yoklama & Karne değerlendirme',
     navLoginParent: 'Veli & Sporcu Girişi',
-    navLoginParentDesc: 'Sporpuan & Dijital Karne',
+    navLoginParentDesc: 'Sporpuan & Sporcu Karnesi',
 
     // Hero
     heroBadge: 'SPOR KULÜPLERİ İÇİN YENİ NESİL PLATFORM',
     heroTitle1: 'Spor Kulüpleri ve Akademiler İçin',
     heroTitleHighlight: 'Yönetim ve Sadakat',
     heroTitle2: 'Sistemi',
-    heroSubtitle: 'Aidat takibini %100 otomatikleştirin, Sporpuan ve Dijital Karne ile sporcularınızın devamlılığını ve kulüp bağlılığını zirveye taşıyın.',
+    heroSubtitle: 'Aidat takibini %100 otomatikleştirin, Sporpuan ve Sporcu Karnesi ile sporcularınızın devamlılığını ve kulüp bağlılığını zirveye taşıyın.',
     heroCtaReserve: 'Demo Rezervasyonu Yapın',
     heroCtaExplore: 'Canlı Panelleri İncele',
     heroTrialBadge: '14 Gün Ücretsiz Deneme • Kredi kartı gerekmez',
@@ -558,7 +558,7 @@ const translations: Record<Language, Translations> = {
     // Digital Report
     reportBadge: 'YENİ NESİL ÖLÇME & DEĞERLENDİRME',
     reportTitle: 'Kağıt Karneler Tarih Oldu:',
-    reportTitleHighlight: 'Velilerle Otomatik Paylaşılan Dijital Karneler',
+    reportTitleHighlight: 'Velilerle Otomatik Paylaşılan Sporcu Karneleri',
     reportDesc: 'Sporcunun gelişimini, yetenek skorlarını ve antrenör notlarını modern grafiklerle belgeleyin. Tek tıkla velinin WhatsApp ve veli portalına otomatik gönderilsin.',
     reportStep1Title: 'Antrenör 2 Dakikada Puanlar',
     reportStep1Desc: 'Şut, pas, taktik anlayış, kondisyon ve mental dayanıklılık gibi branşa özel kriterleri telefon üzerinden kolayca değerlendirir.',
@@ -566,7 +566,7 @@ const translations: Record<Language, Translations> = {
     reportStep2Desc: 'Karne onaylandığında veliye push bildirim ve istenirse doğrudan WhatsApp üzerinden güvenli bağlantı gider. Veli telefonundan anında inceler.',
     reportStep3Title: 'QR Doğrulamalı ve PDF İndirilebilir',
     reportStep3Desc: 'Veliler hatıra olarak saklayabilir, sosyal medyada paylaşabilir veya PDF olarak indirip yazdırabilir. Kulübünüzün kurumsal kimliği yücelir.',
-    reportStatBadge: "Velilerin %98'i dijital karne sistemini kulüp tercihinde belirleyici buluyor.",
+    reportStatBadge: "Velilerin %98'i sporcu karnesi sistemini kulüp tercihinde belirleyici buluyor.",
     reportCta: 'Örnek Karneyi İncele',
     reportCardPeriod: '2025-2026 Güz Gelişim Dönemi',
     reportCardGeneralScore: 'Genel Karne Notu',
@@ -586,7 +586,7 @@ const translations: Record<Language, Translations> = {
     featuresBadge: 'KAPSAMLI MODÜLLER',
     featuresTitle: 'Spor Okulunuzun İhtiyaç Duyduğu',
     featuresTitleHighlight: 'Tüm Araçlar Tek Bir Platformda',
-    featuresDesc: 'Geleneksel ve hantal yazılımların eksik kaldığı noktaları, sporcu psikolojisini motive eden Sporpuan ve şeffaf dijital karne ekosistemiyle tamamladık.',
+    featuresDesc: 'Geleneksel ve hantal yazılımların eksik kaldığı noktaları, sporcu psikolojisini motive eden Sporpuan ve şeffaf sporcu karnesi ekosistemiyle tamamladık.',
     featuresPillars: [
       {
         title: 'Devamlılık Odaklı Sporpuan',
@@ -600,7 +600,7 @@ const translations: Record<Language, Translations> = {
         ]
       },
       {
-        title: 'Dijital Sporcu Gelişim Karnesi',
+        title: 'Sporcu Gelişim Karnesi',
         subtitle: 'Teknik, fiziksel ve mental gelişimi velilerle otomatik paylaşın',
         badge: 'Otomatik Paylaşım',
         desc: 'Dönem sonlarında kağıt karnelerle uğraşmayın. Antrenörler mobil cihazlarından sporcunun yeteneklerini (şut, pas, kondisyon, disiplin) puanlar; sistem görsel gelişim grafiklerini ve koç mektubunu saniyeler içinde velinin cebine gönderir.',
@@ -665,7 +665,7 @@ const translations: Record<Language, Translations> = {
         stat: '%96 Devamlılık Oranı'
       },
       {
-        quote: 'Oğlumun antrenmana gitmek için sabah erken kalktığına ilk kez şahit oldum. Sporpuan biriktirip kulüp formasını alabilmek için can atıyor. Antrenörün girdiği dijital karnede geliştiği alanları grafiklerle görmek bir veli olarak paha biçilemez.',
+        quote: 'Oğlumun antrenmana gitmek için sabah erken kalktığına ilk kez şahit oldum. Sporpuan biriktirip kulüp formasını alabilmek için can atıyor. Antrenörün girdiği sporcu karnesinde geliştiği alanları grafiklerle görmek bir veli olarak paha biçilemez.',
         name: 'Banu Çetinkaya',
         role: 'Sporcu Velisi (U12 Basketbol)',
         club: 'İstanbul Kartalları Akademi',
@@ -700,7 +700,7 @@ const translations: Record<Language, Translations> = {
           '100 Aktif Sporcuya Kadar',
           'Mobil Uyumlu Hızlı Yoklama',
           'Temel Veli Bildirimleri (SMS & Mail)',
-          'Dijital Sporcu Karnesi (Yılda 2 Dönem)',
+          'Sporcu Karnesi (Yılda 2 Dönem)',
           'Standart Sporpuan Entegrasyonu',
           '2 Antrenör & 1 Yönetici Hesabı',
           'E-posta ile Teknik Destek'
@@ -718,7 +718,7 @@ const translations: Record<Language, Translations> = {
         features: [
           '350 Aktif Sporcuya Kadar',
           'Gelişmiş Sporpuan & Ödül Kataloğu Modülü',
-          'Sınırsız Dijital Sporcu Karnesi Oluşturma',
+          'Sınırsız Sporcu Karnesi Oluşturma',
           'Velilere Otomatik WhatsApp Karnesi Gönderimi',
           'Performans Radar Grafikleri ve Gelişim Analitiği',
           'Otomatik Aidat Takibi & Sanal POS Entegrasyonu',
@@ -757,7 +757,7 @@ const translations: Record<Language, Translations> = {
         a: 'Sporcular her antrenmana geldiklerinde otomatik olarak sisteme tanımlı Sporpuan kazanırlar (Örn: Zamanında katılım +25 SP, 4 antrenman üst üste seri +100 SP, Fair-Play +50 SP). Biriken puanlar veli ve sporcu panelinde anlık görünür. Kulübün belirlediği ödül kataloğundan sporcu veya veli puanını harcayarak ödül talep eder.'
       },
       {
-        q: 'Dijital Sporcu Karnesi velilere nasıl ulaşıyor?',
+        q: 'Sporcu Karnesi velilere nasıl ulaşıyor?',
         a: 'Eğitmenler mobil üzerinden sporcunun teknik, fiziksel, taktik ve mental beceri puanlarını girip notunu ekledikten sonra "Yayınla" butonuna tıklar. Sistem otomatik olarak velinin SportsFly Portalı\'na push bildirim ve istenirse WhatsApp/SMS ile güvenli karne bağlantısı gönderir.'
       },
       {
@@ -916,12 +916,12 @@ const translations: Record<Language, Translations> = {
     footerPrivacy: 'Gizlilik Politikası',
     footerTerms: 'Kullanım Koşulları',
     footerKvkk: 'KVKK Metni',
-    footerDesc: 'SportsFly, spor okulları ve akademiler için yeni nesil bulut tabanlı yönetim yazılımıdır. Devamlılığı ödüllendiren Sporpuan, yapay zeka destekli dijital sporcu karneleri, veli ve eğitmen portallarıyla spor kulüplerini geleceğe taşır.',
+    footerDesc: 'SportsFly, spor okulları ve akademiler için yeni nesil bulut tabanlı yönetim yazılımıdır. Devamlılığı ödüllendiren Sporpuan, yapay zeka destekli sporcu karneleri, veli ve eğitmen portallarıyla spor kulüplerini geleceğe taşır.',
     footerSecurity: 'KVKK & ISO 27001 Uyumlu Veri Güvenliği',
     footerModulesTitle: 'Ürün & Modüller',
     footerModAttendance: 'Otomatik Yoklama & Devamsızlık',
     footerModSporpuan: 'Sporpuan Sadakat & Ödül Sistemi',
-    footerModReport: 'Dijital Sporcu Karnesi & Analitik',
+    footerModReport: 'Sporcu Karnesi & Analitik',
     footerModClubs: 'Çoklu Branş & Şube Yönetimi',
     footerModFinance: 'Akıllı Aidat & Online Ödeme',
 
@@ -948,11 +948,11 @@ const translations: Record<Language, Translations> = {
     demoModalClose: 'Kapat',
 
     // Digital report extra
-    reportSurveyFact: 'Velilerin %98’i dijital karne sayesinde kulübe aidiyetlerinin arttığını belirtiyor.',
+    reportSurveyFact: 'Velilerin %98’i sporcu karnesi sayesinde kulübe aidiyetlerinin arttığını belirtiyor.',
     reportInspectSample: 'Örnek Karneyi Canlı İncele',
     reportPeriod: 'Dönem',
     reportOverallScore: 'Genel Gelişim Notu',
-    reportViewSampleBtn: 'Örnek Dijital Karneyi Tam Ekran İncele',
+    reportViewSampleBtn: 'Örnek Sporcu Karnesini Tam Ekran İncele',
   },
 
   en: {

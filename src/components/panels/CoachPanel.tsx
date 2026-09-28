@@ -226,7 +226,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
             }`}
           >
             <Award className="w-4 h-4" />
-            <span>{language === 'tr' ? 'Dijital Karne Hazırlama & Veliye Gönderim' : 'Digital Report Card & Parent Dispatch'}</span>
+            <span>{language === 'tr' ? 'Sporcu Karnesi Hazırlama & Veliye Gönderim' : 'Digital Report Card & Parent Dispatch'}</span>
             <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded-full">
               {language === 'tr' ? 'Canlı' : 'Live'}
             </span>
@@ -276,7 +276,7 @@ export const CoachPanel: React.FC<CoachPanelProps> = ({
               <Send className="w-6 h-6 text-emerald-400 flex-shrink-0" />
               <div>
                 <h4 className="font-bold text-sm">
-                  {language === 'tr' ? 'Dijital Karne Başarıyla Yayınlandı & Paylaşıldı!' : 'Digital Report Card Successfully Published & Shared!'}
+                  {language === 'tr' ? 'Sporcu Karnesi Başarıyla Yayınlandı & Paylaşıldı!' : 'Digital Report Card Successfully Published & Shared!'}
                 </h4>
                 <p className="text-xs text-emerald-400/90">
                   {language === 'tr' ? (

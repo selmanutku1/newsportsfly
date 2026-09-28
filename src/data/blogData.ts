@@ -77,14 +77,14 @@ export const BLOG_SEO_CONFIG: BlogSeoConfig = {
     },
     karne: {
       title: {
-        tr: 'Dijital Karne & Sporcu Gelişim Takibi | SportsFly Blog',
+        tr: 'Sporcu Karnesi & Sporcu Gelişim Takibi | SportsFly Blog',
         en: 'Digital Report Cards & Athlete Growth Tracking | SportsFly Blog',
       },
       description: {
-        tr: 'Teknik, taktik, fiziksel ve mental gelişimi görselleştiren 360° radar analizleri ile veli memnuniyetini %98’e çıkaran karne çözümleri.',
+        tr: 'Teknik, taktik, fiziksel ve mental gelişimi görselleştiren 360° radar analizleri ile veli memnuniyetini %98’e çıkaran sporcu karnesi çözümleri.',
         en: '360° multi-dimensional performance tracking and skill radar scorecards that boost parental satisfaction to 98%.',
       },
-      keywords: ['dijital sporcu karnesi', 'sporcu gelişim takibi', 'radar analiz', 'veli memnuniyeti'],
+      keywords: ['sporcu karnesi', 'sporcu gelişim takibi', 'radar analiz', 'veli memnuniyeti'],
     },
     yonetim: {
       title: {
@@ -114,8 +114,8 @@ export const BLOG_SEO_CONFIG: BlogSeoConfig = {
 export const AUTHOR_SELMAN = {
   name: 'Selman UTKU',
   role: {
-    tr: 'Spor Teknolojileri & Akademi Yönetimi',
-    en: 'Sports Tech & Academy Operations',
+    tr: 'Spor Teknolojileri Yazarı',
+    en: 'Sports Tech Writer',
   },
   avatar: '/selman-utku.svg',
   fallbackAvatar: '/selman-utku.svg',
@@ -335,16 +335,16 @@ export const BLOG_POSTS: BlogPost[] = [
     id: 'post-3',
     slug: 'geleneksel-yoklamadan-360-dijital-sporcu-karnesine',
     title: {
-      tr: 'Geleneksel Kağıt Yoklamadan 360° Dijital Sporcu Karnesine: Veliler Neden Bayılıyor?',
+      tr: 'Geleneksel Kağıt Yoklamadan 360° Sporcu Karnesine: Veliler Neden Bayılıyor?',
       en: 'From Traditional Paper Sheets to 360° Digital Athlete Report Cards: Why Parents Love It',
     },
     excerpt: {
-      tr: 'Teknik, taktik, fiziksel ve mental gelişimi görselleştiren modern dijital karne sistemi ile veli memnuniyetini %98’e çıkarın ve sporcularınızın gelişimini belgeleyin.',
+      tr: 'Teknik, taktik, fiziksel ve mental gelişimi görselleştiren modern sporcu karnesi sistemi ile veli memnuniyetini %98’e çıkarın ve sporcularınızın gelişimini belgeleyin.',
       en: 'Boost parent satisfaction to 98% with interactive 360° digital report cards visualizing technical, tactical, physical, and mental growth metrics.',
     },
     category: 'karne',
     categoryLabel: {
-      tr: 'Dijital Karne & Gelişim',
+      tr: 'Sporcu Karnesi & Gelişim',
       en: 'Digital Report Cards',
     },
     readTime: {
@@ -354,19 +354,19 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: '2026-03-05',
     author: AUTHOR_SELMAN,
     coverBadge: '📊 360° Gelişim Radarı',
-    tags: ['Dijital Karne', 'Gelişim Takibi', 'Veli İletişimi', 'Radar Analizi'],
+    tags: ['Sporcu Karnesi', 'Gelişim Takibi', 'Veli İletişimi', 'Radar Analizi'],
     featured: false,
     seo: {
       metaTitle: {
-        tr: '360° Dijital Sporcu Karnesi: Veliler Neden Bayılıyor? | SportsFly',
+        tr: '360° Sporcu Karnesi: Veliler Neden Bayılıyor? | SportsFly',
         en: '360° Digital Athlete Report Cards: Why Parents Love Them | SportsFly',
       },
       metaDescription: {
-        tr: 'Teknik, taktik, fiziksel ve mental gelişimi görselleştiren 360° dijital karne ile veli memnuniyetini %98’e çıkarın. Örnek radar analizlerini keşfedin.',
+        tr: 'Teknik, taktik, fiziksel ve mental gelişimi görselleştiren 360° sporcu karnesi ile veli memnuniyetini %98’e çıkarın. Örnek radar analizlerini keşfedin.',
         en: 'Visualize athletic growth with multi-dimensional skill radar charts. Drive parent satisfaction to 98% with automated modern digital athlete report cards.',
       },
       focusKeywords: [
-        'dijital sporcu karnesi',
+        'sporcu karnesi',
         'sporcu gelişim takibi',
         'radar analiz karnesi',
         'spor okulu veli bilgilendirme',
@@ -385,7 +385,7 @@ export const BLOG_POSTS: BlogPost[] = [
           },
           {
             heading: '2. Tek Tıkla WhatsApp & Veli Paneli Paylaşımı',
-            body: 'Antrenör dönem sonunda değerlendirmelerini tamamladığında, sistem tek tıkla şık bir dijital karne oluşturur ve velinin telefonuna ulaştırır.',
+            body: 'Antrenör dönem sonunda değerlendirmelerini tamamladığında, sistem tek tıkla şık bir sporcu karnesi oluşturur ve velinin telefonuna ulaştırır.',
             bulletPoints: [
               'Antrenörün kişisel övgü ve gelişim tavsiyesi notları',
               'Dönem boyu katılım yüzdesi ve kazanılan Sporpuan özeti',
@@ -398,7 +398,7 @@ export const BLOG_POSTS: BlogPost[] = [
           'Sporcu kendi gelişimini görüp eksik yönlerine daha şevkle çalışır.',
           'Kulübünüz kurumsal ve teknolojik vizyonuyla rakiplerinden ayrışır.',
         ],
-        callToActionText: 'Örnek bir dijital sporcu karnesini canlı olarak inceleyin.',
+        callToActionText: 'Örnek bir sporcu karnesini canlı olarak inceleyin.',
       },
       en: {
         lead: 'The number one question every parent asks is: "How is my child progressing?". SportsFly answers this with visual radar analytics and coaching commentary rather than vague verbal updates.',
