@@ -77,17 +77,19 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPlan }) 
     <section id="pricing" className="py-10 sm:py-16 md:py-24 bg-white border-t border-slate-200 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8 sm:space-y-12 md:space-y-16">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
-          <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider">
-            {t.pricingBadge}
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto gap-4 sm:gap-5">
+          <div>
+            <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200/90 uppercase tracking-wider shadow-2xs">
+              {t.pricingBadge}
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight leading-tight sm:leading-tight">
             {t.pricingTitle} <br />
             <span className="text-blue-600">
               {t.pricingTitleHighlight}
             </span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl">
             {t.pricingDesc}
           </p>
 

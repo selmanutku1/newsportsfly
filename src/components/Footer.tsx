@@ -98,8 +98,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigateView('sporpuan_system')}
                   className="text-amber-700 font-bold hover:text-amber-800 transition text-left flex items-center gap-1.5"
                 >
-                  <span>{language === 'tr' ? 'Sporpuan Modülü (Özel)' : 'Sporpuan System (Special)'}</span>
-                  <span className="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded-full font-bold">Özel</span>
+                  <span>{language === 'tr' ? 'Sporpuan & Sadakat Mimarisi' : 'Sporpuan Loyalty Architecture'}</span>
                 </button>
               </li>
               <li>

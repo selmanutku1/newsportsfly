@@ -33,23 +33,46 @@ export const DemoModal: React.FC<DemoModalProps> = ({
     e.preventDefault();
     setIsSubmitting(true);
 
+    const payload = {
+      fullName,
+      clubName,
+      phone,
+      email: email || 'Belirtilmedi',
+      branch,
+      studentEstimate,
+      selectedPlan,
+      recipient: 'selmanutkumarmara@gmail.com',
+    };
+
     try {
+      // 1. Send to local backend server
       await fetch('/api/demo-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      // 2. Send via FormSubmit service directly to target email
+      await fetch('https://formsubmit.co/ajax/selmanutkumarmara@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
         body: JSON.stringify({
-          fullName,
-          clubName,
-          phone,
-          email: email || 'Belirtilmedi',
-          branch,
-          studentEstimate,
-          selectedPlan,
-          recipient: 'selmanutkumarmara@gmail.com',
+          'Kulüp / Akademi Adı': clubName,
+          'Yetkili Adı Soyadı': fullName,
+          'Telefon / WhatsApp': phone,
+          'E-posta Adresi': email || 'Belirtilmedi',
+          'Spor Branşı': branch,
+          'Tahmini Sporcu Sayısı': studentEstimate,
+          'Seçilen Paket': selectedPlan,
+          '_subject': `🚀 Yeni SportsFly Demo Talebi: ${clubName} - ${fullName}`,
+          '_template': 'table',
         }),
       });
     } catch (err) {
-      console.error('Demo request API error:', err);
+      console.error('Demo request submission error:', err);
     } finally {
       setIsSubmitting(false);
       confetti({
@@ -216,16 +239,14 @@ export const DemoModal: React.FC<DemoModalProps> = ({
             </div>
 
             <h3 className="text-2xl font-black text-slate-950">{t.demoModalSuccessTitle}</h3>
-            <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
               {language === 'tr' ? (
                 <>
-                  Teşekkürler Sayın <strong>{fullName || 'Kulüp Yöneticimiz'}</strong>! {clubName ? `"${clubName}"` : 'Kulübünüz'} için demo rezervasyonu kaydedildi ve sistem yöneticimiz <strong>selmanutkumarmara@gmail.com</strong> adresine iletildi.
-                  Ekibimiz 15 dakika içinde WhatsApp / telefon üzerinden aktivasyon bağlantınızı iletecektir.
+                  Teşekkürler Sayın <strong>{fullName || 'Kulüp Yöneticimiz'}</strong>! {clubName ? `"${clubName}"` : 'Kulübünüz'} için canlı demo rezervasyon talebiniz başarıyla sistemimize kaydedildi. Akademi uzmanımız 15 dakika içerisinde WhatsApp veya telefon üzerinden sizinle iletişime geçerek özel erişim bilgilerinizi iletecektir.
                 </>
               ) : (
                 <>
-                  Thank you, <strong>{fullName || 'Club Director'}</strong>! Your demo reservation for {clubName ? `"${clubName}"` : 'your club'} has been recorded and dispatched to <strong>selmanutkumarmara@gmail.com</strong>.
-                  Our club specialist will reach out with your activation link within 15 minutes.
+                  Thank you, <strong>{fullName || 'Club Director'}</strong>! Your live demo request for {clubName ? `"${clubName}"` : 'your club'} has been successfully registered. Our academy specialist will reach out within 15 minutes via WhatsApp or phone with your exclusive activation access.
                 </>
               )}
             </p>
@@ -233,7 +254,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
             <div className="pt-2">
               <button
                 onClick={onClose}
-                className="w-full py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase shadow-md transition"
+                className="w-full py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase shadow-md transition tracking-wider"
               >
                 {t.demoModalClose}
               </button>

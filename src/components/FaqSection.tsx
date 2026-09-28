@@ -44,15 +44,17 @@ export const FaqSection: React.FC = () => {
     <section id="faqs" className="py-10 sm:py-16 md:py-24 bg-white border-t border-slate-200 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-8 space-y-8 sm:space-y-12">
         {/* Section Header */}
-        <div className="text-center space-y-3 sm:space-y-4">
-          <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 uppercase tracking-wider inline-flex items-center gap-1.5">
-            <HelpCircle className="w-3.5 h-3.5" />
-            {t.faqBadge}
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto gap-4 sm:gap-5">
+          <div>
+            <span className="px-4 py-1.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200/90 uppercase tracking-wider inline-flex items-center gap-1.5 shadow-2xs">
+              <HelpCircle className="w-3.5 h-3.5" />
+              {t.faqBadge}
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight leading-tight sm:leading-tight">
             {t.faqTitle}
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
+          <p className="text-sm sm:text-base text-slate-600 max-w-2xl">
             {t.faqDesc}
           </p>
         </div>

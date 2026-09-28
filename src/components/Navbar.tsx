@@ -198,8 +198,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     },
     {
       id: 'sporpuan-system-view',
-      title: language === 'tr' ? 'Sporpuan Sadakat & Karne Sistemi' : 'Sporpuan Loyalty & Report System',
-      subtitle: language === 'tr' ? '8 temel değerlendirme & sadakat modülü detaylı inceleme' : '8 core evaluation & retention pillars deep-dive',
+      title: language === 'tr' ? 'Sporpuan & Sadakat Mimarisi' : 'Sporpuan Loyalty Architecture',
+      subtitle: language === 'tr' ? '8 temel değerlendirme ve sadakat sistemi' : '8 core evaluation & retention pillars',
       icon: Sparkles,
       color: 'bg-amber-50 text-amber-700 border-amber-200/60',
       viewName: 'sporpuan_system' as ActiveView,
@@ -284,14 +284,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                       setPlatformDropdownOpen(false);
                       onNavigateView('sporpuan_system');
                     }}
-                    className="w-full text-left px-3.5 py-2 rounded-xl hover:bg-amber-50/80 text-amber-800 font-bold flex flex-col transition border-t border-slate-100 mt-1 pt-2"
+                    className="w-full text-left px-3.5 py-2 rounded-xl hover:bg-slate-50 text-slate-800 font-semibold flex flex-col transition border-t border-slate-100 mt-1 pt-2"
                   >
                     <span className="flex items-center gap-1.5">
                       <Award className="w-3.5 h-3.5 text-amber-600" />
-                      {language === 'tr' ? 'Sporpuan Modülü (Özel Sayfa)' : 'Sporpuan Loyalty (Special Page)'}
+                      {language === 'tr' ? 'Sporpuan & Sadakat Mimarisi' : 'Sporpuan Loyalty Architecture'}
                     </span>
-                    <span className="text-[11px] text-amber-600/80 font-normal pl-5">
-                      {language === 'tr' ? '8 temel değerlendirme & sadakat sistemi' : '8 core evaluation & retention pillars'}
+                    <span className="text-[11px] text-slate-400 font-normal pl-5">
+                      {language === 'tr' ? '8 temel değerlendirme ve sadakat sistemi' : '8 core evaluation & retention pillars'}
                     </span>
                   </button>
                 </div>
@@ -423,93 +423,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               {t.navDemoReserve}
             </button>
 
-            {/* Login Dropdown Button */}
-            <div className="relative" ref={loginRef}>
-              <button
-                id="btn-nav-login"
-                onClick={() => setLoginDropdownOpen(!loginDropdownOpen)}
-                className="px-3 lg:px-4 py-2 rounded-full bg-white hover:bg-slate-50 text-slate-800 font-semibold text-xs border border-slate-200 shadow-2xs hover:border-slate-300 transition flex items-center gap-1.5"
-              >
-                <span>{t.navLogin}</span>
-                <ChevronDown className={`w-3 h-3 text-slate-500 transition-transform duration-200 ${loginDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              {loginDropdownOpen && (
-                <div className="absolute top-full right-0 mt-2.5 w-60 bg-white rounded-2xl border border-slate-200/90 shadow-xl p-2 z-50 text-xs animate-in fade-in duration-150">
-                  <div className="px-3 py-1.5 mb-1 border-b border-slate-100 flex items-center justify-between">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                      {language === 'tr' ? 'Portallar' : 'Portals'}
-                    </span>
-                  </div>
-
-                  <button
-                    onClick={() => {
-                      setLoginDropdownOpen(false);
-                      setClosedLoginNotice({
-                        isOpen: true,
-                        roleName: t.navLoginAdmin,
-                      });
-                    }}
-                    className="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-slate-950 font-semibold flex items-center justify-between transition group"
-                  >
-                    <div className="flex flex-col">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-xs text-slate-800">{t.navLoginAdmin}</span>
-                      </div>
-                      <span className="text-[10px] text-slate-400 font-normal">{t.navLoginAdminDesc}</span>
-                    </div>
-                    <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 flex items-center gap-0.5">
-                      <Lock className="w-2.5 h-2.5" />
-                      <span>{language === 'tr' ? 'Kapalı' : 'Closed'}</span>
-                    </span>
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setLoginDropdownOpen(false);
-                      setClosedLoginNotice({
-                        isOpen: true,
-                        roleName: t.navLoginCoach,
-                      });
-                    }}
-                    className="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-slate-950 font-semibold flex items-center justify-between transition group"
-                  >
-                    <div className="flex flex-col">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-xs text-slate-800">{t.navLoginCoach}</span>
-                      </div>
-                      <span className="text-[10px] text-slate-400 font-normal">{t.navLoginCoachDesc}</span>
-                    </div>
-                    <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 flex items-center gap-0.5">
-                      <Lock className="w-2.5 h-2.5" />
-                      <span>{language === 'tr' ? 'Kapalı' : 'Closed'}</span>
-                    </span>
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setLoginDropdownOpen(false);
-                      setClosedLoginNotice({
-                        isOpen: true,
-                        roleName: t.navLoginParent,
-                      });
-                    }}
-                    className="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-slate-950 font-semibold flex items-center justify-between transition group"
-                  >
-                    <div className="flex flex-col">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-xs text-slate-800">{t.navLoginParent}</span>
-                      </div>
-                      <span className="text-[10px] text-slate-400 font-normal">{t.navLoginParentDesc}</span>
-                    </div>
-                    <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200 flex items-center gap-0.5">
-                      <Lock className="w-2.5 h-2.5" />
-                      <span>{language === 'tr' ? 'Kapalı' : 'Closed'}</span>
-                    </span>
-                  </button>
-                </div>
-              )}
-            </div>
+            {/* Login Direct Link Button */}
+            <a
+              id="btn-nav-login"
+              href="https://webapp.sportsfly.com.tr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 lg:px-4.5 py-2 rounded-full bg-white hover:bg-slate-50 text-slate-800 font-semibold text-xs border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 transition flex items-center gap-1.5"
+            >
+              <span>{t.navLogin}</span>
+            </a>
           </div>
 
           {/* Mobile Actions: Language + Demo + Menu Trigger (Triggered when window width < 768px) */}
@@ -676,94 +599,82 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                   <div className="grid grid-cols-1 gap-2">
                     {/* Admin Portal */}
-                    <button
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                        setClosedLoginNotice({
-                          isOpen: true,
-                          roleName: t.navLoginAdmin,
-                        });
-                      }}
-                      className="w-full min-h-[48px] p-3 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 active:scale-[0.99] transition flex items-center justify-between text-left group"
+                    <a
+                      href="https://webapp.sportsfly.com.tr/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="w-full min-h-[48px] p-3 rounded-2xl bg-slate-50 hover:bg-blue-50/70 border border-slate-200/80 active:scale-[0.99] transition flex items-center justify-between text-left group"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-slate-200/80 text-slate-600 flex items-center justify-center flex-shrink-0">
+                        <div className="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0">
                           <Shield className="w-4 h-4" />
                         </div>
                         <div>
-                          <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                          <div className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition">
                             <span>{t.navLoginAdmin}</span>
-                            <Lock className="w-3 h-3 text-slate-400" />
                           </div>
                           <div className="text-[11px] text-slate-500">
                             {t.navLoginAdminDesc}
                           </div>
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold text-slate-500 bg-white px-2 py-0.5 rounded-lg border border-slate-200">
-                        {language === 'tr' ? 'Kapalı' : 'Closed'}
+                      <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
+                        {language === 'tr' ? 'Giriş Yap' : 'Login'}
                       </span>
-                    </button>
+                    </a>
 
                     {/* Coach Portal */}
-                    <button
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                        setClosedLoginNotice({
-                          isOpen: true,
-                          roleName: t.navLoginCoach,
-                        });
-                      }}
-                      className="w-full min-h-[48px] p-3 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 active:scale-[0.99] transition flex items-center justify-between text-left group"
+                    <a
+                      href="https://webapp.sportsfly.com.tr/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="w-full min-h-[48px] p-3 rounded-2xl bg-slate-50 hover:bg-blue-50/70 border border-slate-200/80 active:scale-[0.99] transition flex items-center justify-between text-left group"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-slate-200/80 text-slate-600 flex items-center justify-center flex-shrink-0">
+                        <div className="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0">
                           <UserCheck className="w-4 h-4" />
                         </div>
                         <div>
-                          <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                          <div className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition">
                             <span>{t.navLoginCoach}</span>
-                            <Lock className="w-3 h-3 text-slate-400" />
                           </div>
                           <div className="text-[11px] text-slate-500">
                             {t.navLoginCoachDesc}
                           </div>
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold text-slate-500 bg-white px-2 py-0.5 rounded-lg border border-slate-200">
-                        {language === 'tr' ? 'Kapalı' : 'Closed'}
+                      <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
+                        {language === 'tr' ? 'Giriş Yap' : 'Login'}
                       </span>
-                    </button>
+                    </a>
 
                     {/* Parent Portal */}
-                    <button
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                        setClosedLoginNotice({
-                          isOpen: true,
-                          roleName: t.navLoginParent,
-                        });
-                      }}
-                      className="w-full min-h-[48px] p-3 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 active:scale-[0.99] transition flex items-center justify-between text-left group"
+                    <a
+                      href="https://webapp.sportsfly.com.tr/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="w-full min-h-[48px] p-3 rounded-2xl bg-slate-50 hover:bg-blue-50/70 border border-slate-200/80 active:scale-[0.99] transition flex items-center justify-between text-left group"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-slate-200/80 text-slate-600 flex items-center justify-center flex-shrink-0">
+                        <div className="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0">
                           <Heart className="w-4 h-4" />
                         </div>
                         <div>
-                          <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                          <div className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition">
                             <span>{t.navLoginParent}</span>
-                            <Lock className="w-3 h-3 text-slate-400" />
                           </div>
                           <div className="text-[11px] text-slate-500">
                             {t.navLoginParentDesc}
                           </div>
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold text-slate-500 bg-white px-2 py-0.5 rounded-lg border border-slate-200">
-                        {language === 'tr' ? 'Kapalı' : 'Closed'}
+                      <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
+                        {language === 'tr' ? 'Giriş Yap' : 'Login'}
                       </span>
-                    </button>
+                    </a>
                   </div>
                 </div>
 
