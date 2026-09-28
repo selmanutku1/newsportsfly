@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { SportsFlyLogo } from './SportsFlyLogo';
 import { ActiveView } from '../types';
 import { useLanguage } from '../context/LanguageContext';
+import { triggerLiveSupportModal } from './LiveSupportModal';
 import {
   Menu,
   X,
@@ -358,6 +359,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                       {language === 'tr' ? 'Özellikler, makaleler ve ipuçları' : 'Features, articles and insights'}
                     </span>
                   </button>
+                  <button
+                    onClick={() => {
+                      setResourcesDropdownOpen(false);
+                      triggerLiveSupportModal();
+                    }}
+                    className="w-full text-left px-3.5 py-2 rounded-xl hover:bg-slate-50 text-slate-800 font-bold flex flex-col transition border-t border-slate-100 mt-1 pt-2"
+                  >
+                    <span className="flex items-center gap-1.5">
+                      <PhoneCall className="w-3.5 h-3.5 text-blue-600" />
+                      {language === 'tr' ? '7/24 Destek Merkezi' : '24/7 Support Center'}
+                    </span>
+                    <span className="text-[11px] text-slate-400 font-normal pl-5">
+                      {language === 'tr' ? 'Uzman ekibimizle iletişime geçin' : 'Connect with our expert team'}
+                    </span>
+                  </button>
                 </div>
               )}
             </div>
@@ -678,8 +694,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </div>
                 </div>
 
-                {/* 24/7 Human Live Support Badge */}
-                <div className="p-3.5 rounded-2xl bg-gradient-to-r from-blue-50/70 to-slate-50 border border-blue-100/70 flex items-center justify-between">
+                {/* 24/7 Support Center Button */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    triggerLiveSupportModal();
+                  }}
+                  className="w-full p-3.5 rounded-2xl bg-gradient-to-r from-blue-50/80 to-slate-50 hover:from-blue-100/80 hover:to-slate-100 border border-blue-100 flex items-center justify-between text-left transition cursor-pointer"
+                >
                   <div className="flex items-center gap-2.5">
                     <span className="relative flex h-2.5 w-2.5">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -687,15 +710,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </span>
                     <div>
                       <p className="text-xs font-bold text-slate-900">
-                        {language === 'tr' ? '7/24 Canlı İnsan Desteği' : '24/7 Live Human Support'}
+                        {language === 'tr' ? '7/24 Destek Merkezi' : '24/7 Support Center'}
                       </p>
                       <p className="text-[11px] text-slate-500">
-                        {language === 'tr' ? 'Robotik yanıt yok, doğrudan uzman ekip' : 'Zero chatbots, direct human experts'}
+                        {language === 'tr'
+                          ? 'Uzman ekibimizle hemen görüşün'
+                          : 'Connect with our expert team'}
                       </p>
                     </div>
                   </div>
                   <PhoneCall className="w-4 h-4 text-blue-600" />
-                </div>
+                </button>
               </div>
 
               {/* Drawer Bottom Bar: Language Switcher */}

@@ -123,22 +123,30 @@ export const DemoModal: React.FC<DemoModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-lg bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xl my-8">
+    <div
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-900/60 backdrop-blur-sm"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div className="relative w-full sm:max-w-lg bg-white border-t sm:border border-slate-200 rounded-t-3xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl max-h-[92dvh] overflow-y-auto">
+        {/* Mobile Drag Handle */}
+        <div className="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-3 sm:hidden" />
+
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 transition"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 transition"
         >
           <X className="w-5 h-5" />
         </button>
 
         {!submitted ? (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
+          <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
+            <div className="pr-8">
               <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
                 {t.demoModalBadge}
               </span>
-              <h3 className="text-2xl font-black text-slate-950 mt-2">
+              <h3 className="text-xl sm:text-2xl font-black text-slate-950 mt-2 leading-snug">
                 {t.demoModalTitle}
               </h3>
               <p className="text-xs text-slate-500 mt-1">
@@ -146,7 +154,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
               </p>
             </div>
 
-            <div className="space-y-3 pt-2 text-xs">
+            <div className="space-y-3 pt-1 text-xs">
               <div>
                 <label className="block text-slate-700 font-semibold mb-1">
                   {t.demoModalClubLabel} *
@@ -157,7 +165,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
                   placeholder={t.demoModalClubPlaceholder}
                   value={clubName}
                   onChange={(e) => setClubName(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 sm:p-3 text-base sm:text-xs text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
                 />
               </div>
 
@@ -171,7 +179,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
                   placeholder={t.demoModalNamePlaceholder}
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 sm:p-3 text-base sm:text-xs text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
                 />
               </div>
 
@@ -186,7 +194,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
                     placeholder={t.demoModalPhonePlaceholder}
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 sm:p-3 text-base sm:text-xs text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
                   />
                 </div>
 
@@ -199,7 +207,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
                     placeholder="ornek@kulup.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 sm:p-3 text-base sm:text-xs text-slate-900 focus:outline-none focus:bg-white focus:border-blue-600 shadow-xs"
                   />
                 </div>
               </div>
@@ -210,7 +218,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
                   <select
                     value={branch}
                     onChange={(e) => setBranch(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none shadow-xs"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 sm:p-3 text-base sm:text-xs text-slate-900 focus:outline-none shadow-xs"
                   >
                     {language === 'tr' ? (
                       <>
@@ -239,7 +247,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({
                   <select
                     value={studentEstimate}
                     onChange={(e) => setStudentEstimate(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-900 focus:outline-none shadow-xs"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 sm:p-3 text-base sm:text-xs text-slate-900 focus:outline-none shadow-xs"
                   >
                     {language === 'tr' ? (
                       <>
@@ -261,10 +269,10 @@ export const DemoModal: React.FC<DemoModalProps> = ({
               </div>
             </div>
 
-            <div className="pt-3">
+            <div className="pt-2">
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-blue-500/25 transition"
+                className="w-full min-h-[46px] py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-blue-500/25 transition"
               >
                 {t.demoModalSubmit}
               </button>

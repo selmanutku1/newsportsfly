@@ -21,6 +21,7 @@ import { TestimonialsSection } from './components/TestimonialsSection';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { DemoModal } from './components/DemoModal';
+import { LiveSupportModal } from './components/LiveSupportModal';
 import { ParentPanel } from './components/panels/ParentPanel';
 import { CoachPanel } from './components/panels/CoachPanel';
 import { AdminPanel } from './components/panels/AdminPanel';
@@ -88,6 +89,7 @@ function MainApp() {
 
   // Demo Modal State
   const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const [liveSupportModalOpen, setLiveSupportModalOpen] = useState(false);
   const [selectedPlanForDemo, setSelectedPlanForDemo] = useState('Kulüp & Akademi');
 
   // Sample Report Card Standalone Modal (from marketing section)
@@ -267,6 +269,13 @@ function MainApp() {
           setDemoModalOpen(false);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+      />
+
+      {/* 7/24 Live Human Support & WhatsApp (0216 850 19 07) Modal + Floating Button */}
+      <LiveSupportModal
+        isOpen={liveSupportModalOpen}
+        onClose={() => setLiveSupportModalOpen(false)}
+        onOpen={() => setLiveSupportModalOpen(true)}
       />
     </div>
   );

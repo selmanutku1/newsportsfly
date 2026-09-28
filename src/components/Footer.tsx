@@ -1,8 +1,9 @@
 import React from 'react';
 import { SportsFlyLogo } from './SportsFlyLogo';
 import { ActiveView } from '../types';
-import { Mail, MapPin, Phone, ArrowUpRight, BookOpen } from 'lucide-react';
+import { Mail, MapPin, Phone, ArrowUpRight, BookOpen, MessageCircle } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { triggerLiveSupportModal } from './LiveSupportModal';
 
 interface FooterProps {
   onNavigateView: (view: ActiveView) => void;
@@ -313,9 +314,21 @@ export const Footer: React.FC<FooterProps> = ({
             <ul className="space-y-2.5 text-xs">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                <a href="tel:02168501907" className="hover:text-blue-600 transition">
-                  0216 850 1907
+                <a href="tel:02168501907" className="hover:text-blue-600 transition font-semibold">
+                  0216 850 19 07
                 </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={triggerLiveSupportModal}
+                  className="inline-flex items-center gap-1.5 text-blue-600 font-bold hover:text-blue-700 hover:underline transition text-left cursor-pointer"
+                >
+                  <MessageCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <span>
+                    {isTr ? '7/24 Destek Merkezi' : '24/7 Support Center'}
+                  </span>
+                </button>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-blue-600 flex-shrink-0" />

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 import {
   Award,
@@ -40,6 +40,46 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const { language, t } = useLanguage();
   const [activeLeaderTeam, setActiveLeaderTeam] = useState<string>('U14 BASKETBOL');
   const [activeScreenTab, setActiveScreenTab] = useState<'leader' | 'parent' | 'report'>('leader');
+  const [announcementIndex, setAnnouncementIndex] = useState<number>(0);
+
+  const announcements = language === 'tr'
+    ? [
+        {
+          text: 'Devamlılığı %42 Artıran Sporpuan & Ödül Kataloğu',
+          targetId: 'sporpuan',
+        },
+        {
+          text: 'Akıllı Ödeme Linkleri ile %98 Otomatik Aidat Tahsilatı',
+          targetId: 'automation',
+        },
+        {
+          text: '360° Gelişim Analizli Otomatik Dijital Sporcu Karnesi',
+          targetId: 'digital-report',
+        },
+      ]
+    : [
+        {
+          text: 'Sporpuan & Reward Catalog Boosting Attendance by 42%',
+          targetId: 'sporpuan',
+        },
+        {
+          text: '98% Automated Tuition Collection with Smart Payment Links',
+          targetId: 'automation',
+        },
+        {
+          text: 'Automated 360° Skill Radar Digital Athlete Report Cards',
+          targetId: 'digital-report',
+        },
+      ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setAnnouncementIndex((prev) => (prev + 1) % 3);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const currentAnnouncement = announcements[announcementIndex] || announcements[0];
 
   return (
     <section className="relative pt-24 pb-10 sm:pt-32 sm:pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-b from-white via-[#fafcfb] to-white">
@@ -48,14 +88,39 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Announcement Pill */}
+        {/* Top Rotating Announcement Banner (3 Innovations) */}
         <div className="flex justify-center mb-5 sm:mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-[11px] sm:text-xs font-semibold shadow-md max-w-full">
-            <span className="flex h-2 w-2 rounded-full bg-[#bbf246] animate-ping flex-shrink-0" />
-            <span className="font-bold text-[#bbf246] flex-shrink-0">{language === 'tr' ? 'YENİ:' : 'NEW:'}</span>
-            <span className="truncate">{language === 'tr' ? 'Devamlılığı Artıran Sporpuan & Otomatik Tahsilat' : 'Boost Retention with Sporpuan & Auto-Billing'}</span>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400 flex-shrink-0 hidden sm:inline-block" />
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              const el = document.getElementById(currentAnnouncement.targetId);
+              el?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="group inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-[11px] sm:text-xs font-semibold shadow-md max-w-full overflow-hidden transition cursor-pointer"
+          >
+            <span className="relative flex h-2 w-2 flex-shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#bbf246] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#bbf246]" />
+            </span>
+            <span className="font-bold text-[#bbf246] flex-shrink-0">
+              {language === 'tr' ? 'YENİ:' : 'NEW:'}
+            </span>
+            <div className="relative overflow-hidden h-4 sm:h-[18px] flex items-center">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={announcementIndex}
+                  initial={{ y: 14, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -14, opacity: 0 }}
+                  transition={{ duration: 0.28, ease: 'easeOut' }}
+                  className="truncate block"
+                >
+                  {currentAnnouncement.text}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-white group-hover:translate-x-0.5 transition flex-shrink-0 hidden sm:inline-block" />
+          </button>
         </div>
 
         {/* Hero Copywriting */}

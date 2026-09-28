@@ -12,15 +12,19 @@ import {
   Phone,
   Mail,
   Headphones,
-  Award
+  Award,
+  MessageCircle,
+  ArrowUpRight
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { triggerLiveSupportModal } from './LiveSupportModal';
 
 export const HumanSupportSection: React.FC = () => {
   const { language, t } = useLanguage();
+  const isTr = language === 'tr';
 
   return (
-    <section className="py-10 sm:py-16 md:py-24 bg-white relative overflow-hidden">
+    <section id="human-support" className="py-10 sm:py-16 md:py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           
@@ -196,16 +200,29 @@ export const HumanSupportSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Support contact snippet */}
-            <div className="pt-4 flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-600">
-              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200">
-                <Phone className="w-3.5 h-3.5 text-blue-600" />
-                0216 850 1907
-              </span>
-              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200">
+            {/* Interactive Support Action Area */}
+            <div className="pt-3 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <button
+                type="button"
+                onClick={triggerLiveSupportModal}
+                className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-slate-950 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition cursor-pointer active:scale-95"
+              >
+                <Headphones className="w-4 h-4 text-[#bbf246]" />
+                <span>
+                  {isTr
+                    ? '7/24 Destek Ekibine Ulaşın'
+                    : 'Contact 24/7 Support Team'}
+                </span>
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
+
+              <a
+                href="mailto:destek@sportsfly.com.tr"
+                className="w-full sm:w-auto min-h-[46px] inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 transition"
+              >
                 <Mail className="w-3.5 h-3.5 text-blue-600" />
-                destek@sportsfly.com.tr
-              </span>
+                <span>destek@sportsfly.com.tr</span>
+              </a>
             </div>
 
           </div>
