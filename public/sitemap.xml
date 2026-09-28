@@ -65,6 +65,38 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.sportsfly.com.tr/#blog?lang=en"/>
   </url>
 
+  <!-- Blog Categories (Resources & Topic Hubs) -->
+  <url>
+    <loc>https://www.sportsfly.com.tr/#blog-kategori-otomasyon</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.sportsfly.com.tr/#blog-kategori-sporpuan</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.sportsfly.com.tr/#blog-kategori-karne</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.sportsfly.com.tr/#blog-kategori-yonetim</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.sportsfly.com.tr/#blog-kategori-iletisim</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- Blog Article 1: Aidat Tahsilatı -->
   <url>
     <loc>https://www.sportsfly.com.tr/#blog-spor-okullarinda-aidat-tahsilatinda-yuzde-98-basari</loc>

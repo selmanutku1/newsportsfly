@@ -4,6 +4,7 @@ import { BLOG_POSTS, BLOG_SEO_CONFIG } from '../data/blogData';
 import { useLanguage } from '../context/LanguageContext';
 import { SportsFlyLogo } from './SportsFlyLogo';
 import { TrFlag, EnFlag } from './Navbar';
+import { Footer } from './Footer';
 import { setPageSeo, buildArticleJsonLd, buildBlogHubJsonLd } from '../utils/seoHelper';
 import {
   Search,
@@ -62,19 +63,41 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   onOpenDemoModal,
 }) => {
   const { language, setLanguage } = useLanguage();
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>(() => {
+    if (typeof window !== 'undefined' && window.location.hash.startsWith('#blog-kategori-')) {
+      const catId = window.location.hash.replace('#blog-kategori-', '');
+      if (BLOG_SEO_CONFIG.categories[catId]) return catId;
+    }
+    return 'all';
+  });
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [activeArticle, setActiveArticle] = useState<BlogPost | null>(null);
+  const [activeArticle, setActiveArticle] = useState<BlogPost | null>(() => {
+    if (
+      typeof window !== 'undefined' &&
+      window.location.hash.startsWith('#blog-') &&
+      !window.location.hash.startsWith('#blog-kategori-')
+    ) {
+      const slug = window.location.hash.replace('#blog-', '');
+      return BLOG_POSTS.find((p) => p.slug === slug || p.id === slug) || null;
+    }
+    return null;
+  });
   const [copiedLink, setCopiedLink] = useState(false);
   const [copiedCanonical, setCopiedCanonical] = useState(false);
 
-  // Parse initial hash or slug on mount
+  // Parse hash on hashchange
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const parseHash = () => {
       const hash = window.location.hash;
-      if (hash.startsWith('#blog-')) {
+      if (hash.startsWith('#blog-kategori-')) {
+        const catId = hash.replace('#blog-kategori-', '');
+        if (BLOG_SEO_CONFIG.categories[catId]) {
+          setActiveArticle(null);
+          setSelectedCategory(catId);
+        }
+      } else if (hash.startsWith('#blog-')) {
         const slug = hash.replace('#blog-', '');
         const match = BLOG_POSTS.find((p) => p.slug === slug || p.id === slug);
         if (match) {
@@ -82,6 +105,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
         }
       } else if (hash === '#blog' || hash.startsWith('#blog?')) {
         setActiveArticle(null);
+        setSelectedCategory('all');
       }
     };
 
@@ -113,28 +137,30 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       });
     } else {
       const hubConfig = BLOG_SEO_CONFIG.hub;
-      const hubTitle =
-        selectedCategory !== 'all' && BLOG_SEO_CONFIG.categories[selectedCategory]
-          ? BLOG_SEO_CONFIG.categories[selectedCategory].title[language]
-          : hubConfig.title[language];
-      const hubDesc =
-        selectedCategory !== 'all' && BLOG_SEO_CONFIG.categories[selectedCategory]
-          ? BLOG_SEO_CONFIG.categories[selectedCategory].description[language]
-          : hubConfig.description[language];
-      const hubKeywords =
-        selectedCategory !== 'all' && BLOG_SEO_CONFIG.categories[selectedCategory]
-          ? BLOG_SEO_CONFIG.categories[selectedCategory].keywords
-          : hubConfig.keywords;
+      const isCatSelected = selectedCategory !== 'all' && Boolean(BLOG_SEO_CONFIG.categories[selectedCategory]);
+      const hubTitle = isCatSelected
+        ? BLOG_SEO_CONFIG.categories[selectedCategory].title[language]
+        : hubConfig.title[language];
+      const hubDesc = isCatSelected
+        ? BLOG_SEO_CONFIG.categories[selectedCategory].description[language]
+        : hubConfig.description[language];
+      const hubKeywords = isCatSelected
+        ? BLOG_SEO_CONFIG.categories[selectedCategory].keywords
+        : hubConfig.keywords;
+      const targetHash = isCatSelected ? `#blog-kategori-${selectedCategory}` : '#blog';
+      const targetCanonical = isCatSelected
+        ? `https://www.sportsfly.com.tr/${targetHash}`
+        : hubConfig.canonicalUrl;
 
-      if (window.location.hash !== '#blog') {
-        window.history.replaceState(null, '', '#blog');
+      if (window.location.hash !== targetHash) {
+        window.history.replaceState(null, '', targetHash);
       }
 
       setPageSeo({
         title: hubTitle,
         description: hubDesc,
         keywords: hubKeywords,
-        canonicalUrl: hubConfig.canonicalUrl,
+        canonicalUrl: targetCanonical,
         ogType: 'website',
         authorName: 'Selman UTKU',
         jsonLd: buildBlogHubJsonLd(BLOG_POSTS, language),
@@ -493,6 +519,11 @@ export const BlogPage: React.FC<BlogPageProps> = ({
             </div>
           </div>
         </main>
+
+        <Footer
+          onNavigateView={onNavigateView}
+          onOpenDemoModal={onOpenDemoModal}
+        />
       </div>
     );
   }
@@ -750,21 +781,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 text-xs text-slate-500 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <span>© {new Date().getFullYear()} SportsFly Inc.</span>
-            <span>•</span>
-            <span className="text-slate-400">Akademi Blogu</span>
-          </div>
-          <div className="flex items-center gap-4 text-xs">
-            <span className="flex items-center gap-1 text-slate-600">
-              <PhoneCall className="w-3.5 h-3.5 text-blue-600" />
-              0216 850 1907
-            </span>
-          </div>
-        </div>
-      </footer>
+      <Footer
+        onNavigateView={onNavigateView}
+        onOpenDemoModal={onOpenDemoModal}
+      />
     </div>
   );
 };
