@@ -193,6 +193,15 @@ export const Footer: React.FC<FooterProps> = ({
                   {isTr ? 'Sporpuan & Sadakat Mimarisi' : 'Sporpuan Loyalty Architecture'}
                 </a>
               </li>
+              <li>
+                <a
+                  href="#paket-karsilastirma"
+                  onClick={(e) => navigateToHashView(e, 'pricing_comparison', '#paket-karsilastirma')}
+                  className="text-blue-600 font-semibold hover:underline transition block"
+                >
+                  {isTr ? 'Paket & Modül Karşılaştırması' : 'Plan & Module Comparison'}
+                </a>
+              </li>
             </ul>
           </nav>
 

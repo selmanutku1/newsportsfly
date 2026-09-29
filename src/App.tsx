@@ -28,6 +28,7 @@ import { AdminPanel } from './components/panels/AdminPanel';
 import { ReportCardModal } from './components/panels/ReportCardModal';
 import { BlogPage } from './components/BlogPage';
 import { SporpuanSystemPage } from './components/SporpuanSystemPage';
+import { PricingComparisonPage } from './components/PricingComparisonPage';
 import { setPageSeo } from './utils/seoHelper';
 import { useLanguage } from './context/LanguageContext';
 
@@ -38,6 +39,7 @@ function MainApp() {
       const hash = window.location.hash.toLowerCase();
       if (hash.startsWith('#blog')) return 'blog';
       if (hash.startsWith('#sporpuan-sistemi') || hash.startsWith('#sporpuan-system') || hash === '#sporpuan-detay') return 'sporpuan_system';
+      if (hash.startsWith('#paket-karsilastirma') || hash.startsWith('#fiyat-karsilastirma')) return 'pricing_comparison';
     }
     return 'marketing';
   });
@@ -53,6 +55,8 @@ function MainApp() {
         setCurrentView('blog');
       } else if (hash.startsWith('#sporpuan-sistemi') || hash.startsWith('#sporpuan-system') || hash === '#sporpuan-detay') {
         setCurrentView('sporpuan_system');
+      } else if (hash.startsWith('#paket-karsilastirma') || hash.startsWith('#fiyat-karsilastirma')) {
+        setCurrentView('pricing_comparison');
       } else {
         setCurrentView('marketing');
       }
@@ -166,7 +170,14 @@ function MainApp() {
 
             <RoiCalculator />
 
-            <PricingSection onSelectPlan={handleOpenDemoWithPlan} />
+            <PricingSection
+              onSelectPlan={handleOpenDemoWithPlan}
+              onOpenComparison={() => {
+                setCurrentView('pricing_comparison');
+                window.location.hash = '#paket-karsilastirma';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
 
             <TestimonialsSection />
 
@@ -242,6 +253,28 @@ function MainApp() {
             setCurrentView(view);
             if (view === 'blog') window.location.hash = '#blog';
             else if (view === 'sporpuan_system') window.location.hash = '#sporpuan-sistemi';
+            else if (view === 'pricing_comparison') window.location.hash = '#paket-karsilastirma';
+            else window.location.hash = '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        />
+      )}
+
+      {/* 7. PAKET YETKİ & MODÜL KARŞILAŞTIRMA MATRİSİ SAYFASI */}
+      {currentView === 'pricing_comparison' && (
+        <PricingComparisonPage
+          onBackToSite={() => {
+            setCurrentView('marketing');
+            window.location.hash = '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onSelectPlan={handleOpenDemoWithPlan}
+          onOpenDemoModal={() => setDemoModalOpen(true)}
+          onNavigateView={(view) => {
+            setCurrentView(view);
+            if (view === 'blog') window.location.hash = '#blog';
+            else if (view === 'sporpuan_system') window.location.hash = '#sporpuan-sistemi';
+            else if (view === 'pricing_comparison') window.location.hash = '#paket-karsilastirma';
             else window.location.hash = '';
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}

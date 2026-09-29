@@ -1,4 +1,11 @@
-export type ActiveView = 'marketing' | 'parent_panel' | 'coach_panel' | 'admin_panel' | 'blog' | 'sporpuan_system';
+export type ActiveView =
+  | 'marketing'
+  | 'parent_panel'
+  | 'coach_panel'
+  | 'admin_panel'
+  | 'blog'
+  | 'sporpuan_system'
+  | 'pricing_comparison';
 
 export interface BlogPost {
   id: string;
