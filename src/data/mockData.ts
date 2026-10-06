@@ -234,8 +234,8 @@ export const PRICING_PLANS = [
     id: 'starter',
     name: 'Başlangıç Kulübü',
     desc: 'Tek şubeli, büyümekte olan butik spor okulları ve atölyeler için ideal.',
-    monthlyPrice: 1190,
-    annualPrice: 950,
+    monthlyPrice: 2199,
+    annualPrice: 1759,
     badge: null,
     features: [
       '100 Aktif Sporcuya Kadar',
@@ -252,8 +252,8 @@ export const PRICING_PLANS = [
     id: 'growth',
     name: 'Kulüp & Akademi',
     desc: 'Devamlılığı ödüllendirmek, kurumsal veli iletişimi ve çoklu branş yönetimi isteyenler için.',
-    monthlyPrice: 2290,
-    annualPrice: 1830,
+    monthlyPrice: 3699,
+    annualPrice: 2959,
     badge: 'En Çok Tercih Edilen',
     popular: true,
     features: [
@@ -272,8 +272,9 @@ export const PRICING_PLANS = [
     id: 'enterprise',
     name: 'Pro Akademi & Çoklu Şube',
     desc: 'Birden fazla tesisi, yüzlerce sporcusu ve özel marka kimliği olan büyük kulüpler için.',
-    monthlyPrice: 3990,
-    annualPrice: 3190,
+    monthlyPrice: 0,
+    annualPrice: 0,
+    customPriceLabel: 'Kurumsal Teklif',
     badge: 'Maksimum Güç',
     features: [
       'Sınırsız Sporcu & Sınırsız Şube / Tesis',

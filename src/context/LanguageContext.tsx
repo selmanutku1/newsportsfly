@@ -693,8 +693,8 @@ const translations: Record<Language, Translations> = {
         id: 'starter',
         name: 'Başlangıç Kulübü',
         desc: 'Tek şubeli, büyümekte olan butik spor okulları ve atölyeler için ideal.',
-        monthlyPrice: 1490,
-        annualPrice: 1190,
+        monthlyPrice: 2199,
+        annualPrice: 1759,
         badge: null,
         features: [
           '100 Aktif Sporcuya Kadar',
@@ -711,8 +711,8 @@ const translations: Record<Language, Translations> = {
         id: 'growth',
         name: 'Kulüp & Akademi',
         desc: 'Devamlılığı ödüllendirmek, kurumsal veli iletişimi ve çoklu branş yönetimi isteyenler için.',
-        monthlyPrice: 2890,
-        annualPrice: 2290,
+        monthlyPrice: 3699,
+        annualPrice: 2959,
         badge: 'En Çok Tercih Edilen',
         popular: true,
         features: [

@@ -20,8 +20,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
       id: 'starter',
       name: 'Starter Club',
       desc: 'Ideal for single-branch, growing boutique sports academies and studios.',
-      monthlyPrice: 1190,
-      annualPrice: 950,
+      monthlyPrice: 2199,
+      annualPrice: 1759,
       badge: null,
       popular: false,
       features: [
@@ -39,8 +39,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
       id: 'growth',
       name: 'Club & Academy',
       desc: 'For clubs looking to incentivize attendance, professionalize parent communication, and run multi-branch operations.',
-      monthlyPrice: 2290,
-      annualPrice: 1830,
+      monthlyPrice: 3699,
+      annualPrice: 2959,
       badge: 'Most Popular',
       popular: true,
       features: [
@@ -58,8 +58,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
       id: 'elite',
       name: 'Elite & Multi-Branch',
       desc: 'High-volume federations, nationwide sports schools, and multi-franchise academies.',
-      monthlyPrice: 3990,
-      annualPrice: 3190,
+      monthlyPrice: 0,
+      annualPrice: 0,
+      customPriceLabel: 'Enterprise Quote',
       badge: 'Enterprise',
       popular: false,
       features: [
@@ -139,6 +140,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
           {plans.map((plan) => {
             const price = annualBilling ? plan.annualPrice : plan.monthlyPrice;
             const isPopular = plan.popular;
+            const isEnterprise =
+              plan.id === 'enterprise' ||
+              plan.id === 'elite' ||
+              plan.name.includes('Pro Akademi') ||
+              plan.name.includes('Elite');
 
             return (
               <div
@@ -166,14 +172,27 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                   </div>
 
                   {/* Price display */}
-                  <div className="flex items-baseline gap-1.5 tabular-nums">
-                    <span className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-                      {price.toLocaleString(language === 'tr' ? 'tr-TR' : 'en-US')}
-                    </span>
-                    <span className="text-slate-500 text-xs sm:text-sm font-semibold">
-                      {language === 'tr' ? '₺ / ay' : '₺ / mo'}
-                    </span>
-                  </div>
+                  {isEnterprise ? (
+                    <div className="flex flex-col justify-center min-h-[44px] sm:min-h-[52px]">
+                      <div className="text-2xl sm:text-3xl lg:text-[32px] font-black text-slate-950 tracking-tight leading-none">
+                        {language === 'tr' ? 'Kurumsal Teklif' : 'Enterprise Quote'}
+                      </div>
+                      <span className="text-slate-500 text-[11px] sm:text-xs font-semibold mt-1">
+                        {language === 'tr'
+                          ? 'Kulübünüze Özel Kapsam & Fiyatlandırma'
+                          : 'Tailored Scope & Custom Pricing'}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex items-baseline gap-1.5 tabular-nums min-h-[44px] sm:min-h-[52px] items-center">
+                      <span className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
+                        {price?.toLocaleString(language === 'tr' ? 'tr-TR' : 'en-US')}
+                      </span>
+                      <span className="text-slate-500 text-xs sm:text-sm font-semibold">
+                        {language === 'tr' ? '₺ / ay' : '₺ / mo'}
+                      </span>
+                    </div>
+                  )}
 
                   {/* Features list */}
                   <div className="space-y-2.5 sm:space-y-3 pt-4 border-t border-slate-100">

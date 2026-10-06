@@ -332,9 +332,9 @@ export const PricingComparisonPage: React.FC<PricingComparisonPageProps> = ({
     });
   }, [isTr]);
 
-  const starterPrice = annualBilling ? '950 ₺' : '1.190 ₺';
-  const growthPrice = annualBilling ? '1.830 ₺' : '2.290 ₺';
-  const proPrice = annualBilling ? '3.190 ₺' : '3.990 ₺';
+  const starterPrice = annualBilling ? '1.759 ₺' : '2.199 ₺';
+  const growthPrice = annualBilling ? '2.959 ₺' : '3.699 ₺';
+  const proPrice = isTr ? 'Kurumsal Teklif' : 'Enterprise Quote';
 
   const visibleSections =
     selectedSectionId === 'all'
@@ -679,7 +679,8 @@ export const PricingComparisonPage: React.FC<PricingComparisonPageProps> = ({
                     ) : (
                       <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between text-xs">
                         <span className="font-semibold text-slate-600">
-                          {planMeta[mobileSelectedPlan].name} ({planMeta[mobileSelectedPlan].price})
+                          {planMeta[mobileSelectedPlan].name} ({planMeta[mobileSelectedPlan].price}
+                          {mobileSelectedPlan !== 'pro' ? ` / ${isTr ? 'ay' : 'mo'}` : ''})
                         </span>
                         <div>{renderCellContent(row[mobileSelectedPlan])}</div>
                       </div>
@@ -707,11 +708,13 @@ export const PricingComparisonPage: React.FC<PricingComparisonPageProps> = ({
                     <div className="text-xs font-extrabold text-slate-900">
                       {info.name}
                     </div>
-                    <div className="text-sm font-black text-blue-600 tabular-nums mt-0.5">
-                      {info.price}{' '}
-                      <span className="text-[11px] font-normal text-slate-500">
-                        / {isTr ? 'ay' : 'mo'}
-                      </span>
+                    <div className="text-sm font-black text-blue-600 mt-0.5">
+                      {info.price}
+                      {planKey !== 'pro' && (
+                        <span className="text-[11px] font-normal text-slate-500 ml-1">
+                          / {isTr ? 'ay' : 'mo'}
+                        </span>
+                      )}
                     </div>
                   </div>
                   <button
