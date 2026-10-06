@@ -241,12 +241,11 @@ export const PRICING_PLANS = [
       '100 Aktif Sporcuya Kadar',
       'Mobil Uyumlu Hızlı Yoklama',
       'Temel Veli Bildirimleri (SMS & Mail)',
-      'Dijital Sporcu Karnesi (Yılda 2 Dönem)',
       'Standart Sporpuan Entegrasyonu',
       '2 Antrenör & 1 Yönetici Hesabı',
       'E-posta ile Teknik Destek'
     ],
-    cta: '14 Gün Ücretsiz Başla'
+    cta: 'Ücretsiz Başla'
   },
   {
     id: 'growth',
@@ -259,10 +258,10 @@ export const PRICING_PLANS = [
     features: [
       '350 Aktif Sporcuya Kadar',
       'Gelişmiş Sporpuan & Ödül Kataloğu Modülü',
-      'Sınırsız Dijital Sporcu Karnesi Oluşturma',
+      '100 Sporcuya Kadar Dijital Sporcu Karnesi',
       'Velilere Otomatik WhatsApp Karnesi Gönderimi',
       'Performans Radar Grafikleri ve Gelişim Analitiği',
-      'Otomatik Aidat Takibi & Sanal POS Entegrasyonu',
+      'Otomatik Aidat Takibi & Veli Borç Bildirimleri',
       'Sınırsız Antrenör & Branş Hesabı',
       '7/24 Öncelikli Canlı Destek & Kulüp Eğitimi'
     ],
@@ -278,12 +277,12 @@ export const PRICING_PLANS = [
     badge: 'Maksimum Güç',
     features: [
       'Sınırsız Sporcu & Sınırsız Şube / Tesis',
-      'Kendi Alan Adınız ve Özel Kulüp Mobil Uygulaması (White-Label)',
-      'Kulübe Özel Sporpuan Ödül Havuzu ve Sponsor Entegrasyonu',
-      'Özel Formlar, Turnuva ve Kamp Yönetimi',
+      'Kendi Markanızla Web Sitesi & Özel Alan Adı (White-Label)',
+      'Sanal POS & Online Kredi Kartı Tahsilat Entegrasyonu',
+      'Özel Kulüp Mobil Uygulaması (iOS & Android)',
+      'Kulübe Özel Sporpuan & Ödül Havuzu Yönetimi',
       'Gelişmiş Finans, Kasa ve Muhasebe Entegrasyonu',
-      'Özel Müşteri Başarı Yöneticisi',
-      'Yerinde Kurulum ve Veri Taşıma Desteği'
+      'Özel Müşteri Başarı Yöneticisi & Yerinde Kurulum Desteği'
     ],
     cta: 'Kurumsal Görüşme Ayarla'
   }

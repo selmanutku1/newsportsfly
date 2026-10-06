@@ -700,12 +700,11 @@ const translations: Record<Language, Translations> = {
           '100 Aktif Sporcuya Kadar',
           'Mobil Uyumlu Hızlı Yoklama',
           'Temel Veli Bildirimleri (SMS & Mail)',
-          'Sporcu Karnesi (Yılda 2 Dönem)',
           'Standart Sporpuan Entegrasyonu',
           '2 Antrenör & 1 Yönetici Hesabı',
           'E-posta ile Teknik Destek'
         ],
-        cta: '14 Gün Ücretsiz Başla'
+        cta: 'Ücretsiz Başla'
       },
       {
         id: 'growth',
@@ -718,10 +717,10 @@ const translations: Record<Language, Translations> = {
         features: [
           '350 Aktif Sporcuya Kadar',
           'Gelişmiş Sporpuan & Ödül Kataloğu Modülü',
-          'Sınırsız Sporcu Karnesi Oluşturma',
+          '100 Sporcuya Kadar Dijital Sporcu Karnesi',
           'Velilere Otomatik WhatsApp Karnesi Gönderimi',
           'Performans Radar Grafikleri ve Gelişim Analitiği',
-          'Otomatik Aidat Takibi & Sanal POS Entegrasyonu',
+          'Otomatik Aidat Takibi & Veli Borç Bildirimleri',
           'Sınırsız Antrenör & Branş Hesabı',
           '7/24 Öncelikli Canlı Destek & Kulüp Eğitimi'
         ],
@@ -731,17 +730,17 @@ const translations: Record<Language, Translations> = {
         id: 'enterprise',
         name: 'Pro Akademi & Çoklu Şube',
         desc: 'Birden fazla tesisi, yüzlerce sporcusu ve özel marka kimliği olan büyük kulüpler için.',
-        monthlyPrice: 4990,
-        annualPrice: 3990,
+        monthlyPrice: 0,
+        annualPrice: 0,
         badge: 'Maksimum Güç',
         features: [
           'Sınırsız Sporcu & Sınırsız Şube / Tesis',
-          'Kendi Alan Adınız ve Özel Kulüp Mobil Uygulaması (White-Label)',
-          'Kulübe Özel Sporpuan Ödül Havuzu ve Sponsor Entegrasyonu',
-          'Özel Formlar, Turnuva ve Kamp Yönetimi',
+          'Kendi Markanızla Web Sitesi & Özel Alan Adı (White-Label)',
+          'Sanal POS & Online Kredi Kartı Tahsilat Entegrasyonu',
+          'Özel Kulüp Mobil Uygulaması (iOS & Android)',
+          'Kulübe Özel Sporpuan & Ödül Havuzu Yönetimi',
           'Gelişmiş Finans, Kasa ve Muhasebe Entegrasyonu',
-          'Özel Müşteri Başarı Yöneticisi',
-          'Yerinde Kurulum ve Veri Taşıma Desteği'
+          'Özel Müşteri Başarı Yöneticisi & Yerinde Kurulum Desteği'
         ],
         cta: 'Kurumsal Görüşme Ayarla'
       }
@@ -1240,7 +1239,6 @@ const translations: Record<Language, Translations> = {
           'Up to 100 Active Athletes',
           'Mobile-Ready Fast Attendance',
           'Basic Parent Notifications (SMS & Email)',
-          'Digital Athlete Report Cards (2 Terms/Year)',
           'Standard Sporpuan Loyalty Engine',
           '2 Coaches & 1 Admin Account',
           'Email Technical Support'
@@ -1258,10 +1256,10 @@ const translations: Record<Language, Translations> = {
         features: [
           'Up to 350 Active Athletes',
           'Advanced Sporpuan & Custom Reward Catalog',
-          'Unlimited Digital Athlete Report Cards',
+          'Digital Athlete Report Cards (Up to 100 Athletes)',
           'Direct WhatsApp Report Card Delivery',
           'Skill Radar Analytics & Longitudinal Growth',
-          'Automated Dues Chasing & Online Checkout',
+          'Automated Tuition Tracking & Dues Alerts',
           'Unlimited Coach & Category Accounts',
           '24/7 Priority Support & Onboarding Training'
         ],
@@ -1271,17 +1269,17 @@ const translations: Record<Language, Translations> = {
         id: 'enterprise',
         name: 'Pro Academy & Multi-Branch',
         desc: 'For multi-branch sports organizations requiring custom branding and dedicated infrastructure.',
-        monthlyPrice: 289,
-        annualPrice: 229,
+        monthlyPrice: 0,
+        annualPrice: 0,
         badge: 'Maximum Power',
         features: [
           'Unlimited Athletes & Multiple Facilities',
-          'Custom Domain & White-Label Mobile App',
-          'Custom Sporpuan Reward Pool & Sponsor Modules',
-          'Tournament, Camp, & Registration Forms',
+          'Custom Branded Website & Domain (White-Label)',
+          'Direct Virtual POS & Credit Card Gateway',
+          'Custom Mobile App for iOS & Android',
+          'Custom Sporpuan & Reward Pool Management',
           'Advanced Financial Reconciliation & Accounting API',
-          'Dedicated Customer Success Manager',
-          'On-site Setup & Data Migration Assistance'
+          'Dedicated Customer Success Manager & Setup'
         ],
         cta: 'Schedule Enterprise Call'
       }

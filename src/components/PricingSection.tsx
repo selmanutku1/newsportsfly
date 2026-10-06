@@ -28,7 +28,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
         'Up to 100 Active Athletes',
         'Mobile-Optimized Fast Roll Call',
         'Core Parent Notifications (SMS & Email)',
-        'Digital Athlete Report Card (2 Terms/Year)',
         'Standard Sporpuan Loyalty Integration',
         '2 Coach & 1 Administrator Account',
         'Email Technical Support',
@@ -46,13 +45,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
       features: [
         'Up to 350 Active Athletes',
         'Automated Attendance & WhatsApp Alerts',
-        'Unlimited Digital Report Cards & QR Verification',
+        'Digital Athlete Report Cards (Up to 100 Athletes)',
         'Customizable Sporpuan Gamification & Reward Store',
-        'Direct POS & Virtual Credit Card Collection',
+        'Automated Tuition Tracking & Dues Reminders',
         'Up to 10 Coach & Admin Accounts',
         'Priority Phone & WhatsApp Support',
       ],
-      cta: 'Start 14-Day Free Trial',
+      cta: 'Start Free Trial',
     },
     {
       id: 'elite',
@@ -65,12 +64,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
       popular: false,
       features: [
         'Unlimited Athletes & Locations',
+        'Custom Branded Website & Domain (White-Label)',
+        'Direct Virtual POS & Credit Card Payment Gateway',
+        'Custom Branded Mobile App for iOS & Android',
         'Dedicated Account Manager & Training',
         'Full Accounting & E-Invoice Integration',
-        'Custom Branded Mobile Portal for Parents',
-        'Custom Development & Data Migration',
-        '99.9% Uptime Service Level Agreement (SLA)',
-        '24/7 Dedicated Support Hotline',
+        '99.9% Uptime SLA & 24/7 Dedicated Support',
       ],
       cta: 'Contact Sales',
     },
@@ -133,6 +132,25 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               </span>
             </button>
           </div>
+
+          {/* Trial availability indicator */}
+          <div className="text-xs font-semibold mt-0.5">
+            {annualBilling ? (
+              <span className="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50/80 px-3 py-1 rounded-full border border-emerald-200/80">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                {language === 'tr'
+                  ? '✨ Yıllık planda Ücretsiz Başla ve %20 indirim avantajı aktiftir'
+                  : '✨ Free trial and 20% discount are active on annual plans'}
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 text-slate-500 bg-slate-50 px-3 py-1 rounded-full border border-slate-200">
+                <span className="w-2 h-2 rounded-full bg-slate-400" />
+                {language === 'tr'
+                  ? 'Ücretsiz Başla modülü yalnızca Yıllık Planda geçerlidir'
+                  : 'Free trial is available with annual billing'}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Pricing Cards Grid */}
@@ -145,6 +163,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               plan.id === 'elite' ||
               plan.name.includes('Pro Akademi') ||
               plan.name.includes('Elite');
+
+            const getCtaText = () => {
+              if (isEnterprise) {
+                return language === 'tr' ? 'Kurumsal Görüşme' : 'Contact Sales';
+              }
+              if (annualBilling) {
+                return language === 'tr' ? 'Ücretsiz Başla' : 'Start Free Trial';
+              }
+              return language === 'tr' ? 'Hemen Başla' : 'Get Started';
+            };
 
             return (
               <div
@@ -222,7 +250,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                         : 'bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-200'
                     }`}
                   >
-                    {plan.cta}
+                    {getCtaText()}
                   </button>
                 </div>
               </div>

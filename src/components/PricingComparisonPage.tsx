@@ -150,22 +150,17 @@ const COMPARISON_SECTIONS: MatrixSection[] = [
           tr: 'Dijital Sporcu Karnesi',
           en: 'Digital Athlete Report Card',
         },
-        starter: {
-          type: 'text',
-          tr: 'Yılda 2 Dönem',
-          en: '2 Terms / Year',
-          style: 'muted',
-        },
+        starter: { type: 'cross' },
         growth: {
           type: 'text',
-          tr: 'Sınırsız Dönem',
-          en: 'Unlimited Terms',
+          tr: '100 Sporcuya Kadar',
+          en: 'Up to 100 Athletes',
           style: 'bold',
         },
         pro: {
           type: 'text',
-          tr: 'Sınırsız + Özel Format',
-          en: 'Unlimited + Custom Format',
+          tr: 'Sınırsız Sporcu & Özel Format',
+          en: 'Unlimited Athletes & Custom Format',
           style: 'emerald',
         },
       },
@@ -207,11 +202,20 @@ const COMPARISON_SECTIONS: MatrixSection[] = [
     rows: [
       {
         feature: {
-          tr: 'Otomatik Aidat Takibi & Sanal POS Entegrasyonu',
-          en: 'Automated Tuition Tracking & Virtual POS Integration',
+          tr: 'Otomatik Aidat Takibi & Veli Borç Bildirimleri',
+          en: 'Automated Tuition Tracking & Dues Reminders',
         },
         starter: { type: 'cross' },
         growth: { type: 'check', highlight: 'slate' },
+        pro: { type: 'check', highlight: 'emerald' },
+      },
+      {
+        feature: {
+          tr: 'Sanal POS & Online Kredi Kartı Tahsilat Entegrasyonu',
+          en: 'Virtual POS & Online Credit Card Payment Gateway',
+        },
+        starter: { type: 'cross' },
+        growth: { type: 'cross' },
         pro: { type: 'check', highlight: 'emerald' },
       },
       {
@@ -237,8 +241,8 @@ const COMPARISON_SECTIONS: MatrixSection[] = [
   {
     id: 'sporpuan',
     title: {
-      tr: 'SPORPUAN & KURUMSAL KİMLİK',
-      en: 'SPORPUAN & CORPORATE IDENTITY',
+      tr: 'SPORPUAN, WEB SİTESİ & KURUMSAL KİMLİK',
+      en: 'SPORPUAN, WEBSITE & CORPORATE IDENTITY',
     },
     rows: [
       {
@@ -260,15 +264,24 @@ const COMPARISON_SECTIONS: MatrixSection[] = [
         },
         pro: {
           type: 'text',
-          tr: 'Kulübe Özel Ödül Havuzu & Sponsor',
-          en: 'Custom Club Reward Pool & Sponsors',
+          tr: 'Kulübe Özel Ödül Havuzu & Mağaza',
+          en: 'Custom Club Reward Pool & Store',
           style: 'emerald',
         },
       },
       {
         feature: {
-          tr: 'Özel Alan Adı ve Kulüp Mobil Uygulaması (White-Label)',
-          en: 'Custom Domain & Branded Club Mobile App (White-Label)',
+          tr: 'Kendi Markanızla Web Sitesi & Özel Alan Adı (White-Label)',
+          en: 'Custom Branded Website & Domain (White-Label)',
+        },
+        starter: { type: 'cross' },
+        growth: { type: 'cross' },
+        pro: { type: 'check', highlight: 'emerald' },
+      },
+      {
+        feature: {
+          tr: 'Özel Kulüp Mobil Uygulaması (iOS & Android)',
+          en: 'Custom Branded Mobile App (iOS & Android)',
         },
         starter: { type: 'cross' },
         growth: { type: 'cross' },
@@ -376,7 +389,13 @@ export const PricingComparisonPage: React.FC<PricingComparisonPageProps> = ({
       name: isTr ? 'Başlangıç Kulübü' : 'Starter Club',
       shortName: isTr ? 'Başlangıç' : 'Starter',
       price: starterPrice,
-      cta: isTr ? '14 Gün Ücretsiz Başla' : 'Start Free Trial',
+      cta: annualBilling
+        ? isTr
+          ? 'Ücretsiz Başla'
+          : 'Start Free Trial'
+        : isTr
+        ? 'Hemen Başla'
+        : 'Get Started',
       btnClass:
         'bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-200',
     },
@@ -384,7 +403,13 @@ export const PricingComparisonPage: React.FC<PricingComparisonPageProps> = ({
       name: isTr ? 'Kulüp & Akademi' : 'Club & Academy',
       shortName: isTr ? 'Kulüp & Akademi' : 'Club & Academy',
       price: growthPrice,
-      cta: isTr ? 'Hemen Deneyin' : 'Try Club & Academy',
+      cta: annualBilling
+        ? isTr
+          ? 'Ücretsiz Başla'
+          : 'Start Free Trial'
+        : isTr
+        ? 'Hemen Başla'
+        : 'Get Started',
       btnClass: 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm',
     },
     pro: {
@@ -804,9 +829,13 @@ export const PricingComparisonPage: React.FC<PricingComparisonPageProps> = ({
                       {isTr ? 'Paketinizi Seçin' : 'Choose Your Plan'}
                     </div>
                     <div className="text-[11px] text-slate-500 mt-0.5">
-                      {isTr
-                        ? '14 gün ücretsiz deneme, kredi kartı gerekmez'
-                        : '14-day free trial, no credit card required'}
+                      {annualBilling
+                        ? isTr
+                          ? 'Yıllık planda ücretsiz deneme imkanı, kredi kartı gerekmez'
+                          : 'Free trial available on annual plans, no card required'
+                        : isTr
+                        ? 'Aylık planda anında kurulum ve kullanım'
+                        : 'Instant setup for monthly billing'}
                     </div>
                   </td>
                   <td className="py-5 px-4 text-center">
@@ -817,7 +846,13 @@ export const PricingComparisonPage: React.FC<PricingComparisonPageProps> = ({
                       }
                       className="w-full max-w-[180px] py-2.5 px-4 rounded-xl bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs border border-slate-200 shadow-2xs transition cursor-pointer"
                     >
-                      {isTr ? '14 Gün Ücretsiz Başla' : 'Start Free Trial'}
+                      {annualBilling
+                        ? isTr
+                          ? 'Ücretsiz Başla'
+                          : 'Start Free Trial'
+                        : isTr
+                        ? 'Hemen Başla'
+                        : 'Get Started'}
                     </button>
                   </td>
                   <td className="py-5 px-4 text-center bg-blue-50/40">
@@ -828,7 +863,13 @@ export const PricingComparisonPage: React.FC<PricingComparisonPageProps> = ({
                       }
                       className="w-full max-w-[180px] py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition cursor-pointer"
                     >
-                      {isTr ? 'Hemen Deneyin' : 'Try Club & Academy'}
+                      {annualBilling
+                        ? isTr
+                          ? 'Ücretsiz Başla'
+                          : 'Start Free Trial'
+                        : isTr
+                        ? 'Hemen Başla'
+                        : 'Get Started'}
                     </button>
                   </td>
                   <td className="py-5 px-4 text-center">
