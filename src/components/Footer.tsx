@@ -355,52 +355,6 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
-        {/* SEO Deep Internal Linking: Featured Industry Articles & Guides */}
-        <nav
-          aria-label={
-            isTr
-              ? 'Spor Okulu Yönetimi Rehberleri ve Makaleleri'
-              : 'Sports Academy Management Guides and Articles'
-          }
-          className="pt-8 border-t border-slate-200 space-y-4"
-        >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <h5 className="text-slate-900 font-semibold text-xs sm:text-sm">
-              {isTr
-                ? 'Spor Okulu & Akademi Yönetimi Rehberleri'
-                : 'Sports Academy & Club Management Guides'}
-            </h5>
-            <a
-              href="#blog"
-              onClick={(e) => navigateToHashView(e, 'blog', '#blog')}
-              className="text-blue-600 font-semibold hover:underline inline-flex items-center gap-1 text-xs"
-            >
-              <span>{isTr ? 'Tüm Makaleleri İncele' : 'Browse All Articles'}</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
-          </div>
-
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
-            {featuredGuides.map((guide) => (
-              <li key={guide.slug}>
-                <a
-                  href={`#blog-${guide.slug}`}
-                  onClick={(e) => navigateToHashView(e, 'blog', `#blog-${guide.slug}`)}
-                  className="group block py-1"
-                >
-                  <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
-                    <span>{guide.category}</span>
-                    <span aria-hidden="true">·</span>
-                    <span>{isTr ? 'Rehber' : 'Guide'}</span>
-                  </div>
-                  <span className="text-slate-700 font-medium group-hover:text-blue-600 group-hover:underline transition leading-snug block mt-0.5">
-                    {guide.title}
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
 
         {/* Bottom Copyright & Legal */}
         <div className="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">

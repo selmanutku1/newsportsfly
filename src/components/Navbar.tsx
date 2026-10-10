@@ -229,6 +229,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               iconClassName="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" 
               textClassName="text-xl sm:text-2xl font-black" 
               lightMode={true} 
+              showText={true}
             />
           </div>
 
@@ -297,15 +298,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </div>
 
-            {/* Neden Sportsfly */}
-            <button
-              onClick={() => scrollToSection('features')}
-              className="hover:text-slate-950 transition text-slate-800 font-medium"
-            >
-              {t.navWhySportsFly}
-            </button>
 
-            {/* Fiyatlar */}
             <button
               onClick={() => scrollToSection('pricing')}
               className="hover:text-slate-950 transition text-slate-800 font-medium"

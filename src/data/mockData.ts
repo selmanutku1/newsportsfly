@@ -245,7 +245,9 @@ export const PRICING_PLANS = [
       '2 Antrenör & 1 Yönetici Hesabı',
       'E-posta ile Teknik Destek'
     ],
-    cta: 'Ücretsiz Başla'
+    cta: 'Ücretsiz Başla',
+    monthlyPaymentLink: 'https://www.paytr.com/link/ImcbZd4',
+    annualPaymentLink: 'https://www.paytr.com/link/VErjIpI'
   },
   {
     id: 'growth',
@@ -265,7 +267,9 @@ export const PRICING_PLANS = [
       'Sınırsız Antrenör & Branş Hesabı',
       '7/24 Öncelikli Canlı Destek & Kulüp Eğitimi'
     ],
-    cta: 'Hemen Deneyin'
+    cta: 'Hemen Deneyin',
+    monthlyPaymentLink: 'https://www.paytr.com/link/jDxLXrf',
+    annualPaymentLink: 'https://www.paytr.com/link/uqcnHDN'
   },
   {
     id: 'enterprise',

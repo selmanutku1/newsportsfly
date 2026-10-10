@@ -243,7 +243,17 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                   <button
                     type="button"
                     id={`btn-pricing-select-${plan.id}`}
-                    onClick={() => onSelectPlan(plan.name)}
+                    onClick={() => {
+                      const link = annualBilling 
+                        ? (plan as any).annualPaymentLink 
+                        : (plan as any).monthlyPaymentLink;
+                      
+                      if (link) {
+                        window.open(link, '_blank');
+                      } else {
+                        onSelectPlan(plan.name);
+                      }
+                    }}
                     className={`w-full min-h-[46px] py-3.5 rounded-xl sm:rounded-2xl text-xs font-bold uppercase tracking-wider transition cursor-pointer active:scale-[0.99] ${
                       isPopular
                         ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/25'
