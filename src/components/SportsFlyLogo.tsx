@@ -205,7 +205,7 @@ export const SportsFlyLogo: React.FC<LogoProps> = ({
             <span className={`font-black tracking-tight ${lightMode ? 'text-slate-900' : 'text-white'}`}>
               Sports
             </span>
-            <span className={`font-bold tracking-tight ml-0.5 ${lightMode ? 'text-blue-600' : 'text-blue-400'}`}>
+            <span className="font-bold tracking-tight text-blue-600 ml-0.5">
               Fly
             </span>
           </div>

@@ -16,9 +16,7 @@ import {
   CreditCard,
   Calculator,
   HelpCircle,
-  Shield,
-  UserCheck,
-  Heart,
+  LogIn,
   PhoneCall,
   Sparkles,
   BookOpen,
@@ -226,11 +224,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => onNavigateView('marketing')} 
             className="cursor-pointer flex-shrink-0 pr-1 sm:pr-2 flex items-center"
           >
-            <SportsFlyLogo
-              size="sm"
-              iconClassName="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10"
-              textClassName="text-lg sm:text-xl md:text-2xl font-black"
-              lightMode={true}
+            <SportsFlyLogo 
+              size="md" 
+              iconClassName="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" 
+              textClassName="text-xl sm:text-2xl font-black" 
+              lightMode={true} 
             />
           </div>
 
@@ -605,93 +603,38 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </div>
                 </div>
 
-                {/* Direct Role Login Portals */}
+                {/* Single Mobile Login Portal */}
                 <div className="pt-2">
-                  <div className="flex items-center justify-between px-2 mb-2.5">
+                  <div className="flex items-center justify-between px-2 mb-2">
                     <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                      {language === 'tr' ? 'Kullanıcı Giriş Portalları' : 'User Portals'}
+                      {language === 'tr' ? 'Kulüp Girişi' : 'Club Login'}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-2">
-                    {/* Admin Portal */}
-                    <a
-                      href="https://webapp.sportsfly.com.tr/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="w-full min-h-[48px] p-3 rounded-2xl bg-slate-50 hover:bg-blue-50/70 border border-slate-200/80 active:scale-[0.99] transition flex items-center justify-between text-left group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0">
-                          <Shield className="w-4 h-4" />
+                  <a
+                    href="https://webapp.sportsfly.com.tr/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full min-h-[52px] p-3.5 rounded-2xl bg-gradient-to-r from-blue-50/90 to-indigo-50/50 hover:from-blue-100 hover:to-indigo-100 border border-blue-200/90 active:scale-[0.99] transition-all flex items-center justify-between text-left group shadow-2xs"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                        <LogIn className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-slate-900 group-hover:text-blue-700 transition">
+                          <span>{language === 'tr' ? 'Kulüp Girişi' : 'Club Login'}</span>
                         </div>
-                        <div>
-                          <div className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition">
-                            <span>{t.navLoginAdmin}</span>
-                          </div>
-                          <div className="text-[11px] text-slate-500">
-                            {t.navLoginAdminDesc}
-                          </div>
+                        <div className="text-[11px] text-slate-500 font-medium">
+                          {language === 'tr'
+                            ? 'Yönetici, antrenör ve sporcu kulüp yönetim portalı'
+                            : 'Club management portal for admins, coaches & members'}
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
-                        {language === 'tr' ? 'Giriş Yap' : 'Login'}
-                      </span>
-                    </a>
-
-                    {/* Coach Portal */}
-                    <a
-                      href="https://webapp.sportsfly.com.tr/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="w-full min-h-[48px] p-3 rounded-2xl bg-slate-50 hover:bg-blue-50/70 border border-slate-200/80 active:scale-[0.99] transition flex items-center justify-between text-left group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0">
-                          <UserCheck className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition">
-                            <span>{t.navLoginCoach}</span>
-                          </div>
-                          <div className="text-[11px] text-slate-500">
-                            {t.navLoginCoachDesc}
-                          </div>
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
-                        {language === 'tr' ? 'Giriş Yap' : 'Login'}
-                      </span>
-                    </a>
-
-                    {/* Parent Portal */}
-                    <a
-                      href="https://webapp.sportsfly.com.tr/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="w-full min-h-[48px] p-3 rounded-2xl bg-slate-50 hover:bg-blue-50/70 border border-slate-200/80 active:scale-[0.99] transition flex items-center justify-between text-left group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0">
-                          <Heart className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition">
-                            <span>{t.navLoginParent}</span>
-                          </div>
-                          <div className="text-[11px] text-slate-500">
-                            {t.navLoginParentDesc}
-                          </div>
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
-                        {language === 'tr' ? 'Giriş Yap' : 'Login'}
-                      </span>
-                    </a>
-                  </div>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform flex-shrink-0 ml-2" />
+                  </a>
                 </div>
 
                 {/* 24/7 Support Center Button */}
@@ -786,8 +729,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
                   {language === 'tr'
-                    ? `${closedLoginNotice.roleName ? `"${closedLoginNotice.roleName}"` : 'Kullanıcı girişleri'} ve ilgili panellere erişim şu anda genel kullanıma kapalıdır. Kurumunuza özel erişim sağlamak veya canlı sistemi incelemek için lütfen ücretsiz demo talebinde bulunun.`
-                    : `Access to ${closedLoginNotice.roleName ? `"${closedLoginNotice.roleName}"` : 'user portals'} is currently closed. To explore the platform or obtain access for your sports club, please request a free live demo.`}
+                    ? `${closedLoginNotice.roleName ? `"${closedLoginNotice.roleName}"` : 'Kulüp girişleri'} ve ilgili panellere erişim şu anda genel kullanıma kapalıdır. Kurumunuza özel erişim sağlamak veya canlı sistemi incelemek için lütfen ücretsiz demo talebinde bulunun.`
+                    : `Access to ${closedLoginNotice.roleName ? `"${closedLoginNotice.roleName}"` : 'club portals'} is currently closed. To explore the platform or obtain access for your sports club, please request a free live demo.`}
                 </p>
               </div>
 

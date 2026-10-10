@@ -125,12 +125,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Hero Copywriting */}
         <div className="text-center max-w-4xl mx-auto space-y-5 sm:space-y-6">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-slate-950 tracking-tight leading-[1.12] sm:leading-[1.08]">
-            {t.heroTitle1} <br />
-            <span className="text-blue-600">
-              {t.heroTitleHighlight}
-            </span>{' '}
-            {t.heroTitle2}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.1] sm:leading-[1.15] max-w-4xl mx-auto">
+            {t.heroTitle1} <br className="hidden sm:inline" />
+            <span className="text-blue-600 sm:inline block">
+              {t.heroTitleHighlight} {t.heroTitle2}
+            </span>
           </h1>
 
           <p className="text-sm sm:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed px-2">
