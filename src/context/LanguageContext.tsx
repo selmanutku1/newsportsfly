@@ -444,7 +444,7 @@ const translations: Record<Language, Translations> = {
 
     // Hero
     heroBadge: 'SPOR KULÜPLERİ İÇİN YENİ NESİL PLATFORM',
-    heroTitle1: 'Spor Kulüpleri ve Akademiler İçin',
+    heroTitle1: 'Spor Kulüpleri ve Akademiler\u00A0İçin',
     heroTitleHighlight: 'Yönetim ve Sadakat',
     heroTitle2: 'Sistemi',
     heroSubtitle: 'Aidat takibini %100 otomatikleştirin, Sporpuan ve Sporcu Karnesi ile sporcularınızın devamlılığını ve kulüp bağlılığını zirveye taşıyın.',
