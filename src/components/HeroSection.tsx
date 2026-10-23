@@ -10,6 +10,7 @@ import {
   Flame,
   Gift,
   Hand,
+  Home,
   Mail,
   MapPin,
   MessageCircle,
@@ -234,128 +235,166 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             </div>
 
-            {/* CENTER PHONE SHOWCASE (matching Image 1) */}
+            {/* CENTER PHONE SHOWCASE */}
             <div className="lg:col-span-6 flex justify-center">
-              <div className="w-full max-w-[375px] sm:max-w-[400px]">
+              <div className="w-full max-w-[340px] sm:max-w-[380px] mx-auto">
                 
-                {/* Phone Outer Chassis - Sleek Minimalist Mockup */}
-                <div className="rounded-[40px] bg-slate-900 p-2 sm:p-2.5 shadow-2xl shadow-slate-900/25 border border-slate-800 ring-1 ring-white/10 relative">
+                {/* Phone Outer Chassis - Modern Minimalist Smartphone */}
+                <div className="rounded-[44px] bg-slate-950 p-2 sm:p-2.5 shadow-2xl shadow-slate-950/30 border-2 border-slate-800/90 ring-1 ring-white/10 relative">
                   
-                  {/* Minimal Dynamic Island / Camera */}
-                  <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-black rounded-full z-30 flex items-center justify-center gap-2">
+                  {/* Dynamic Island / Notch */}
+                  <div className="absolute top-3.5 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-30 flex items-center justify-between px-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-slate-800" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-950/80" />
+                    <span className="w-2 h-2 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center">
+                      <span className="w-1 h-1 rounded-full bg-blue-500/80" />
+                    </span>
                   </div>
 
                   {/* Phone Screen Container */}
-                  <div className="rounded-[32px] overflow-hidden bg-slate-100 text-slate-900 relative">
+                  <div className="rounded-[36px] overflow-hidden bg-slate-50 text-slate-900 relative border border-slate-200/50">
                     
-                    {/* Top Navy Header Banner */}
-                    <div className="bg-[#102a43] text-white pt-7 pb-4 px-4 sm:px-5">
-                      <div className="flex items-center justify-between text-[11px] text-slate-300 mb-1.5">
-                        <span>09:41</span>
-                        <div className="flex items-center gap-1">
-                          <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
-                          <span className="text-[10px] font-mono">5G</span>
+                    {/* Top Header Banner */}
+                    <div className="bg-slate-900 text-white pt-6 pb-3.5 px-4 sm:px-5 border-b border-slate-800">
+                      <div className="flex items-center justify-between text-[11px] text-slate-300 mb-2">
+                        <span className="font-semibold tracking-tight">09:41</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[10px] font-bold text-emerald-400">● 5G</span>
+                          <div className="w-4 h-2 rounded-xs border border-slate-400 p-0.5 flex items-center">
+                            <div className="h-full w-full bg-emerald-400 rounded-2xs" />
+                          </div>
                         </div>
                       </div>
 
+                      {/* Club & Team Banner */}
                       <div className="flex items-center justify-between">
-                        <div className="text-xl sm:text-2xl font-black text-white tracking-tight">
-                          {activeLeaderTeam}
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-xs shadow-xs">
+                            SF
+                          </div>
+                          <div>
+                            <div className="text-[10px] font-bold text-blue-300 uppercase tracking-wider">
+                              {language === 'tr' ? 'SportsFly Akademi' : 'SportsFly Academy'}
+                            </div>
+                            <div className="text-sm sm:text-base font-black text-white tracking-tight flex items-center gap-1.5">
+                              <span>{activeLeaderTeam}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Notification Bell Badge */}
+                        <div className="relative w-8 h-8 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300">
+                          <Bell className="w-4 h-4 text-slate-200" />
+                          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-rose-500 text-white text-[9px] font-bold flex items-center justify-center">
+                            2
+                          </span>
                         </div>
                       </div>
                     </div>
 
                     {/* Notification Alert Cards inside Phone */}
-                    <div className="px-4 -mt-2 space-y-2">
+                    <div className="px-3.5 pt-3 space-y-2">
                       
-                      {/* Alert 1 */}
-                      <div className="p-3 bg-white rounded-2xl border border-slate-200/90 shadow-xs flex items-center justify-between text-xs">
-                        <div className="flex items-center gap-2.5">
-                          <div className="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center font-bold">
-                            ✕
+                      {/* Alert 1: Attendance */}
+                      <div className="p-2.5 sm:p-3 bg-white rounded-2xl border border-slate-200/90 shadow-2xs flex items-center justify-between text-xs hover:border-blue-300 transition">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200/80 flex items-center justify-center flex-shrink-0 font-bold">
+                            <UserCheck className="w-4 h-4" />
                           </div>
-                          <div>
-                            <div className="text-[10px] text-slate-400 font-bold uppercase">{t.heroPhoneImportant}</div>
-                            <div className="font-extrabold text-slate-900">{t.heroPhoneUnloggedActivities}</div>
+                          <div className="min-w-0">
+                            <div className="text-[9px] text-emerald-700 font-bold uppercase tracking-wider flex items-center gap-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                              {t.heroPhoneImportant}
+                            </div>
+                            <div className="font-extrabold text-slate-900 text-xs truncate">{t.heroPhoneUnloggedActivities}</div>
                           </div>
                         </div>
-                        <ChevronRight className="w-4 h-4 text-slate-400" />
+                        <ChevronRight className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
                       </div>
 
-                      {/* Alert 2 */}
-                      <div className="p-3 bg-white rounded-2xl border border-slate-200/90 shadow-xs flex items-center justify-between text-xs">
-                        <div className="flex items-center gap-2.5">
-                          <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
-                            <Bell className="w-4 h-4" />
+                      {/* Alert 2: Tuition */}
+                      <div className="p-2.5 sm:p-3 bg-white rounded-2xl border border-slate-200/90 shadow-2xs flex items-center justify-between text-xs hover:border-blue-300 transition">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 border border-blue-200/80 flex items-center justify-center flex-shrink-0 font-bold">
+                            <CreditCard className="w-4 h-4" />
                           </div>
-                          <div>
-                            <div className="text-[10px] text-slate-400 font-bold uppercase">{t.heroPhoneFee}</div>
-                            <div className="font-extrabold text-slate-900">{t.heroPhoneMissingSchedule}</div>
+                          <div className="min-w-0">
+                            <div className="text-[9px] text-blue-700 font-bold uppercase tracking-wider flex items-center gap-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                              {t.heroPhoneFee}
+                            </div>
+                            <div className="font-extrabold text-slate-900 text-xs truncate">{t.heroPhoneMissingSchedule}</div>
                           </div>
                         </div>
-                        <ChevronRight className="w-4 h-4 text-slate-400" />
+                        <ChevronRight className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
                       </div>
 
                     </div>
 
                     {/* Upcoming Activities Calendar Timeline */}
-                    <div className="px-4 py-4 space-y-3">
-                      <div className="text-sm font-extrabold text-slate-900 tracking-tight">
-                        {t.heroPhoneUpcoming}
+                    <div className="px-3.5 py-3 space-y-2.5">
+                      <div className="flex items-center justify-between">
+                        <div className="text-xs font-extrabold text-slate-900 tracking-tight flex items-center gap-1.5">
+                          <Calendar className="w-3.5 h-3.5 text-blue-600" />
+                          <span>{t.heroPhoneUpcoming}</span>
+                        </div>
+                        <span className="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md">
+                          {language === 'tr' ? 'Haftalık Program' : 'Weekly Plan'}
+                        </span>
                       </div>
 
                       {/* Event 1 */}
-                      <div className="flex items-start gap-3">
-                        <div className="text-center w-14 flex-shrink-0 pt-1">
-                          <div className="text-[9px] font-bold text-blue-600 uppercase">{t.heroPhoneMon}</div>
-                          <div className="text-xl font-black text-slate-900 leading-none">6</div>
-                          <div className="text-[9px] text-slate-400 font-medium">{t.heroPhoneAug}</div>
+                      <div className="flex items-start gap-2.5">
+                        <div className="text-center w-11 flex-shrink-0 pt-0.5 bg-white rounded-xl border border-slate-200/80 py-1.5 shadow-2xs">
+                          <div className="text-[8px] font-extrabold text-blue-600 uppercase">{t.heroPhoneMon.slice(0, 3)}</div>
+                          <div className="text-base font-black text-slate-900 leading-tight">6</div>
+                          <div className="text-[8px] text-slate-400 font-bold uppercase">{t.heroPhoneAug.slice(0, 3)}</div>
                         </div>
 
-                        <div className="flex-1 p-3 bg-white rounded-2xl border border-slate-200/90 shadow-xs space-y-2">
+                        <div className="flex-1 p-2.5 bg-white rounded-xl border border-slate-200/90 shadow-2xs space-y-1.5">
                           <div className="flex items-center justify-between">
-                            <div className="font-extrabold text-slate-900 text-xs">{t.heroPhoneTraining}</div>
-                            <span className="text-[10px] font-bold text-blue-600 flex items-center gap-1">
+                            <div className="font-bold text-slate-900 text-xs">{t.heroPhoneTraining}</div>
+                            <span className="text-[9px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded flex items-center gap-1">
                               <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
                               {t.heroPhoneInProgress}
                             </span>
                           </div>
-                          <div className="text-[11px] text-slate-500 flex items-center gap-1">
+                          <div className="text-[10px] text-slate-500 flex items-center gap-1">
+                            <Clock className="w-3 h-3 text-slate-400" />
                             <span>17:00 - 18:30</span>
-                            <span>|</span>
+                            <span>•</span>
                             <span>{t.heroPhoneMainHall}</span>
                           </div>
-                          <div className="flex items-center gap-1.5 pt-1">
-                            <span className="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-[10px]">
+                          <div className="flex items-center gap-1.5 pt-0.5">
+                            <span className="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-[9px] flex items-center gap-1">
+                              <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600" />
                               {t.heroPhoneAttending}
                             </span>
-                            <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-bold">
-                              🛡️ {activeLeaderTeam}
+                            <span className="px-1.5 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200 font-bold text-[9px]">
+                              ⚡ +20 SP
                             </span>
                           </div>
                         </div>
                       </div>
 
                       {/* Event 2 */}
-                      <div className="flex items-start gap-3">
-                        <div className="text-center w-14 flex-shrink-0 pt-1">
-                          <div className="text-[9px] font-bold text-blue-600 uppercase">{t.heroPhoneWed}</div>
-                          <div className="text-xl font-black text-slate-900 leading-none">8</div>
-                          <div className="text-[9px] text-slate-400 font-medium">{t.heroPhoneAug}</div>
+                      <div className="flex items-start gap-2.5">
+                        <div className="text-center w-11 flex-shrink-0 pt-0.5 bg-white rounded-xl border border-slate-200/80 py-1.5 shadow-2xs">
+                          <div className="text-[8px] font-extrabold text-blue-600 uppercase">{t.heroPhoneWed.slice(0, 3)}</div>
+                          <div className="text-base font-black text-slate-900 leading-tight">8</div>
+                          <div className="text-[8px] text-slate-400 font-bold uppercase">{t.heroPhoneAug.slice(0, 3)}</div>
                         </div>
 
-                        <div className="flex-1 p-3 bg-white rounded-2xl border border-slate-200/90 shadow-xs space-y-2">
-                          <div className="font-extrabold text-slate-900 text-xs">{t.heroPhoneTraining}</div>
-                          <div className="text-[11px] text-slate-500">
-                            17:00 - 18:30 | {t.heroPhoneMainHall}
+                        <div className="flex-1 p-2.5 bg-white rounded-xl border border-slate-200/90 shadow-2xs space-y-1.5">
+                          <div className="font-bold text-slate-900 text-xs">{t.heroPhoneTraining}</div>
+                          <div className="text-[10px] text-slate-500 flex items-center gap-1">
+                            <Clock className="w-3 h-3 text-slate-400" />
+                            <span>17:00 - 18:30 • {t.heroPhoneMainHall}</span>
                           </div>
-                          <div className="flex items-center gap-1.5 pt-1">
-                            <span className="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-[10px]">
+                          <div className="flex items-center gap-1.5 pt-0.5">
+                            <span className="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-[9px]">
                               {t.heroPhoneAttending}
                             </span>
-                            <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-bold">
+                            <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-bold text-[9px]">
                               🛡️ {activeLeaderTeam}
                             </span>
                           </div>
@@ -363,33 +402,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                       </div>
 
                       {/* Event 3 */}
-                      <div className="flex items-start gap-3">
-                        <div className="text-center w-14 flex-shrink-0 pt-1">
-                          <div className="text-[9px] font-bold text-blue-600 uppercase">{t.heroPhoneThu}</div>
-                          <div className="text-xl font-black text-slate-900 leading-none">9</div>
-                          <div className="text-[9px] text-slate-400 font-medium">{t.heroPhoneAug}</div>
+                      <div className="flex items-start gap-2.5">
+                        <div className="text-center w-11 flex-shrink-0 pt-0.5 bg-white rounded-xl border border-slate-200/80 py-1.5 shadow-2xs">
+                          <div className="text-[8px] font-extrabold text-indigo-600 uppercase">{t.heroPhoneThu.slice(0, 3)}</div>
+                          <div className="text-base font-black text-slate-900 leading-tight">11</div>
+                          <div className="text-[8px] text-slate-400 font-bold uppercase">{t.heroPhoneAug.slice(0, 3)}</div>
                         </div>
 
-                        <div className="flex-1 p-3 bg-white rounded-2xl border border-slate-200/90 shadow-xs space-y-2">
-                          <div className="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
+                        <div className="flex-1 p-2.5 bg-gradient-to-br from-white to-blue-50/50 rounded-xl border border-blue-200/80 shadow-2xs space-y-1.5">
+                          <div className="font-bold text-slate-900 text-xs flex items-center gap-1">
                             <span>{t.heroPhoneAwayMatchTitle}</span>
                           </div>
-                          <div className="text-[11px] text-slate-500">
-                            17:00 - 18:30 | {t.heroPhoneAwayPitch}
+                          <div className="text-[10px] text-slate-500 flex items-center gap-1">
+                            <MapPin className="w-3 h-3 text-slate-400" />
+                            <span>14:00 • {t.heroPhoneAwayPitch}</span>
                           </div>
                           
-                          <div className="p-2 bg-slate-50 rounded-xl text-[10px] text-slate-700 flex items-center gap-1.5 border border-slate-200/60">
-                            <span>✋</span>
-                            <span className="italic">{t.heroPhoneAwayMatchRequest}</span>
-                          </div>
-
-                          <div className="flex items-center gap-1.5 pt-1">
-                            <span className="px-2 py-0.5 rounded-md bg-blue-900 text-white font-bold text-[10px]">
-                              Emir
-                            </span>
-                            <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-bold">
-                              🛡️ {activeLeaderTeam}
-                            </span>
+                          <div className="p-1.5 bg-blue-100/60 rounded-lg text-[9px] text-blue-900 flex items-center gap-1 font-medium">
+                            <Car className="w-3 h-3 text-blue-700 flex-shrink-0" />
+                            <span className="truncate">{t.heroPhoneAwayMatchRequest}</span>
                           </div>
                         </div>
                       </div>
@@ -397,28 +428,28 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     </div>
 
                     {/* Bottom Navigation Tab Bar on Phone */}
-                    <div className="bg-white border-t border-slate-200 py-2.5 px-4 flex items-center justify-around text-slate-500 text-[10px]">
-                      <div className="flex flex-col items-center gap-0.5 text-blue-600 font-bold">
-                        <span className="text-sm">🏠</span>
+                    <div className="bg-white border-t border-slate-200/90 py-2 px-3 flex items-center justify-around text-slate-500 text-[9px]">
+                      <div className="flex flex-col items-center gap-0.5 text-blue-600 font-bold cursor-pointer">
+                        <Home className="w-4 h-4" />
                         <span>{t.heroPhoneHome}</span>
                       </div>
-                      <div className="flex flex-col items-center gap-0.5 relative">
-                        <span className="text-sm">🗓️</span>
+                      <div className="flex flex-col items-center gap-0.5 relative text-slate-500 cursor-pointer">
+                        <Calendar className="w-4 h-4" />
                         <span>{t.heroPhoneEvents}</span>
-                        <span className="absolute -top-1 right-2 w-4 h-4 rounded-full bg-rose-500 text-white text-[9px] flex items-center justify-center font-bold">
-                          8
+                        <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-rose-500 text-white text-[8px] flex items-center justify-center font-bold">
+                          2
                         </span>
                       </div>
-                      <div className="flex flex-col items-center gap-0.5">
-                        <span className="text-sm">✉️</span>
+                      <div className="flex flex-col items-center gap-0.5 text-slate-500 cursor-pointer">
+                        <Trophy className="w-4 h-4 text-amber-500" />
                         <span>{t.heroPhoneInbox}</span>
                       </div>
-                      <div className="flex flex-col items-center gap-0.5">
-                        <span className="text-sm">🐖</span>
+                      <div className="flex flex-col items-center gap-0.5 text-slate-500 cursor-pointer">
+                        <CreditCard className="w-4 h-4" />
                         <span>{t.heroPhoneTeamFund}</span>
                       </div>
-                      <div className="flex flex-col items-center gap-0.5">
-                        <span className="text-sm">☰</span>
+                      <div className="flex flex-col items-center gap-0.5 text-slate-500 cursor-pointer">
+                        <Users className="w-4 h-4" />
                         <span>{t.heroPhoneMore}</span>
                       </div>
                     </div>
@@ -482,18 +513,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Mobile responsive floating cards list (visible only on small screens) */}
           <div className="lg:hidden mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="p-3 bg-white rounded-2xl border border-slate-200 flex items-center gap-3">
-              <span className="text-lg">🟣</span>
-              <div className="text-xs">
-                <span className="font-bold block text-slate-900">{t.heroNotifReminderTitle}</span>
-                <span className="text-slate-500">{t.heroNotifReminderDesc}</span>
+            <div className="p-3.5 bg-white rounded-2xl border border-slate-200/90 shadow-2xs flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 flex-shrink-0">
+                <Send className="w-4 h-4" />
+              </div>
+              <div className="text-xs min-w-0">
+                <span className="font-bold block text-slate-900 truncate">{t.heroNotifReminderTitle}</span>
+                <span className="text-slate-500 line-clamp-1">{t.heroNotifReminderDesc}</span>
               </div>
             </div>
-            <div className="p-3 bg-white rounded-2xl border border-slate-200 flex items-center gap-3">
-              <span className="text-lg">💳</span>
-              <div className="text-xs">
-                <span className="font-bold block text-slate-900">{t.heroNotifDuesPaidTitle}</span>
-                <span className="text-slate-500">{t.heroNotifDuesPaidDesc}</span>
+            <div className="p-3.5 bg-white rounded-2xl border border-slate-200/90 shadow-2xs flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 flex-shrink-0">
+                <CreditCard className="w-4 h-4" />
+              </div>
+              <div className="text-xs min-w-0">
+                <span className="font-bold block text-slate-900 truncate">{t.heroNotifDuesPaidTitle}</span>
+                <span className="text-slate-500 line-clamp-1">{t.heroNotifDuesPaidDesc}</span>
               </div>
             </div>
           </div>
