@@ -1,8 +1,41 @@
 # SportsFly Robots.txt (https://www.sportsfly.com.tr)
+# Configured for Search Engines & Generative AI Search Models (GEO / AI Indexing)
+
 User-agent: *
 Allow: /
-
-# Disallow internal API routes
 Disallow: /api/
+
+# Explicitly Allow OpenAI / ChatGPT Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Explicitly Allow Perplexity AI Crawler
+User-agent: PerplexityBot
+Allow: /
+
+# Explicitly Allow Anthropic / Claude Crawlers
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Explicitly Allow Google Gemini & AI Overviews Crawlers
+User-agent: Google-Extended
+Allow: /
+
+# Explicitly Allow Apple Intelligence Crawlers
+User-agent: Applebot-Extended
+Allow: /
+
+# Explicitly Allow ByteDance AI Crawlers
+User-agent: Bytespider
+Allow: /
 
 Sitemap: https://www.sportsfly.com.tr/sitemap.xml

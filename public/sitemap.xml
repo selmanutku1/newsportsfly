@@ -1,153 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <!-- Homepage -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Main Homepage -->
   <url>
     <loc>https://www.sportsfly.com.tr/</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.sportsfly.com.tr/?lang=tr"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sportsfly.com.tr/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.sportsfly.com.tr/"/>
   </url>
-  
-  <!-- Main Platform Modules -->
-  <url>
-    <loc>https://www.sportsfly.com.tr/#sporpuan-sistemi</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+
+  <!-- Platform Modules & Key Sections -->
   <url>
     <loc>https://www.sportsfly.com.tr/#automation</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.sportsfly.com.tr/#features</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.sportsfly.com.tr/#sporpuan</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.sportsfly.com.tr/#digital-report</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.sportsfly.com.tr/#pricing</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.sportsfly.com.tr/#faq</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Hub & Categories -->
+  <url>
+    <loc>https://www.sportsfly.com.tr/#blog</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.sportsfly.com.tr/#paket-karsilastirma</loc>
-    <lastmod>2026-09-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://www.sportsfly.com.tr/#faqs</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Blog Main Index -->
-  <url>
-    <loc>https://www.sportsfly.com.tr/#blog</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.sportsfly.com.tr/#blog?lang=tr"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.sportsfly.com.tr/#blog?lang=en"/>
-  </url>
-
-  <!-- Blog Categories (Resources & Topic Hubs) -->
-  <url>
     <loc>https://www.sportsfly.com.tr/#blog-kategori-otomasyon</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.sportsfly.com.tr/#blog-kategori-sporpuan</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.sportsfly.com.tr/#blog-kategori-karne</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.sportsfly.com.tr/#blog-kategori-yonetim</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.sportsfly.com.tr/#blog-kategori-iletisim</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Blog Article 1: Aidat Tahsilatı -->
+  <!-- Blog Articles for GEO & Search Indexing -->
   <url>
     <loc>https://www.sportsfly.com.tr/#blog-spor-okullarinda-aidat-tahsilatinda-yuzde-98-basari</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Blog Article 2: Sporpuan Oyunlaştırma -->
   <url>
     <loc>https://www.sportsfly.com.tr/#blog-sporcu-devamliligini-artiran-oyunlastirma-sporpuan</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Blog Article 3: Dijital Sporcu Karnesi -->
   <url>
     <loc>https://www.sportsfly.com.tr/#blog-geleneksel-yoklamadan-360-dijital-sporcu-karnesine</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Blog Article 4: Antrenör Verimliliği -->
   <url>
     <loc>https://www.sportsfly.com.tr/#blog-antrenorlerin-haftalik-14-saatini-kurtarmak-modern-yonetim</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Blog Article 5: 14+ Spor Branşı Yazılımı -->
   <url>
     <loc>https://www.sportsfly.com.tr/#blog-basketboldan-yuzmeye-farkli-branslar-icin-spor-yazilimi</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sportsfly.com.tr/#blog-yeni-nesil-veli-iletisimi-sikayetleri-sifirlayan-5-strateji</loc>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog Article 6: Veli İletişimi & Güven -->
-  <url>
-    <loc>https://www.sportsfly.com.tr/#blog-yeni-nesil-veli-iletisimi-sikayetleri-sifirlayan-5-strateji</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 </urlset>

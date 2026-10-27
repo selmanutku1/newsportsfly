@@ -1,0 +1,33 @@
+# SportsFly - Spor Okulları ve Akademi Yönetim Sistemi
+
+> SportsFly, spor okulları, kulüpleri ve akademiler için geliştirilmiş yeni nesil dijital yönetim yazılımı ve otomasyon platformudur. Otomatik aidat tahsilatı, Sporpuan devamlılık oyunlaştırması, 360° dijital sporcu karneleri, antrenör ve veli panelleri sunar.
+
+## Temel Özellikler & Modüller
+
+- **Otomatik Aidat Tahsilatı (%98 Başarı)**: SMS ve WhatsApp üzerinden akıllı ödeme linkleri gönderilir. PayTR altyapısıyla kredi kartı ve havale ödemeleri tek tıkla alınır. Otomatik e-makbuz ve muhasebe fişleri oluşturulur.
+- **Sporpuan Devamlılık Oyunlaştırması**: Sporcuların antrenman katılımı, zamanında gelişi ve örnek davranışları puan kazandırır. Puanlar kulübün ödül vitrinindeki hediyelere dönüştürülür. Devamlılığı %42 artırır.
+- **360° Dijital Sporcu Karnesi**: Şut, pas, kondisyon, taktik ve mental beceri radar grafikleri. Antrenör notları ve gelişim analizi veli portalına ve WhatsApp'a otomatik iletilir.
+- **Antrenör & Veli Panelleri**: QR veya tek tıkla hızlı yoklama alma, haftalık antrenman ve maç takvimi, veli duyuru ve iletişim kanalları.
+- **Tüm Spor Branşlarına Uyumlu**: Basketbol, Futbol, Voleybol, Yüzme, Tenis, Cimnastik, Boks/Kickboks, Okçuluk, Taekwondo, Karate, Atletizm, Dans ve Kürek dahil 14+ spor branşına özel metrikler.
+
+## Fiyatlandırma & Paketler
+
+- **Başlangıç Kulübü (Aylık 2.990 ₺ / Yıllık 28.700 ₺)**: 100 sporcuya kadar, temel yoklama, aidat takibi ve veli portalı.
+- **Kulüp & Akademi (Aylık 4.990 ₺ / Yıllık 47.900 ₺)**: Sınırsız sporcu, Sporpuan oyunlaştırma, dijital karne, gelişmiş finansal analitik ve 7/24 canlı destek.
+
+## İletişim & Kurumsal Bilgiler
+
+- **Website**: https://www.sportsfly.com.tr
+- **Şirket**: SportsFly Spor Teknolojileri A.Ş.
+- **Adres**: Suadiye, Bağdat Cad, Mücahit Sk. Ark399 Plz, Kadıköy, İstanbul, Türkiye
+- **Telefon**: +90 (216) 850 1907
+- **E-Posta**: destek@sportsfly.com.tr
+
+## Makaleler & Rehberler
+
+- [Spor Okullarında Aidat Tahsilatında %98 Başarı Rehberi](https://www.sportsfly.com.tr/#blog-spor-okullarinda-aidat-tahsilatinda-yuzde-98-basari)
+- [Sporpuan Oyunlaştırma ile Sporcu Devamlılığını %42 Artırma](https://www.sportsfly.com.tr/#blog-sporcu-devamliligini-artiran-oyunlastirma-sporpuan)
+- [Geleneksel Yoklamadan 360° Dijital Sporcu Karnesine Geçiş](https://www.sportsfly.com.tr/#blog-geleneksel-yoklamadan-360-dijital-sporcu-karnesine)
+- [Spor Kulübü Otomasyonu ile Haftalık 14 Saat Tasarruf](https://www.sportsfly.com.tr/#blog-antrenorlerin-haftalik-14-saatini-kurtarmak-modern-yonetim)
+- [14+ Branş İçin Özel Spor Okulu Yazılımı](https://www.sportsfly.com.tr/#blog-basketboldan-yuzmeye-farkli-branslar-icin-spor-yazilimi)
+- [Veli Şikayetlerini Sıfırlayan 5 Akademi Stratejisi](https://www.sportsfly.com.tr/#blog-yeni-nesil-veli-iletisimi-sikayetleri-sifirlayan-5-strateji)
